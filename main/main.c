@@ -5,6 +5,7 @@
 
 #include "exio.h"
 #include "relay_ctrl.h"
+#include "pwm_ctrl.h"
 #include "eth_init.h"
 
 static const char *TAG = "MAIN";
@@ -34,7 +35,10 @@ void app_main(void)
     // 5. 릴레이 초기 상태 설정 (전체 OFF)
     ESP_ERROR_CHECK(relay_init());
 
-    // 6. W5500 Ethernet 초기화
+    // 6. RC PWM 출력 초기화 (GPIO47=CH1, GPIO48=CH2, neutral 1500µs)
+    ESP_ERROR_CHECK(pwm_init());
+
+    // 7. W5500 Ethernet 초기화
     //    → IP 획득 시 내부에서 tcp_server_start() 자동 호출
     ESP_ERROR_CHECK(eth_init());
 

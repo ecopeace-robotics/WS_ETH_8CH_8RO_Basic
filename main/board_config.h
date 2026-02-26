@@ -39,6 +39,21 @@
 #define ETH_STATIC_GW       "192.168.1.1"
 
 // =============================================================================
+// RC PWM ESC 출력 (LEDC)
+// GPIO47 = CH1, GPIO48 = CH2
+// =============================================================================
+#define PWM_CH1_GPIO        47
+#define PWM_CH2_GPIO        48
+#define PWM_LEDC_TIMER      LEDC_TIMER_1
+#define PWM_LEDC_MODE       LEDC_LOW_SPEED_MODE
+#define PWM_FREQ_HZ         50
+#define PWM_RESOLUTION      LEDC_TIMER_14_BIT   // ESP32-S3 low-speed mode max = 14-bit
+#define PWM_PERIOD_US       20000
+#define PWM_US_MIN          1000
+#define PWM_US_MAX          2000
+#define PWM_US_NEUTRAL      1500
+
+// =============================================================================
 // TCP 서버
 // =============================================================================
 #define TCP_SERVER_PORT     8080

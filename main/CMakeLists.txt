@@ -5,6 +5,7 @@ idf_component_register(
         "exio.c"
         "relay_ctrl.c"
         "tcp_server.c"
+        "pwm_ctrl.c"
     INCLUDE_DIRS "."
     REQUIRES
         nvs_flash

@@ -1,6 +1,7 @@
 #include "tcp_server.h"
 #include "board_config.h"
 #include "relay_ctrl.h"
+#include "pwm_ctrl.h"
 
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
@@ -62,6 +63,33 @@ static int handle_command(const char *cmd, char *resp_buf, int buf_size)
             resp_buf[len - 1] = '\n';
         }
         return len;
+    }
+
+    // "PWM STATUS"
+    if (strncmp(cmd, "PWM STATUS", 10) == 0) {
+        return snprintf(resp_buf, buf_size, "PWM1=%d PWM2=%d\n",
+                        pwm_get_us(1), pwm_get_us(2));
+    }
+
+    // "PWM <1|2> <1000-2000>"
+    {
+        int ch;
+        int us;
+        if (sscanf(cmd, "PWM %d %d", &ch, &us) == 2) {
+            if (ch < 1 || ch > 2) {
+                return snprintf(resp_buf, buf_size, "ERROR: PWM channel must be 1 or 2\n");
+            }
+            if (us < PWM_US_MIN || us > PWM_US_MAX) {
+                return snprintf(resp_buf, buf_size,
+                                "ERROR: pulse width must be %d~%d µs\n",
+                                PWM_US_MIN, PWM_US_MAX);
+            }
+            esp_err_t err = pwm_set_us((uint8_t)ch, (uint16_t)us);
+            if (err != ESP_OK) {
+                return snprintf(resp_buf, buf_size, "ERROR: pwm_set_us failed\n");
+            }
+            return snprintf(resp_buf, buf_size, "OK\n");
+        }
     }
 
     return snprintf(resp_buf, buf_size, "ERROR: unknown command\n");
