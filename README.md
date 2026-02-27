@@ -15,8 +15,9 @@ ESP32-S3가 TCP 서버 역할을 하며, 같은 네트워크에 있는 PC에서 
 6. [TCP 명령 프로토콜](#6-tcp-명령-프로토콜)
 7. [네트워크 설정](#7-네트워크-설정)
 8. [빌드 및 플래시](#8-빌드-및-플래시)
-9. [키보드 제어 도구](#9-키보드-제어-도구)
-10. [트러블슈팅](#10-트러블슈팅)
+9. [sdkconfig 및 파티션 설정](#9-sdkconfig-및-파티션-설정)
+10. [키보드 제어 도구](#10-키보드-제어-도구)
+11. [트러블슈팅](#11-트러블슈팅)
 
 ---
 
@@ -350,7 +351,148 @@ idf.py -p /dev/ttyUSB0 monitor
 
 ---
 
-## 9. 키보드 제어 도구
+## 9. sdkconfig 및 파티션 설정
+
+### sdkconfig란?
+
+`sdkconfig`는 ESP-IDF의 Kconfig 빌드 시스템이 생성하는 **프로젝트 전체 설정 파일**입니다. `idf.py menuconfig`를 실행하면 터미널 UI가 열리고, 여기서 값을 바꾸면 `sdkconfig`가 자동으로 갱신됩니다. 이 파일은 빌드 시 `sdkconfig.h`로 변환되어 C 코드에서 `#ifdef CONFIG_...` 형태로 참조됩니다.
+
+> **주의:** `sdkconfig`는 직접 텍스트 에디터로 편집하지 않는 것을 권장합니다. 의존 관계가 복잡하므로 반드시 `idf.py menuconfig`를 사용하세요.
+
+---
+
+### 이 프로젝트의 핵심 sdkconfig 항목
+
+#### 1. W5500 SPI 이더넷 드라이버 활성화
+
+```
+Component config → Ethernet
+```
+
+| 항목 | 설정값 | 설명 |
+|---|---|---|
+| `CONFIG_ETH_ENABLED` | `y` | 이더넷 드라이버 전체 활성화 |
+| `CONFIG_ETH_USE_SPI_ETHERNET` | `y` | SPI 방식 외부 이더넷 칩 지원 활성화 |
+| `CONFIG_ETH_SPI_ETHERNET_W5500` | `y` | W5500 칩 드라이버 포함 |
+
+W5500을 사용하려면 이 세 항목이 모두 `y`여야 합니다. 하나라도 비활성화하면 `esp_eth_new_spi_eth_w5500()` 함수가 링커에서 찾을 수 없다는 오류가 발생합니다.
+
+#### 2. 커스텀 파티션 테이블 사용
+
+```
+Partition Table → Partition Table → Custom partition table CSV
+```
+
+| 항목 | 설정값 | 설명 |
+|---|---|---|
+| `CONFIG_PARTITION_TABLE_CUSTOM` | `y` | 기본 파티션 레이아웃 대신 CSV 파일 사용 |
+| `CONFIG_PARTITION_TABLE_CUSTOM_FILENAME` | `"partitions.csv"` | 참조할 CSV 파일 경로 |
+
+기본 파티션 레이아웃은 앱 크기가 약 1 MB로 제한됩니다. 이 프로젝트는 3 MB 앱 파티션을 사용하므로 반드시 커스텀 테이블이 필요합니다.
+
+#### 3. 플래시 크기 및 속도
+
+```
+Serial flasher config
+```
+
+| 항목 | 설정값 | 설명 |
+|---|---|---|
+| `CONFIG_ESPTOOLPY_FLASHSIZE` | `"16MB"` | 보드 탑재 플래시 크기 — 실제 칩과 일치해야 함 |
+| `CONFIG_ESPTOOLPY_FLASHFREQ` | `"80m"` | 플래시 통신 속도 80 MHz |
+| `CONFIG_ESPTOOLPY_FLASHMODE` | `"dio"` | Dual I/O 모드 |
+
+플래시 크기 설정이 실제 칩보다 크면 플래시 범위를 벗어난 파티션에 쓰기를 시도해 부팅 실패가 발생합니다. 반드시 보드 스펙을 확인하세요.
+
+#### 4. SPI ISR IRAM 배치 (W5500 안정성)
+
+```
+Component config → Driver configurations → SPI Configuration
+```
+
+| 항목 | 설정값 | 설명 |
+|---|---|---|
+| `CONFIG_SPI_MASTER_ISR_IN_IRAM` | `y` | SPI 마스터 인터럽트 핸들러를 IRAM에 배치 |
+
+플래시 캐시가 비워지는 순간(플래시 쓰기, OTA 등)에도 SPI ISR이 계속 실행될 수 있도록 합니다. W5500처럼 지속적으로 폴링/인터럽트를 사용하는 SPI 이더넷에 특히 중요합니다.
+
+#### 5. ESP32-S3 범용 MAC 주소 풀
+
+```
+Component config → ESP32S3-Specific
+```
+
+| 항목 | 설정값 | 설명 |
+|---|---|---|
+| `CONFIG_ESP32S3_UNIVERSAL_MAC_ADDRESSES_FOUR` | `y` | MAC 주소 4개 풀 사용 (WiFi STA, WiFi AP, BT, ETH) |
+
+이 설정이 활성화되어 있어야 `esp_read_mac(mac, ESP_MAC_ETH)`가 이더넷 전용 고유 MAC 주소를 반환합니다. 비활성화하면 MAC 주소 풀이 2개로 줄어들어 이더넷 MAC이 WiFi MAC과 겹칠 수 있습니다.
+
+#### 6. PSRAM (SPIRAM) 활성화
+
+```
+Component config → ESP PSRAM
+```
+
+| 항목 | 설정값 | 설명 |
+|---|---|---|
+| `CONFIG_SPIRAM` | `y` | 외부 PSRAM 활성화 |
+| `CONFIG_SPIRAM_MODE_OCT` | `y` | Octal SPI 모드 (이 보드 PSRAM 타입에 맞게 설정) |
+| `CONFIG_SPIRAM_USE_MALLOC` | `y` | `malloc()`이 내부 메모리 부족 시 PSRAM도 사용 |
+
+이 보드에 PSRAM이 탑재되어 있으므로 활성화해 둡니다. 비활성화해도 현재 펌웨어는 동작하지만, 향후 SPIFFS 파일 시스템이나 대용량 버퍼를 사용할 때 내부 메모리가 부족해질 수 있습니다.
+
+---
+
+### partitions.csv — 플래시 파티션 레이아웃 상세
+
+16 MB 플래시를 아래와 같이 분할합니다:
+
+```
+플래시 주소 맵 (16 MB = 0x1000000)
+┌─────────────────────────────────────────────────────────┐
+│ 0x0000  부트로더 (ESP-IDF 내장, ~32 KB)                 │
+│ 0x8000  파티션 테이블 (partitions.csv 컴파일 결과)       │
+├─────────────────────────────────────────────────────────┤
+│ 0x9000  nvs      │ 20 KB  │ NVS 키-값 스토리지           │
+│ 0xE000  otadata  │  8 KB  │ OTA 상태 메타데이터           │
+│ 0x10000 app0     │  3 MB  │ 애플리케이션 펌웨어           │
+│ 0x310000 spiffs  │ ~10 MB │ SPIFFS 파일 시스템 (예약)     │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### 각 파티션 설명
+
+**`nvs` (Non-Volatile Storage, 20 KB)**
+
+ESP-IDF의 키-값 스토리지 라이브러리가 사용하는 영역입니다. 전원이 꺼져도 데이터가 유지됩니다. 이 프로젝트에서는 주로 이더넷 드라이버 내부와 `nvs_flash_init()`이 자동으로 사용합니다. 크기를 줄이면 저장 가능한 항목 수가 줄어들고, 너무 작으면 `nvs_flash_init()` 실패로 부팅이 안 됩니다.
+
+**`otadata` (OTA Data, 8 KB)**
+
+OTA(Over-The-Air) 업데이트 기능을 위한 메타데이터 파티션입니다. 현재 어떤 앱 파티션(`ota_0` / `ota_1`)에서 부팅해야 하는지 기록합니다. 현재 이 프로젝트는 OTA 슬롯이 `app0` 하나뿐이라 실질적으로 사용되지 않지만, `ota_0` 타입 앱과 함께 사용하면 향후 무선 펌웨어 업데이트를 추가할 수 있습니다.
+
+**`app0` (애플리케이션, 3 MB)**
+
+컴파일된 펌웨어 바이너리가 저장되는 곳입니다. `idf.py flash` 실행 시 `.bin` 파일이 이 파티션에 쓰입니다. 3 MB는 ESP-IDF 기본값(1 MB)보다 크며, ETH + lwIP + FreeRTOS + LEDC 등 여러 컴포넌트를 포함해도 충분합니다. 펌웨어가 이 크기를 초과하면 빌드 시 오류가 납니다.
+
+**`spiffs` (SPIFFS 파일 시스템, ~10 MB)**
+
+현재 펌웨어에서는 사용하지 않지만 향후 확장을 위해 예약된 영역입니다. 여기에는 웹 UI용 HTML/CSS/JS 파일, 설정 파일(JSON), 로그 파일 등을 저장할 수 있습니다. SPIFFS를 활성화하려면 `CMakeLists.txt`에 `spiffs` 컴포넌트를 추가하고 `esp_vfs_spiffs_register()`로 마운트하면 됩니다.
+
+#### 파티션 테이블 수정 시 주의사항
+
+- **오프셋은 4 KB(0x1000) 단위로 정렬**해야 합니다.
+- **전체 파티션 크기 합계**가 `CONFIG_ESPTOOLPY_FLASHSIZE`를 초과하면 안 됩니다.
+- 파티션 테이블을 변경한 후에는 **전체 플래시를 지우고 다시 플래시**해야 합니다. 레이아웃 불일치 상태에서 일부만 쓰면 부팅 실패가 발생합니다:
+
+```bash
+idf.py -p /dev/ttyUSB0 erase-flash
+idf.py -p /dev/ttyUSB0 flash
+```
+
+---
+
+## 10. 키보드 제어 도구
 
 [tools/keyboard_ctrl.py](tools/keyboard_ctrl.py)는 TCP를 통해 키보드로 로버를 운전할 수 있는 Python 스크립트입니다. 표준 라이브러리만 사용하므로 추가 패키지 설치가 필요 없습니다.
 
@@ -389,7 +531,7 @@ python tools/keyboard_ctrl.py 192.168.1.100
 
 ---
 
-## 10. 트러블슈팅
+## 11. 트러블슈팅
 
 ### W5500 — Link Up은 되는데 IP를 못 받는 경우
 
