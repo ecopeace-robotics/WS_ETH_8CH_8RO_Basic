@@ -1,3 +1,18 @@
+/**
+ * @file main.c
+ * @brief Application entry point — initialises all subsystems in order
+ *        and hands control to the FreeRTOS scheduler.
+ *
+ * Initialisation sequence:
+ *  1. NVS flash (Ethernet MAC storage)
+ *  2. Default event loop
+ *  3. esp_netif
+ *  4. EXIO / TCA9554 IO expander
+ *  5. Relay controller (all OFF)
+ *  6. RC PWM outputs (neutral 1500 µs)
+ *  7. W5500 Ethernet (TCP server auto-started on IP acquisition)
+ */
+
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "esp_event.h"

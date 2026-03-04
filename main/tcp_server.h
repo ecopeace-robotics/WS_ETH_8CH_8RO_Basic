@@ -1,3 +1,13 @@
+/**
+ * @file tcp_server.h
+ * @brief TCP server task that accepts text commands from a network client
+ *        and dispatches them to the relay and PWM control modules.
+ *
+ * The server listens on TCP_SERVER_PORT (default 8080).
+ * It is started automatically by eth_init() when an IP address is acquired.
+ */
+
+#pragma once
 
 /**
  * @brief TCP 서버 시작 (FreeRTOS 태스크 생성)

@@ -1,0 +1,114 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1772601176256,
+  "projectRoot": "/home/embeddedwarrior/eco-work/SW/pjts/ESP32/ESP32-S3/big_ecorover/eth_motor",
+  "techStack": {
+    "languages": [
+      {
+        "name": "C/C++",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "CMakeLists.txt"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "Docs": {
+      "path": "Docs",
+      "purpose": "Documentation",
+      "fileCount": 1,
+      "lastAccessed": 1772601176251,
+      "keyFiles": [
+        "MDDS30_Howto.md"
+      ]
+    },
+    "build": {
+      "path": "build",
+      "purpose": "Build output",
+      "fileCount": 29,
+      "lastAccessed": 1772601176252,
+      "keyFiles": [
+        "CMakeCache.txt",
+        "app-flash_args",
+        "bootloader-flash_args",
+        "build.ninja",
+        "cmake_install.cmake"
+      ]
+    },
+    "html": {
+      "path": "html",
+      "purpose": null,
+      "fileCount": 91,
+      "lastAccessed": 1772601176253,
+      "keyFiles": [
+        "bc_s.png",
+        "bdwn.png",
+        "board__config_8h.html",
+        "board__config_8h_source.html",
+        "closed.png"
+      ]
+    },
+    "latex": {
+      "path": "latex",
+      "purpose": null,
+      "fileCount": 44,
+      "lastAccessed": 1772601176255,
+      "keyFiles": [
+        "Makefile",
+        "board__config_8h.tex",
+        "doxygen.sty",
+        "eth__init_8h.tex",
+        "eth__init_8h__dep__incl.md5"
+      ]
+    },
+    "main": {
+      "path": "main",
+      "purpose": null,
+      "fileCount": 13,
+      "lastAccessed": 1772601176255,
+      "keyFiles": [
+        "CMakeLists.txt",
+        "board_config.h",
+        "eth_init.c",
+        "eth_init.h",
+        "exio.c"
+      ]
+    },
+    "tools": {
+      "path": "tools",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1772601176255,
+      "keyFiles": [
+        "keyboard_ctrl.py"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
