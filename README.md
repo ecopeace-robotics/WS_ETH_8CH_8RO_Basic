@@ -1,188 +1,237 @@
-# [프로젝트 이름]
+# ESP32-S3 Ethernet Motor & Relay Controller
 
-> 한 줄 설명 — 무엇을 하는 프로젝트인지 간단히
+> W5500 SPI 이더넷 기반 TCP 명령으로 8채널 릴레이 및 2채널 RC PWM을 제어하는 ESP32-S3 펌웨어
 
-- **담당자**: 이름 (이메일 또는 연락처)
-- **최초 작성일**: YYYY-MM-DD
-- **최종 수정일**: YYYY-MM-DD
+- **보드**: Waveshare ESP32-S3-ETH-8DI-8RO
+- **프레임워크**: ESP-IDF (CMake)
+- **최초 작성일**: 2025-01-01
+- **API 문서**: [Doxygen → GitHub Pages](https://ecopeace-robotics.github.io/WS_ETH_8CH_8RO_Basic/)
 
 ---
 
 ## 목차
 
 1. [소개](#소개)
-2. [구동 환경 및 의존성](#구동-환경-및-의존성)
-3. [Quick Start](#quick-start)
-4. [프로젝트 구조](#프로젝트-구조)
-5. [코드 구동 흐름](#코드-구동-흐름)
-6. [주요 함수 및 API](#주요-함수-및-api)
-7. [사용 중인 프로젝트](#사용-중인-프로젝트)
-8. [알려진 이슈 및 주의사항](#알려진-이슈-및-주의사항)
-9. [변경 이력](#변경-이력)
-10. [참고](#참고)
+2. [하드웨어 구성](#하드웨어-구성)
+3. [소프트웨어 의존성](#소프트웨어-의존성)
+4. [Quick Start](#quick-start)
+5. [프로젝트 구조](#프로젝트-구조)
+6. [코드 구동 흐름](#코드-구동-흐름)
+7. [TCP 제어 프로토콜](#tcp-제어-프로토콜)
+8. [주요 함수 및 API](#주요-함수-및-api)
+9. [알려진 이슈 및 주의사항](#알려진-이슈-및-주의사항)
+10. [변경 이력](#변경-이력)
+11. [참고](#참고)
 
 ---
 
 ## 소개
 
-프로젝트의 목적과 배경을 간략히 서술합니다.
+이 펌웨어는 **Waveshare ESP32-S3-ETH-8DI-8RO** 보드를 위한 네트워크 제어 펌웨어입니다.
 
-- 왜 만들었는지
-- 어떤 문제를 해결하는지
-- 기존 방식과 다른 점이 있다면
+- W5500 SPI 이더넷 칩을 통해 TCP 소켓으로 연결
+- TCA9554 I2C IO 익스팬더로 8채널 릴레이 ON/OFF 제어
+- ESP32-S3 LEDC로 2채널 RC PWM 신호 출력 (모터드라이버 인터페이스용)
+- 고정 IP 또는 DHCP 선택 가능
+- TCP 텍스트 프로토콜(포트 8080)으로 모든 기능 원격 제어
 
 ---
 
-## 구동 환경 및 의존성
+## 하드웨어 구성
 
-### 하드웨어
-| 항목 | 내용 |
+### 주요 부품
+
+| 부품 | 역할 |
 |------|------|
-| 보드 | ESP32-DevKitC |
-| 센서 / 모듈 | (예: DHT22, OLED 등) |
+| ESP32-S3 | 메인 MCU (FreeRTOS) |
+| W5500 | SPI 이더넷 컨트롤러 |
+| TCA9554PWR | I2C → 8-bit IO 익스팬더 (릴레이 구동) |
+| 8채널 릴레이 | 부하 개폐 |
+| Cytron MDDS30 (선택) | RC PWM 입력 듀얼 모터드라이버 |
 
-### 결선도
+### 핀 연결
 
-![결선도](docs/wiring.png)
-<!-- 이미지가 없을 경우 아래 핀 연결 표로 대체 -->
+**W5500 SPI 이더넷**
 
-| 부품 | 부품 핀 | ESP32 핀 | 비고 |
-|------|---------|----------|------|
-| DHT22 | VCC | 3.3V | |
-| DHT22 | DATA | GPIO4 | 10kΩ 풀업 저항 필요 |
-| DHT22 | GND | GND | |
+| 신호 | ESP32-S3 GPIO |
+|------|--------------|
+| MOSI | GPIO 13 |
+| MISO | GPIO 14 |
+| SCLK | GPIO 15 |
+| CS   | GPIO 16 |
+| INT  | GPIO 12 |
+| RST  | GPIO 39 |
+| SPI Clock | 20 MHz (SPI2_HOST) |
 
-> 결선도 이미지는 Fritzing, KiCad 등으로 작성 후 `docs/` 폴더에 저장 권장
+**TCA9554 I2C IO 익스팬더 (릴레이)**
 
-### 소프트웨어
+| 신호 | ESP32-S3 GPIO | 비고 |
+|------|--------------|------|
+| SCL  | GPIO 41 | 100 kHz |
+| SDA  | GPIO 42 | I2C 주소 0x20 (A0=A1=A2=GND) |
+
+**RC PWM 출력 (LEDC)**
+
+| 채널 | GPIO | 사양 |
+|------|------|------|
+| PWM CH1 | GPIO 47 | 50 Hz, 1000–2000 µs, 14-bit |
+| PWM CH2 | GPIO 48 | 50 Hz, 1000–2000 µs, 14-bit |
+
+**네트워크 기본값**
+
+| 항목 | 값 |
+|------|-----|
+| IP 모드 | Static (변경 가능: `ETH_USE_STATIC_IP = 0` → DHCP) |
+| IP 주소 | 192.168.1.100 |
+| 서브넷 | 255.255.255.0 |
+| 게이트웨이 | 192.168.1.1 |
+| TCP 포트 | 8080 |
+
+---
+
+## 소프트웨어 의존성
+
 | 항목 | 버전 |
 |------|------|
-| 프레임워크 | ESP-IDF v5.0 |
-| 개발 OS | Ubuntu 22.04 / Windows 11 |
-| 기타 라이브러리 | (예: FreeRTOS, LVGL 등) |
+| ESP-IDF | v5.x 권장 |
+| 개발 OS | Ubuntu 22.04 / macOS |
+| 추가 컴포넌트 | 없음 (모두 ESP-IDF 내장) |
 
 ---
 
 ## Quick Start
 
-최소한으로 돌아가는 실행 방법만 서술합니다.
-
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/yourname/project-name.git
-cd project-name
+git clone https://github.com/ecopeace-robotics/WS_ETH_8CH_8RO_Basic.git
+cd WS_ETH_8CH_8RO_Basic
 
-# 2. 빌드 및 플래시
-idf.py build flash monitor
+# 2. ESP-IDF 환경 활성화 (설치 경로에 맞게 조정)
+. $HOME/esp/esp-idf/export.sh
+
+# 3. 빌드 및 플래시
+idf.py build
+idf.py -p /dev/ttyUSB0 flash monitor
 ```
 
-> 처음 환경 세팅이 필요하다면 [구동 환경 및 의존성](#구동-환경-및-의존성) 먼저 확인
+> IP/네트워크 설정 변경: `main/board_config.h` 수정 후 재빌드
+
+**동작 확인 (telnet)**
+
+```bash
+telnet 192.168.1.100 8080
+RELAY 1 ON
+RELAY 1 OFF
+STATUS
+PWM 1 1500
+PWM STATUS
+```
 
 ---
 
 ## 프로젝트 구조
 
 ```
-project-name/
-├── src/
-│   ├── main.c          # 진입점 및 전체 흐름 제어
-│   ├── sensor.c        # 센서 드라이버
-│   ├── sensor.h
-│   └── ...
-├── docs/               # 자동 생성 문서 (Doxygen) 및 결선도
-├── README.md
-└── Doxyfile
+WS_ETH_8CH_8RO_Basic/
+├── main/
+│   ├── board_config.h   # GPIO/네트워크/PWM 컴파일 상수 (여기서 설정 변경)
+│   ├── main.c           # app_main() 진입점, 초기화 순서 정의
+│   ├── eth_init.c/.h    # W5500 SPI 이더넷 초기화, IP 이벤트 처리
+│   ├── exio.c/.h        # TCA9554 I2C IO 익스팬더 저수준 드라이버
+│   ├── relay_ctrl.c/.h  # 릴레이 고수준 API (번호 기반 ON/OFF)
+│   ├── pwm_ctrl.c/.h    # LEDC RC PWM 드라이버 (µs 단위 제어)
+│   ├── tcp_server.c/.h  # TCP 서버 태스크, 텍스트 명령 파서
+│   └── CMakeLists.txt
+├── Doxyfile             # Doxygen 설정
+├── CMakeLists.txt
+└── README.md
 ```
-
-각 파일/폴더의 역할을 한 줄씩 서술합니다.
 
 ---
 
 ## 코드 구동 흐름
 
-main 함수 기준 전체 동작 흐름을 시각화합니다.
-
 ```
 app_main()
-├── 1. 하드웨어 초기화 (sensor_init)
-├── 2. 루프 시작
-│   ├── sensor_read_temperature()
-│   ├── sensor_read_humidity()
-│   └── uart_print_result()
-└── 3. 오류 발생 시 재시작
+├── 1. nvs_flash_init()       — Ethernet MAC 주소 저장소 초기화
+├── 2. esp_event_loop_create_default()
+├── 3. esp_netif_init()
+├── 4. exio_init()            — TCA9554 I2C 초기화, 전체 핀 출력 모드 설정
+├── 5. relay_ctrl_init()      — 릴레이 전체 OFF 초기화
+├── 6. pwm_ctrl_init()        — LEDC 타이머 설정, 양 채널 1500 µs (중립) 출력 시작
+└── 7. eth_init_start()       — W5500 SPI 설정, IP 획득 시 tcp_server_start() 자동 호출
+        └── IP 획득 이벤트
+                └── tcp_server_start()  — FreeRTOS 태스크 생성, 포트 8080 리슨
 ```
 
-> 흐름이 복잡할 경우 별도 다이어그램 이미지 첨부 권장
+---
+
+## TCP 제어 프로토콜
+
+포트 **8080**, 텍스트 명령, `\n` 종료
+
+### 클라이언트 → 서버
+
+| 명령 | 예시 | 설명 |
+|------|------|------|
+| `RELAY <n> ON\n` | `RELAY 1 ON` | 릴레이 n번 (1~8) ON |
+| `RELAY <n> OFF\n` | `RELAY 2 OFF` | 릴레이 n번 (1~8) OFF |
+| `STATUS\n` | `STATUS` | 모든 릴레이 상태 조회 |
+| `PWM <ch> <us>\n` | `PWM 1 1700` | PWM ch(1 or 2)에 펄스폭 us(1000~2000) 설정 |
+| `PWM STATUS\n` | `PWM STATUS` | 양 채널 현재 펄스폭 조회 |
+
+### 서버 → 클라이언트
+
+| 응답 | 의미 |
+|------|------|
+| `OK` | 명령 성공 |
+| `ERROR` | 잘못된 명령 |
+| `R1=ON R2=OFF ...` | STATUS 응답 |
+| `PWM1=1500 PWM2=1500` | PWM STATUS 응답 |
 
 ---
 
 ## 주요 함수 및 API
 
-> 상세 함수 문서는 Doxygen 자동 생성 문서 참고: [링크](https://yourname.github.io/project-name)
+> 상세 함수 문서: [Doxygen API Reference](https://ecopeace-robotics.github.io/WS_ETH_8CH_8RO_Basic/)
 
-여기서는 핵심 함수만 간략히 기술합니다.
-
-### `sensor_read_temperature(int gpio_pin)`
-
-| 항목 | 내용 |
-|------|------|
-| 입력 | `gpio_pin` — 센서 연결 GPIO 핀 번호 |
-| 출력 | `float` 섭씨 온도값. 실패 시 `-999.0` 반환 |
-| 알고리즘 | DHT22 단선 통신 프로토콜로 40bit 데이터 수신 후 파싱 |
-| 외부 의존 | ESP-IDF `driver/gpio.h` |
-
-### `sensor_read_humidity(int gpio_pin)`
-
-| 항목 | 내용 |
-|------|------|
-| 입력 | `gpio_pin` — 센서 연결 GPIO 핀 번호 |
-| 출력 | `float` 상대습도(%). 실패 시 `-999.0` 반환 |
-| 알고리즘 | `sensor_read_temperature()`와 동일 통신, 다른 바이트 파싱 |
-| 외부 의존 | ESP-IDF `driver/gpio.h` |
-
----
-
-## 사용 중인 프로젝트
-
-이 코드를 현재 사용 중인 프로젝트 목록입니다.
-
-| 프로젝트명 | 담당자 | 저장소 | 비고 |
-|-----------|--------|--------|------|
-| 공장 온습도 모니터링 | 홍길동 | [링크](https://github.com/yourname/project-a) | v1.1 사용 중 |
-| 냉장 창고 경보 시스템 | 김철수 | [링크](https://github.com/yourname/project-b) | v1.0 사용 중, 업데이트 예정 |
-
-> 이 코드를 새 프로젝트에 적용했다면 위 표에 추가해주세요.
-> 코드 변경 시 사용 중인 프로젝트 담당자에게 사전 공유 필요
+| 함수 | 파일 | 설명 |
+|------|------|------|
+| `eth_init_start()` | eth_init.c | W5500 이더넷 초기화 및 이벤트 핸들러 등록 |
+| `relay_ctrl_init()` | relay_ctrl.c | TCA9554 기반 릴레이 초기화 (전체 OFF) |
+| `relay_ctrl_set(n, state)` | relay_ctrl.c | 릴레이 n번 ON/OFF 제어 |
+| `pwm_ctrl_init()` | pwm_ctrl.c | LEDC 타이머·채널 초기화, 1500 µs 출력 시작 |
+| `pwm_set_us(ch, us)` | pwm_ctrl.c | 채널 ch에 펄스폭 us(µs) 설정 |
+| `pwm_get_us(ch)` | pwm_ctrl.c | 채널 ch 현재 펄스폭 반환 |
+| `tcp_server_start()` | tcp_server.c | TCP 서버 FreeRTOS 태스크 생성 |
 
 ---
 
 ## 알려진 이슈 및 주의사항
 
-### 이슈
-- [ ] 연속 호출 시 2초 미만 간격이면 읽기 실패 발생 (DHT22 스펙 제한)
-- [ ] 3.3V 미만 전원 공급 시 간헐적 오동작
-
-### 주의사항 (이렇게 쓰면 안 됩니다)
-- `sensor_read_temperature()`를 루프에서 딜레이 없이 반복 호출하지 말 것
-- GPIO 핀 번호를 0으로 설정하면 부팅 오류 발생
+### 주의사항
+- `board_config.h`의 `ETH_STATIC_IP`를 네트워크 환경에 맞게 수정 후 빌드할 것
+- PWM 펄스폭은 1000~2000 µs 범위 외 값 입력 시 `ERROR` 응답
+- 릴레이 번호는 1~8 (0 또는 9 이상 입력 시 `ERROR`)
 
 ### TODO
-- [ ] Wi-Fi를 통한 원격 전송 기능 추가 예정
-- [ ] 저전력 모드 미구현
+- [ ] DHCP 환경에서 IP 변경 시 TCP 서버 재시작 처리
+- [ ] 8채널 DI(디지털 입력) 읽기 기능 구현
 
 ---
 
 ## 변경 이력
 
-| 날짜 | 버전 | 내용 | 작성자 |
-|------|------|------|--------|
-| 2024-03-01 | v1.0 | 최초 작성 | 홍길동 |
-| 2024-03-15 | v1.1 | 습도 읽기 오류 수정 | 홍길동 |
+| 날짜 | 버전 | 내용 |
+|------|------|------|
+| 2025-01-01 | v1.0 | 최초 작성 — 릴레이 8CH + PWM 2CH + TCP 제어 |
 
 ---
 
 ## 참고
 
 - [ESP-IDF 공식 문서](https://docs.espressif.com/projects/esp-idf/en/latest/)
-- [DHT22 데이터시트](https://cdn-shop.adafruit.com/datasheets/DHT22.pdf)
-- 사용한 외부 API나 라이브러리가 있다면 이곳에 정리
+- [W5500 데이터시트](https://docs.wiznet.io/Product/iEthernet/W5500/datasheet)
+- [TCA9554 데이터시트](https://www.ti.com/lit/ds/symlink/tca9554.pdf)
+- [Cytron MDDS30 사용 가이드](https://www.cytron.io/p-mdds30)
+- [Waveshare ESP32-S3-ETH-8DI-8RO 위키](https://www.waveshare.com/wiki/ESP32-S3-ETH-8DI-8RO)

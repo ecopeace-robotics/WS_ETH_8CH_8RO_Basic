@@ -1,0 +1,31 @@
+name: Doxygen → GitHub Pages
+
+on:
+  push:
+    branches: [ main ]       # main 브랜치 push 시 자동 실행
+  workflow_dispatch:          # GitHub Actions 탭에서 수동 트리거 가능
+
+permissions:
+  contents: write             # gh-pages 브랜치 생성/갱신 권한
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen & Graphviz
+        run: sudo apt-get install -y doxygen graphviz
+
+      - name: Generate Doxygen documentation
+        run: doxygen Doxyfile
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html        # Doxyfile HTML_OUTPUT 경로
+          publish_branch: gh-pages   # 이 브랜치를 Pages 소스로 설정
+          commit_message: "docs: auto-generated Doxygen [${{ github.sha }}]"

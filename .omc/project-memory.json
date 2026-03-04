@@ -109,6 +109,97 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "Doxyfile",
+      "accessCount": 6,
+      "lastAccessed": 1772603183726,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 3,
+      "lastAccessed": 1772603250241,
+      "type": "file"
+    },
+    {
+      "path": "documentization.md",
+      "accessCount": 2,
+      "lastAccessed": 1772602912254,
+      "type": "file"
+    },
+    {
+      "path": "main/main.c",
+      "accessCount": 2,
+      "lastAccessed": 1772602933964,
+      "type": "file"
+    },
+    {
+      "path": "main/board_config.h",
+      "accessCount": 2,
+      "lastAccessed": 1772603104556,
+      "type": "file"
+    },
+    {
+      "path": "main/tcp_server.h",
+      "accessCount": 2,
+      "lastAccessed": 1772603105097,
+      "type": "file"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "accessCount": 1,
+      "lastAccessed": 1772602876417,
+      "type": "file"
+    },
+    {
+      "path": "main/CMakeLists.txt",
+      "accessCount": 1,
+      "lastAccessed": 1772602876639,
+      "type": "file"
+    },
+    {
+      "path": "instruction_doxygen.md",
+      "accessCount": 1,
+      "lastAccessed": 1772602877336,
+      "type": "file"
+    },
+    {
+      "path": "main/pwm_ctrl.h",
+      "accessCount": 1,
+      "lastAccessed": 1772602880508,
+      "type": "file"
+    },
+    {
+      "path": "main/eth_init.h",
+      "accessCount": 1,
+      "lastAccessed": 1772602880628,
+      "type": "file"
+    },
+    {
+      "path": "main/relay_ctrl.h",
+      "accessCount": 1,
+      "lastAccessed": 1772602883399,
+      "type": "file"
+    },
+    {
+      "path": "main/exio.h",
+      "accessCount": 1,
+      "lastAccessed": 1772602883615,
+      "type": "file"
+    },
+    {
+      "path": "main/tcp_server.c",
+      "accessCount": 1,
+      "lastAccessed": 1772603113420,
+      "type": "directory"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1772603113919,
+      "type": "directory"
+    }
+  ],
   "userDirectives": []
 }
