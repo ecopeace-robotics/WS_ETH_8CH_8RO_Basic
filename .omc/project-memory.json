@@ -199,6 +199,12 @@
       "accessCount": 1,
       "lastAccessed": 1772603113919,
       "type": "directory"
+    },
+    {
+      "path": "github_basics_guide.md",
+      "accessCount": 1,
+      "lastAccessed": 1772604817379,
+      "type": "file"
     }
   ],
   "userDirectives": []
