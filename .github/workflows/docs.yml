@@ -2,7 +2,7 @@ name: Doxygen → GitHub Pages
 
 on:
   push:
-    branches: [ main ]       # main 브랜치 push 시 자동 실행
+    branches: [ main, RCPWM_Motor_Control ]   # 두 브랜치 push 시 자동 실행
   workflow_dispatch:          # GitHub Actions 탭에서 수동 트리거 가능
 
 permissions:
