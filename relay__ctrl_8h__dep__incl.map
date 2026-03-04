@@ -1,0 +1,5 @@
+<map id="main/relay_ctrl.h" name="main/relay_ctrl.h">
+<area shape="rect" id="Node000001" title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out..." alt="" coords="5,5,137,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="20,79,123,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
+</map>

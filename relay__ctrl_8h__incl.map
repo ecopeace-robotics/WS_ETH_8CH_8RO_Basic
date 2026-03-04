@@ -1,0 +1,9 @@
+<map id="main/relay_ctrl.h" name="main/relay_ctrl.h">
+<area shape="rect" id="Node000001" title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out..." alt="" coords="87,5,219,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,87,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,33,76,73,73,69,134,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="111,79,194,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="155,31,155,65,150,65,150,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="219,79,289,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,28,228,68,225,73,167,33"/>
+</map>

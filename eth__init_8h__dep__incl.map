@@ -1,0 +1,5 @@
+<map id="main/eth_init.h" name="main/eth_init.h">
+<area shape="rect" id="Node000001" title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,..." alt="" coords="5,5,125,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="14,79,117,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,44,68,79,63,79,63,44"/>
+</map>

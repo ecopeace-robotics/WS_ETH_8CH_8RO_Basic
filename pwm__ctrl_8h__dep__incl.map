@@ -1,0 +1,5 @@
+<map id="main/pwm_ctrl.h" name="main/pwm_ctrl.h">
+<area shape="rect" id="Node000001" title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi..." alt="" coords="5,5,136,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="19,79,122,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,44,73,79,68,79,68,44"/>
+</map>
