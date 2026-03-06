@@ -80,3 +80,17 @@ latex/
 *.workspace # General workspace files, can be from various tools
 *.suo       # Visual Studio Solution User Options
 *.sln.docstates # Visual Studio
+
+
+# Doxygen 출력물
+docs/doxygen/
+doxygen_warning.log
+
+# Editor related
+.vscode/
+*.swp
+*~
+EOF
+
+# OMC related
+./omc

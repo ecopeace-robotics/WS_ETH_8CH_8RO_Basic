@@ -1,0 +1,18 @@
+/**
+ * @mainpage [프로젝트 이름]
+ *
+ * @section intro 소개
+ * 프로젝트 목적과 배경을 간략히 서술합니다.
+ *
+ * @section hardware 하드웨어
+ * - 보드: ESP32-DevKitC
+ * - 센서/모듈: (예: DHT22 등)
+ *
+ * @section pages 문서 목차
+ * - @subpage hardware_setup  — 하드웨어 설정 및 결선도
+ * - @subpage getting_started — 개발환경 설정 및 Quick Start
+ * - @subpage changelog       — 버전별 변경 이력
+ *
+ * @section modules 주요 모듈
+ * - @ref SensorADC — ADC 센서 드라이버
+ */
