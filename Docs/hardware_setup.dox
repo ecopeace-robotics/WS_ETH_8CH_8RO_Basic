@@ -1,0 +1,31 @@
+/**
+ * @page hardware_setup 하드웨어 설정 및 결선도
+ *
+ * @section board_overview 보드 개요
+ * Waveshare ESP32-S3-ETH-8CH-8DI-8RO 보드는 다음과 같은 기능을 제공합니다:
+ *
+ * - **프로세서**: ESP32-S3 (Xtensa dual-core 240MHz)
+ * - **네트워크**: W5500 Ethernet (10/100 Mbps)
+ * - **I2C IO Expander**: TCA9554PWR (8 입출력)
+ * - **릴레이 출력**: 8개 채널 (8RO)
+ * - **디지털 입력**: 8개 채널 (8DI)
+ * - **PWM 출력**: 2개 채널 (RC 서보 제어용)
+ *
+ * @section pinout 핀 배치
+ * @subsection eth_pins Ethernet 핀
+ * - SPI MOSI: GPIO11
+ * - SPI MISO: GPIO13
+ * - SPI CLK: GPIO12
+ * - CS: GPIO10
+ * - INT: GPIO9
+ *
+ * @subsection i2c_pins I2C 핀 (EXIO)
+ * - SDA: GPIO6
+ * - SCL: GPIO7
+ * - Address: 0x20 (기본값)
+ *
+ * @subsection pwm_pins PWM 출력 핀
+ * - CH1: GPIO47
+ * - CH2: GPIO48
+ * - 범위: 1000 ~ 2000 µs (neutral: 1500 µs)
+ */

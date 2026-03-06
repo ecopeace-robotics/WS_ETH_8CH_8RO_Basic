@@ -1,0 +1,32 @@
+/**
+ * @page getting_started 개발환경 설정 및 Quick Start
+ *
+ * @section prerequisites 필수 요구사항
+ * - ESP-IDF v5.0 이상
+ * - ESP32-S3 보드 (Waveshare ESP32-S3-ETH-8CH-8DI-8RO)
+ * - USB 케이블 (프로그래밍용)
+ * - Ethernet 케이블 (통신용)
+ *
+ * @section env_setup 개발환경 설정
+ * @subsection install_idf ESP-IDF 설치
+ * @code
+ * git clone https://github.com/espressif/esp-idf.git
+ * cd esp-idf
+ * ./install.sh
+ * source ./export.sh
+ * @endcode
+ *
+ * @section build_flash 빌드 및 플래시
+ * @code
+ * idf.py set-target esp32s3
+ * idf.py build
+ * idf.py -p /dev/ttyUSB0 flash monitor
+ * @endcode
+ *
+ * @section quick_start 빠른 시작
+ * 1. 보드를 USB로 연결
+ * 2. Ethernet 케이블 연결
+ * 3. 프로젝트 빌드 및 플래시
+ * 4. 시리얼 모니터에서 초기화 로그 확인
+ * 5. TCP 서버 자동 시작 (IP 획득 후)
+ */

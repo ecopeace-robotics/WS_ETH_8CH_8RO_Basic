@@ -1,0 +1,20 @@
+/**
+ * @page changelog 버전별 변경 이력
+ *
+ * @section v1_0_0 v1.0.0 (2024-03)
+ * - 초기 릴리스
+ * - W5500 Ethernet 통신 지원
+ * - TCP 서버 구현
+ * - TCA9554 IO Expander 드라이버
+ * - 릴레이 제어 (8 채널)
+ * - RC PWM 출력 (2 채널)
+ * - 디지털 입력 수집 (8 채널)
+ * - Doxygen 문서화 시스템 통합
+ *
+ * @section planned 계획 중인 기능
+ * - Modbus TCP 프로토콜 지원
+ * - MQTT 클라이언트
+ * - Web 대시보드
+ * - 설정 저장 (NVS Flash)
+ * - OTA 펌웨어 업데이트
+ */

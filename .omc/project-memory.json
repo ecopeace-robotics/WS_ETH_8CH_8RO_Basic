@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1772601176256,
+  "lastScanned": 1772770126575,
   "projectRoot": "/home/embeddedwarrior/eco-work/SW/pjts/ESP32/ESP32-S3/big_ecorover/eth_motor",
   "techStack": {
     "languages": [
@@ -33,7 +33,9 @@
   "structure": {
     "isMonorepo": false,
     "workspaces": [],
-    "mainDirectories": [],
+    "mainDirectories": [
+      "docs"
+    ],
     "gitBranches": null
   },
   "customNotes": [],
@@ -41,17 +43,19 @@
     "Docs": {
       "path": "Docs",
       "purpose": "Documentation",
-      "fileCount": 1,
-      "lastAccessed": 1772601176251,
+      "fileCount": 3,
+      "lastAccessed": 1772770126571,
       "keyFiles": [
-        "MDDS30_Howto.md"
+        "MDDS30_Howto.md",
+        "board_driver.drawio.png",
+        "mainpage.dox"
       ]
     },
     "build": {
       "path": "build",
       "purpose": "Build output",
       "fileCount": 29,
-      "lastAccessed": 1772601176252,
+      "lastAccessed": 1772770126571,
       "keyFiles": [
         "CMakeCache.txt",
         "app-flash_args",
@@ -60,11 +64,18 @@
         "cmake_install.cmake"
       ]
     },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1772770126571,
+      "keyFiles": []
+    },
     "html": {
       "path": "html",
       "purpose": null,
       "fileCount": 91,
-      "lastAccessed": 1772601176253,
+      "lastAccessed": 1772770126573,
       "keyFiles": [
         "bc_s.png",
         "bdwn.png",
@@ -77,7 +88,7 @@
       "path": "latex",
       "purpose": null,
       "fileCount": 44,
-      "lastAccessed": 1772601176255,
+      "lastAccessed": 1772770126574,
       "keyFiles": [
         "Makefile",
         "board__config_8h.tex",
@@ -90,7 +101,7 @@
       "path": "main",
       "purpose": null,
       "fileCount": 13,
-      "lastAccessed": 1772601176255,
+      "lastAccessed": 1772770126574,
       "keyFiles": [
         "CMakeLists.txt",
         "board_config.h",
@@ -103,7 +114,7 @@
       "path": "tools",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1772601176255,
+      "lastAccessed": 1772770126574,
       "keyFiles": [
         "keyboard_ctrl.py"
       ]
@@ -111,99 +122,39 @@
   },
   "hotPaths": [
     {
-      "path": "Doxyfile",
-      "accessCount": 6,
-      "lastAccessed": 1772603183726,
-      "type": "file"
-    },
-    {
-      "path": "README.md",
-      "accessCount": 3,
-      "lastAccessed": 1772603250241,
-      "type": "file"
-    },
-    {
-      "path": "documentization.md",
-      "accessCount": 2,
-      "lastAccessed": 1772602912254,
-      "type": "file"
-    },
-    {
       "path": "main/main.c",
       "accessCount": 2,
-      "lastAccessed": 1772602933964,
+      "lastAccessed": 1772772781414,
       "type": "file"
     },
     {
-      "path": "main/board_config.h",
+      "path": "doxygen_warnings.log",
       "accessCount": 2,
-      "lastAccessed": 1772603104556,
+      "lastAccessed": 1772772791313,
       "type": "file"
     },
     {
-      "path": "main/tcp_server.h",
-      "accessCount": 2,
-      "lastAccessed": 1772603105097,
+      "path": "Docs/mainpage.dox",
+      "accessCount": 1,
+      "lastAccessed": 1772774055400,
       "type": "file"
     },
     {
-      "path": "CMakeLists.txt",
+      "path": "Docs/hardware_setup.dox",
       "accessCount": 1,
-      "lastAccessed": 1772602876417,
+      "lastAccessed": 1772774283009,
       "type": "file"
     },
     {
-      "path": "main/CMakeLists.txt",
+      "path": "Docs/getting_started.dox",
       "accessCount": 1,
-      "lastAccessed": 1772602876639,
+      "lastAccessed": 1772774291439,
       "type": "file"
     },
     {
-      "path": "instruction_doxygen.md",
+      "path": "Docs/changelog.dox",
       "accessCount": 1,
-      "lastAccessed": 1772602877336,
-      "type": "file"
-    },
-    {
-      "path": "main/pwm_ctrl.h",
-      "accessCount": 1,
-      "lastAccessed": 1772602880508,
-      "type": "file"
-    },
-    {
-      "path": "main/eth_init.h",
-      "accessCount": 1,
-      "lastAccessed": 1772602880628,
-      "type": "file"
-    },
-    {
-      "path": "main/relay_ctrl.h",
-      "accessCount": 1,
-      "lastAccessed": 1772602883399,
-      "type": "file"
-    },
-    {
-      "path": "main/exio.h",
-      "accessCount": 1,
-      "lastAccessed": 1772602883615,
-      "type": "file"
-    },
-    {
-      "path": "main/tcp_server.c",
-      "accessCount": 1,
-      "lastAccessed": 1772603113420,
-      "type": "directory"
-    },
-    {
-      "path": "",
-      "accessCount": 1,
-      "lastAccessed": 1772603113919,
-      "type": "directory"
-    },
-    {
-      "path": "github_basics_guide.md",
-      "accessCount": 1,
-      "lastAccessed": 1772604817379,
+      "lastAccessed": 1772774298249,
       "type": "file"
     }
   ],

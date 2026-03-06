@@ -25,6 +25,23 @@
 
 static const char *TAG = "MAIN";
 
+/**
+ * @brief Application entry point for the ESP32-S3 Ethernet Relay Controller.
+ *
+ * Initializes all hardware subsystems in sequence:
+ * - NVS flash for MAC address storage
+ * - Default event loop and networking interface
+ * - I2C EXIO expander (TCA9554PWR)
+ * - Relay controller (all OFF)
+ * - RC PWM outputs (neutral at 1500 µs)
+ * - W5500 Ethernet controller with TCP server auto-start
+ *
+ * @note This function is the ESP-IDF application entry point and is called
+ *       by the bootloader. It initializes all subsystems and then yields
+ *       control to the FreeRTOS scheduler.
+ *
+ * @return void (does not return; FreeRTOS scheduler takes over)
+ */
 void app_main(void)
 {
     ESP_LOGI(TAG, "=== ESP32-S3-ETH-8DI-8RO Relay Controller ===");

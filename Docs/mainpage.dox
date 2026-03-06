@@ -1,18 +1,20 @@
 /**
- * @mainpage [프로젝트 이름]
+ * @mainpage Waveshare ESP32-S3 Eth 8CH 보드 활용 코드
  *
  * @section intro 소개
- * 프로젝트 목적과 배경을 간략히 서술합니다.
+ * Waveshare ESP32-S3 Eth 8ch 보드 활용 api, 기본 탑재 페리페럴 제어로 활용은 이후 알아서
  *
  * @section hardware 하드웨어
- * - 보드: ESP32-DevKitC
- * - 센서/모듈: (예: DHT22 등)
+ * - 보드: Waveshare ESP32-S3-ETH-8ch-8DI-8RO
+ * - 기타 유사보드(8DO)는 테스트 후 업데이트 예정
  *
  * @section pages 문서 목차
  * - @subpage hardware_setup  — 하드웨어 설정 및 결선도
  * - @subpage getting_started — 개발환경 설정 및 Quick Start
  * - @subpage changelog       — 버전별 변경 이력
  *
- * @section modules 주요 모듈
- * - @ref SensorADC — ADC 센서 드라이버
+ * @section build 빌드 방법
+ * @code
+ * idf.py build flash monitor
+ * @endcode
  */
