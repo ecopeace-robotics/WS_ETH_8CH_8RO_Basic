@@ -1,0 +1,9 @@
+<map id="relay_get" name="relay_get">
+<area shape="rect" id="Node000001" title="특정 릴레이의 현재 상태 조회" alt="" coords="507,5,589,31"/>
+<area shape="rect" id="Node000002" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성" alt="" coords="320,5,459,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,21,459,21,459,15,493,15"/>
+<area shape="rect" id="Node000003" href="$tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" title=" " alt="" coords="179,5,272,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,21,272,21,272,15,306,15"/>
+<area shape="rect" id="Node000004" href="$tcp__server_8c.html#a61c868bc85ed2ebbea39dba6aab3ae55" title=" " alt="" coords="5,5,131,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="165,21,131,21,131,15,165,15"/>
+</map>

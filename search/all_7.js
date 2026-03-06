@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['network_20settings_0',['Network settings',['../group__CFG__NET.html',1,'']]]
+  ['getting_5fstarted_2edox_0',['getting_started.dox',['../getting__started_8dox.html',1,'']]]
 ];

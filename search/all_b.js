@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['server_20settings_0',['TCP server settings',['../group__CFG__TCP.html',1,'']]],
-  ['settings_1',['settings',['../group__CFG__ETH.html',1,'Ethernet (W5500 SPI) pin and clock settings'],['../group__CFG__NET.html',1,'Network settings'],['../group__CFG__TCP.html',1,'TCP server settings']]],
-  ['spi_20pin_20and_20clock_20settings_2',['Ethernet (W5500 SPI) pin and clock settings',['../group__CFG__ETH.html',1,'']]]
+  ['main_2ec_0',['main.c',['../main_8c.html',1,'']]],
+  ['mainpage_2edox_1',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
+  ['mdds30_5fhowto_2',['MDDS30_Howto',['../md_Docs_2MDDS30__Howto.html',1,'']]],
+  ['mdds30_5fhowto_2emd_3',['MDDS30_Howto.md',['../MDDS30__Howto_8md.html',1,'']]]
 ];

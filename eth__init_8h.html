@@ -86,22 +86,12 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for eth_init.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="eth__init_8h__incl.png" border="0" usemap="#amain_2eth__init_8h" alt=""/></div>
-<map name="amain_2eth__init_8h" id="amain_2eth__init_8h">
-<area shape="rect" title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,..." alt="" coords="5,5,125,31"/>
-<area shape="rect" title=" " alt="" coords="25,79,106,104"/>
-<area shape="poly" title=" " alt="" coords="68,31,68,65,63,65,63,31"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="eth__init_8h__incl.svg" width="131" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="eth__init_8h__dep__incl.png" border="0" usemap="#amain_2eth__init_8hdep" alt=""/></div>
-<map name="amain_2eth__init_8hdep" id="amain_2eth__init_8hdep">
-<area shape="rect" title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,..." alt="" coords="5,5,125,31"/>
-<area shape="rect" href="main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="14,79,117,104"/>
-<area shape="poly" title=" " alt="" coords="68,44,68,79,63,79,63,44"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="eth__init_8h__dep__incl.svg" width="256" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="eth__init_8h_source.html">Go to the source code of this file.</a></p>
@@ -135,9 +125,19 @@ Functions</h2></td></tr>
 <ul>
 <li>SPI 버스 및 W5500 드라이버 설치</li>
 <li>esp_netif + DHCP 설정</li>
-<li>IP 획득 시 이벤트로 tcp_server_start() 자동 호출 <dl class="section return"><dt>Returns</dt><dd>ESP_OK on success, ESP_ERR_* on failure </dd></dl>
+<li>IP 획득 시 이벤트로 <a class="el" href="tcp__server_8c.html#a3c752d8c97b989346982ec521d6410eb" title="TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨">tcp_server_start()</a> 자동 호출 <dl class="section return"><dt>Returns</dt><dd>ESP_OK on success, ESP_ERR_* on failure </dd></dl>
 </li>
 </ul>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="eth__init_8h_a8704f04057e1ef0c316f73f27cf1fed2_cgraph.svg" width="620" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="eth__init_8h_a8704f04057e1ef0c316f73f27cf1fed2_icgraph.svg" width="216" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>

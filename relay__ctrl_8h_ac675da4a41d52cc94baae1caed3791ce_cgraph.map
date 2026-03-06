@@ -1,0 +1,5 @@
+<map id="relay_get_all" name="relay_get_all">
+<area shape="rect" id="Node000001" title="현재 전체 릴레이 상태를 8비트 마스크로 반환 bit0 = RELAY_1 ... bit7 = RELAY_8" alt="" coords="5,5,112,31"/>
+<area shape="rect" id="Node000002" href="$exio_8c.html#a94127fa8672f294de65046d50d074e44" title="현재 Output 레지스터 값 읽기 (캐시된 값)" alt="" coords="160,5,271,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,15,146,15,146,21,112,21"/>
+</map>

@@ -82,7 +82,12 @@ $(function() {
 
 <p>TCP server task that accepts text commands from a network client and dispatches them to the relay and PWM control modules.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8h__dep__incl.svg" width="291" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 <p><a href="tcp__server_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -93,7 +98,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>TCP server task that accepts text commands from a network client and dispatches them to the relay and PWM control modules. </p>
-<p>The server listens on TCP_SERVER_PORT (default 8080). It is started automatically by eth_init() when an IP address is acquired. </p>
+<p>The server listens on TCP_SERVER_PORT (default 8080). It is started automatically by <a class="el" href="eth__init_8c.html#a8704f04057e1ef0c316f73f27cf1fed2" title="W5500 SPI Ethernet 초기화">eth_init()</a> when an IP address is acquired. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a3c752d8c97b989346982ec521d6410eb" name="a3c752d8c97b989346982ec521d6410eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c752d8c97b989346982ec521d6410eb">&#9670;&#160;</a></span>tcp_server_start()</h2>
@@ -114,6 +119,16 @@ Functions</h2></td></tr>
 <p>TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨 </p>
 <p>프로토콜 (텍스트, newline 종료): 클라이언트 → 서버: "RELAY &lt;번호&gt; ON\n" 예) "RELAY 1 ON\n" "RELAY &lt;번호&gt; OFF\n" 예) "RELAY 2 OFF\n" "STATUS\n"</p>
 <p>서버 → 클라이언트: "OK\n" 명령 성공 "ERROR\n" 잘못된 명령 "R1=ON R2=OFF ...\n" STATUS 응답 </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8h_a3c752d8c97b989346982ec521d6410eb_cgraph.svg" width="639" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8h_a3c752d8c97b989346982ec521d6410eb_icgraph.svg" width="574" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pwm_5fctrl_2eh_0',['pwm_ctrl.h',['../pwm__ctrl_8h.html',1,'']]]
+  ['getting_5fstarted_2edox_0',['getting_started.dox',['../getting__started_8dox.html',1,'']]]
 ];

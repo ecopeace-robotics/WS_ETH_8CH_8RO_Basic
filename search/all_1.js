@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['board_5fconfig_2eh_0',['board_config.h',['../board__config_8h.html',1,'']]]
+  ['2024_2003_0',['v1.0.0 (2024-03)',['../changelog.html#v1_0_0',1,'']]]
 ];

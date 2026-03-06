@@ -1,0 +1,9 @@
+<map id="client_task" name="client_task">
+<area shape="rect" id="Node000001" title=" " alt="" coords="536,5,629,31"/>
+<area shape="rect" id="Node000002" href="$tcp__server_8c.html#a61c868bc85ed2ebbea39dba6aab3ae55" title=" " alt="" coords="363,5,488,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="522,21,489,21,489,15,522,15"/>
+<area shape="rect" id="Node000003" href="$tcp__server_8c.html#a3c752d8c97b989346982ec521d6410eb" title="TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨" alt="" coords="188,5,315,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="349,21,315,21,315,15,349,15"/>
+<area shape="rect" id="Node000004" href="$eth__init_8c.html#abfb9112243ef468009b3cf807c91f49f" title=" " alt="" coords="5,5,140,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="174,21,140,21,140,15,174,15"/>
+</map>

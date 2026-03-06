@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tcp_5fserver_5fstart_0',['tcp_server_start',['../tcp__server_8h.html#a3c752d8c97b989346982ec521d6410eb',1,'tcp_server.c']]]
+  ['handle_5fcommand_0',['handle_command',['../tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0',1,'tcp_server.c']]]
 ];

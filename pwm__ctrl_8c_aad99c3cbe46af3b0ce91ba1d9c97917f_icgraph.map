@@ -1,0 +1,13 @@
+<map id="us_to_duty" name="us_to_duty">
+<area shape="rect" id="Node000001" title="µs 값을 16&#45;bit LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US" alt="" coords="484,31,577,56"/>
+<area shape="rect" id="Node000002" href="$pwm__ctrl_8c.html#a69622f0cd30c0ea4d8a6930109c1cee6" title="LEDC 타이머 및 2채널 RC PWM 출력 초기화 50 Hz, 14&#45;bit, 양 채널 1500 µs (neutral) 로 시작" alt="" coords="343,5,426,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="470,36,426,28,427,22,471,30"/>
+<area shape="rect" id="Node000004" href="$pwm__ctrl_8c.html#aece9673987e61c351be4fca38353889a" title="지정 채널의 펄스 폭 설정" alt="" coords="333,55,436,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="471,56,436,62,436,56,470,51"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" title="Application entry point for the ESP32&#45;S3 Ethernet Relay Controller." alt="" coords="173,5,259,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,21,259,21,259,15,330,15"/>
+<area shape="rect" id="Node000005" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성" alt="" coords="147,55,285,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="319,70,286,70,286,65,319,65"/>
+<area shape="rect" id="Node000006" href="$tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" title=" " alt="" coords="5,55,99,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="133,70,99,70,99,65,133,65"/>
+</map>

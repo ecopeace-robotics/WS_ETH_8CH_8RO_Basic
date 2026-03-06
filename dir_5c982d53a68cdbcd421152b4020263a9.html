@@ -83,8 +83,12 @@ Files</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="board__config_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="board__config_8h.html">board_config.h</a></td></tr>
 <tr class="memdesc:board__config_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hardware pin assignments and compile-time configuration constants for the Waveshare ESP32-S3-ETH-8DI-8RO board. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eth__init_8c.html">eth_init.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="eth__init_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eth__init_8h.html">eth_init.h</a></td></tr>
 <tr class="memdesc:eth__init_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver, configures esp_netif, and auto-starts the TCP server when an IP address is acquired. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exio_8c.html">exio.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="exio_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exio_8h.html">exio.h</a></td></tr>
 <tr class="memdesc:exio_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCA9554PWR I2C IO expander driver using the ESP-IDF v5 New I2C Master API (bus handle + device handle model). Controls 8 output pins mapped to relay channels EXIO1–EXIO8. <br /></td></tr>
@@ -92,11 +96,17 @@ Files</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html">main.c</a></td></tr>
 <tr class="memdesc:main_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Application entry point — initialises all subsystems in order and hands control to the FreeRTOS scheduler. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm__ctrl_8c.html">pwm_ctrl.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="pwm__ctrl_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pwm__ctrl_8h.html">pwm_ctrl.h</a></td></tr>
 <tr class="memdesc:pwm__ctrl_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">LEDC-based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse-width range compatible with RC ESC / servo interfaces (e.g. Cytron MDDS30). <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="relay__ctrl_8c.html">relay_ctrl.c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="relay__ctrl_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="relay__ctrl_8h.html">relay_ctrl.h</a></td></tr>
 <tr class="memdesc:relay__ctrl_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-level relay control API built on top of <a class="el" href="exio_8h.html" title="TCA9554PWR I2C IO expander driver using the ESP-IDF v5 New I2C Master API (bus handle + device handle...">exio.h</a>. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 output bits. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp__server_8c.html">tcp_server.c</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="tcp__server_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp__server_8h.html">tcp_server.h</a></td></tr>
 <tr class="memdesc:tcp__server_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP server task that accepts text commands from a network client and dispatches them to the relay and PWM control modules. <br /></td></tr>

@@ -1,0 +1,5 @@
+<map id="relay_get" name="relay_get">
+<area shape="rect" id="Node000001" title="특정 릴레이의 현재 상태 조회" alt="" coords="5,5,88,31"/>
+<area shape="rect" id="Node000002" href="$exio_8c.html#a94127fa8672f294de65046d50d074e44" title="현재 Output 레지스터 값 읽기 (캐시된 값)" alt="" coords="136,5,247,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,15,122,15,122,21,88,21"/>
+</map>

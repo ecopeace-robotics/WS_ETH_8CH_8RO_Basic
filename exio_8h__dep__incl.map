@@ -1,5 +1,9 @@
 <map id="main/exio.h" name="main/exio.h">
-<area shape="rect" id="Node000001" title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle..." alt="" coords="7,5,106,31"/>
-<area shape="rect" id="Node000002" href="$main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="5,79,108,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,44,59,79,54,79,54,44"/>
+<area shape="rect" id="Node000001" title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle..." alt="" coords="131,5,229,31"/>
+<area shape="rect" id="Node000002" href="$exio_8c.html" title=" " alt="" coords="5,79,104,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,40,76,81,74,76,147,35"/>
+<area shape="rect" id="Node000003" href="$main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="129,79,231,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,44,183,79,177,79,177,44"/>
+<area shape="rect" id="Node000004" href="$relay__ctrl_8c.html" title=" " alt="" coords="256,79,387,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,34,299,76,297,81,213,39"/>
 </map>
