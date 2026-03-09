@@ -17,12 +17,19 @@ static uint8_t s_output_cache = 0x00;
 // ─── 내부 헬퍼 ───────────────────────────────────────────────────────────────
 
 /**
- * @brief TCA9554 레지스터에 1바이트 쓰기
+ * @brief TCA9554 레지스터에 1바이트 쓴다
  *
- * New API 전송 방식:
+ * @details
+ * New I2C Master API 전송 형식:
  *   i2c_master_transmit(dev, buf, len, timeout_ms)
  *   → START + ADDR(W) + buf[0](reg) + buf[1](data) + STOP
- *   내부적으로 ACK 확인까지 처리
+ *   내부적으로 ACK 확인까지 처리한다.
+ *
+ * @param[in] reg   대상 레지스터 주소
+ *                  (REG_INPUT=0x00, REG_OUTPUT=0x01,
+ *                   REG_POLARITY=0x02, REG_CONFIG=0x03)
+ * @param[in] data  쓸 데이터 (1바이트)
+ * @return ESP_OK 또는 ESP_ERR_* (실패 시 ESP_LOGE 출력 후 반환)
  */
 static esp_err_t tca9554_write_reg(uint8_t reg, uint8_t data)
 {
@@ -38,6 +45,28 @@ static esp_err_t tca9554_write_reg(uint8_t reg, uint8_t data)
 
 // ─── Public API ──────────────────────────────────────────────────────────────
 
+/**
+ * @brief TCA9554PWR I2C IO 익스팬더 초기화 (구현 상세)
+ *
+ * @details
+ * ESP-IDF v5 New I2C Master API 기반 초기화 흐름:
+ *
+ * \dot
+ * digraph ExioInit {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *     HW [label="TCA9554PWR\n(I2C addr 0x20)", style=filled, fillcolor=lightgray];
+ *
+ *     exio_init -> "i2c_new_master_bus()\nSDA=GPIO42, SCL=GPIO41";
+ *     "i2c_new_master_bus()\nSDA=GPIO42, SCL=GPIO41" -> "i2c_master_bus_add_device()\naddr=0x20, 100kHz";
+ *     "i2c_master_bus_add_device()\naddr=0x20, 100kHz" -> "Write REG_CONFIG=0x00\n(all pins OUTPUT)";
+ *     "Write REG_CONFIG=0x00\n(all pins OUTPUT)" -> "Write REG_OUTPUT=0x00\n(all pins LOW)";
+ *     "Write REG_OUTPUT=0x00\n(all pins LOW)" -> HW;
+ * }
+ * \enddot
+ *
+ * @note 파라미터/반환값 명세는 exio.h 참조.
+ */
 esp_err_t exio_init(void)
 {
     // ── 1. I2C 버스 생성 ────────────────────────────────────────────────────
@@ -86,6 +115,34 @@ esp_err_t exio_deinit(void)
     return ESP_OK;
 }
 
+/**
+ * @brief 특정 핀의 출력값 설정 (구현 상세)
+ *
+ * @details
+ * 캐시된 포트 값에 비트 연산(read-modify-write) 후 TCA9554에 씀:
+ *
+ * \dot
+ * digraph ExioSetPin {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *     HW  [label="TCA9554 output pin", style=filled, fillcolor=lightgray];
+ *     err [label="ESP_ERR_INVALID_ARG"];
+ *
+ *     input  [label="pin (0~7)\nvalue (0|1)"];
+ *     valid  [label="pin <= 7?", shape=diamond];
+ *     rmw    [label="s_output_cache:\nvalue=1 -> cache |=  (1<<pin)\nvalue=0 -> cache &= ~(1<<pin)"];
+ *     write  [label="tca9554_write_reg\n(REG_OUTPUT, cache)"];
+ *     i2c    [label="i2c_master_transmit()\n[0x01, cache] -> TCA9554"];
+ *
+ *     input -> valid;
+ *     valid -> err   [label="no"];
+ *     valid -> rmw   [label="yes"];
+ *     rmw   -> write -> i2c -> HW;
+ * }
+ * \enddot
+ *
+ * @note 파라미터/반환값 명세는 exio.h 참조.
+ */
 esp_err_t exio_set_pin(uint8_t pin, uint8_t value)
 {
     if (pin > 7) {

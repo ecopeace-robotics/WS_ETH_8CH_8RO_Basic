@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1772770126575,
+  "lastScanned": 1773017581712,
   "projectRoot": "/home/embeddedwarrior/eco-work/SW/pjts/ESP32/ESP32-S3/big_ecorover/eth_motor",
   "techStack": {
     "languages": [
@@ -43,19 +43,21 @@
     "Docs": {
       "path": "Docs",
       "purpose": "Documentation",
-      "fileCount": 3,
-      "lastAccessed": 1772770126571,
+      "fileCount": 7,
+      "lastAccessed": 1773017581708,
       "keyFiles": [
         "MDDS30_Howto.md",
+        "architecture.dox",
         "board_driver.drawio.png",
-        "mainpage.dox"
+        "changelog.dox",
+        "getting_started.dox"
       ]
     },
     "build": {
       "path": "build",
       "purpose": "Build output",
       "fileCount": 29,
-      "lastAccessed": 1772770126571,
+      "lastAccessed": 1773017581708,
       "keyFiles": [
         "CMakeCache.txt",
         "app-flash_args",
@@ -68,27 +70,27 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 0,
-      "lastAccessed": 1772770126571,
+      "lastAccessed": 1773017581709,
       "keyFiles": []
     },
     "html": {
       "path": "html",
       "purpose": null,
-      "fileCount": 91,
-      "lastAccessed": 1772770126573,
+      "fileCount": 345,
+      "lastAccessed": 1773017581710,
       "keyFiles": [
-        "bc_s.png",
-        "bdwn.png",
-        "board__config_8h.html",
-        "board__config_8h_source.html",
-        "closed.png"
+        "00___xEA_xB0_x9C_xEB_xB0_x9C___xEB_xAC_xB8_xEC_x84_x9C_xED_x99_x94___xEC_x8B_x9C_xEC_x8A_xA4_xED69d3ec4b1da7c51e465eda2e69bdaacc.html",
+        "01___xEC_x9E_x84_xEB_xB2_xA0_xEB_x94_x94_xEB_x93_x9C___xEB_x8D_xB0_xEC_x9D_xB4_xED_x84_xB0___xEDfa0ab88efd25ee6b98e02faa1f78ecb6.html",
+        "02__Doxygen___xEC_xA3_xBC_xEC_x84_x9D___xEC_x9E_x91_xEC_x84_xB1___xED_x91_x9C_xEC_xA4_x80_8md.html",
+        "03__mainpage__dox___xEA_xB0_x80_xEC_x9D_xB4_xEB_x93_x9C_8md.html",
+        "04__Doxyfile___xEC_x84_xA4_xEC_xA0_x95___xEA_xB0_x80_xEC_x9D_xB4_xEB_x93_x9C_8md.html"
       ]
     },
     "latex": {
       "path": "latex",
       "purpose": null,
       "fileCount": 44,
-      "lastAccessed": 1772770126574,
+      "lastAccessed": 1773017581711,
       "keyFiles": [
         "Makefile",
         "board__config_8h.tex",
@@ -101,7 +103,7 @@
       "path": "main",
       "purpose": null,
       "fileCount": 13,
-      "lastAccessed": 1772770126574,
+      "lastAccessed": 1773017581711,
       "keyFiles": [
         "CMakeLists.txt",
         "board_config.h",
@@ -114,7 +116,7 @@
       "path": "tools",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1772770126574,
+      "lastAccessed": 1773017581711,
       "keyFiles": [
         "keyboard_ctrl.py"
       ]
@@ -122,40 +124,82 @@
   },
   "hotPaths": [
     {
+      "path": "Docs/howto_document/02_Doxygen_주석_작성_표준.md",
+      "accessCount": 24,
+      "lastAccessed": 1773028369272,
+      "type": "file"
+    },
+    {
+      "path": "main/exio.h",
+      "accessCount": 5,
+      "lastAccessed": 1773026660781,
+      "type": "file"
+    },
+    {
+      "path": "main/relay_ctrl.h",
+      "accessCount": 5,
+      "lastAccessed": 1773026672668,
+      "type": "file"
+    },
+    {
+      "path": "main/pwm_ctrl.h",
+      "accessCount": 5,
+      "lastAccessed": 1773026687250,
+      "type": "file"
+    },
+    {
+      "path": "main/relay_ctrl.c",
+      "accessCount": 5,
+      "lastAccessed": 1773028064184,
+      "type": "file"
+    },
+    {
+      "path": "main/tcp_server.h",
+      "accessCount": 4,
+      "lastAccessed": 1773026711166,
+      "type": "file"
+    },
+    {
+      "path": "main/exio.c",
+      "accessCount": 4,
+      "lastAccessed": 1773028359945,
+      "type": "file"
+    },
+    {
+      "path": "main/eth_init.h",
+      "accessCount": 3,
+      "lastAccessed": 1773026724917,
+      "type": "file"
+    },
+    {
+      "path": "main/pwm_ctrl.c",
+      "accessCount": 3,
+      "lastAccessed": 1773028064565,
+      "type": "file"
+    },
+    {
+      "path": "main/tcp_server.c",
+      "accessCount": 2,
+      "lastAccessed": 1773028065324,
+      "type": "file"
+    },
+    {
       "path": "main/main.c",
       "accessCount": 2,
-      "lastAccessed": 1772772781414,
+      "lastAccessed": 1773028066499,
       "type": "file"
     },
     {
-      "path": "doxygen_warnings.log",
-      "accessCount": 2,
-      "lastAccessed": 1772772791313,
-      "type": "file"
-    },
-    {
-      "path": "Docs/mainpage.dox",
+      "path": "main/eth_init.c",
       "accessCount": 1,
-      "lastAccessed": 1772774055400,
+      "lastAccessed": 1773028065709,
       "type": "file"
     },
     {
-      "path": "Docs/hardware_setup.dox",
+      "path": "Docs/howto_document",
       "accessCount": 1,
-      "lastAccessed": 1772774283009,
-      "type": "file"
-    },
-    {
-      "path": "Docs/getting_started.dox",
-      "accessCount": 1,
-      "lastAccessed": 1772774291439,
-      "type": "file"
-    },
-    {
-      "path": "Docs/changelog.dox",
-      "accessCount": 1,
-      "lastAccessed": 1772774298249,
-      "type": "file"
+      "lastAccessed": 1773028334764,
+      "type": "directory"
     }
   ],
   "userDirectives": []

@@ -1,0 +1,32 @@
+/**
+ * @page architecture 시스템 아키텍처 및 데이터 흐름
+ * @brief 시스템 아키텍처 및 모듈 간 데이터 흐름 개요
+ *
+ * ESP32-S3 이더넷 릴레이 컨트롤러의 전체 데이터 흐름을 설명합니다.
+ *
+ * 시스템은 W5500을 통해 네트워크 명령을 수신하고, TCP 서버에서 파싱한 뒤
+ * IO 익스팬더(EXIO)를 통해 릴레이 출력 또는 RC PWM 출력을 구동합니다.
+ *
+ * \dot
+ * digraph SystemDataFlow {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *
+ *     Network   [label="네트워크 (LAN/TCP)", shape=ellipse, style=filled, fillcolor=lightblue];
+ *     W5500     [label="W5500 Ethernet\n(eth_init.c)"];
+ *     TCPServer [label="TCP 서버\n(tcp_server.c)"];
+ *     EXIO      [label="IO 익스팬더 (TCA9554)\n(exio.c)"];
+ *     Relay     [label="릴레이 제어\n(relay_ctrl.c)"];
+ *     PWM       [label="RC PWM 출력\n(pwm_ctrl.c)"];
+ *
+ *     Network -> W5500     [label=" 패킷 송수신", dir=both];
+ *     W5500 -> TCPServer   [label=" 수신 데이터", dir=both];
+ *
+ *     TCPServer -> Relay   [label=" 릴레이 명령 (ON/OFF)"];
+ *     TCPServer -> PWM     [label=" 펄스 폭 (µs)"];
+ *
+ *     EXIO -> TCPServer    [label=" 디지털 입력 상태"];
+ *     Relay -> TCPServer   [label=" 릴레이 상태 응답", style=dashed];
+ * }
+ * \enddot
+ */

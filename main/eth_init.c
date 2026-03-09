@@ -19,6 +19,10 @@ static bool                 s_server_started = false;
 
 // ─── 이벤트 핸들러 ────────────────────────────────────────────────────────────
 
+/**
+ * @brief Ethernet 링크/상태 이벤트 핸들러 (ETHERNET_EVENT_*)
+ *        링크 UP/DOWN, Start/Stop 상태를 로그로 기록한다.
+ */
 static void eth_event_handler(void *arg, esp_event_base_t event_base,
                                int32_t event_id, void *event_data)
 {
@@ -40,6 +44,10 @@ static void eth_event_handler(void *arg, esp_event_base_t event_base,
     }
 }
 
+/**
+ * @brief IP 획득 이벤트 핸들러 (IP_EVENT_ETH_GOT_IP)
+ *        최초 IP 획득 시 tcp_server_start()를 한 번만 호출한다.
+ */
 static void ip_event_handler(void *arg, esp_event_base_t event_base,
                               int32_t event_id, void *event_data)
 {
@@ -57,6 +65,34 @@ static void ip_event_handler(void *arg, esp_event_base_t event_base,
 
 // ─── 공개 함수 ────────────────────────────────────────────────────────────────
 
+/**
+ * @brief W5500 SPI 이더넷 초기화 (구현 상세)
+ *
+ * @details
+ * 초기화 단계 및 이벤트 기반 TCP 서버 시작 흐름:
+ *
+ * \dot
+ * digraph EthInit {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *     tcp_server_task [label="tcp_server_task\n(FreeRTOS task)", style=filled, fillcolor=lightyellow];
+ *
+ *     eth_init -> "esp_netif_new()";
+ *     "esp_netif_new()" -> "spi_bus_initialize()";
+ *     "spi_bus_initialize()" -> "esp_eth_mac_new_w5500()";
+ *     "esp_eth_mac_new_w5500()" -> "esp_eth_phy_new_w5500()";
+ *     "esp_eth_phy_new_w5500()" -> "esp_eth_driver_install()";
+ *     "esp_eth_driver_install()" -> "MAC 주소 설정";
+ *     "MAC 주소 설정" -> "esp_netif_attach()";
+ *     "esp_netif_attach()" -> "이벤트 핸들러 등록";
+ *     "이벤트 핸들러 등록" -> "esp_eth_start()";
+ *     "esp_eth_start()" -> "IP_EVENT_ETH_GOT_IP" [label="비동기", style=dashed];
+ *     "IP_EVENT_ETH_GOT_IP" -> tcp_server_task [label="최초 1회"];
+ * }
+ * \enddot
+ *
+ * @note 파라미터/반환값 명세는 eth_init.h 참조.
+ */
 esp_err_t eth_init(void)
 {
     // 1. W5500용 기본 netif 생성

@@ -9,6 +9,7 @@
  * - 기타 유사보드(8DO)는 테스트 후 업데이트 예정
  *
  * @section pages 문서 목차
+ * - @subpage architecture    — 시스템 아키텍처 및 데이터 흐름
  * - @subpage hardware_setup  — 하드웨어 설정 및 결선도
  * - @subpage getting_started — 개발환경 설정 및 Quick Start
  * - @subpage changelog       — 버전별 변경 이력

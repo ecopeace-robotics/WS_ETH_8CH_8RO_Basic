@@ -1,16 +1,16 @@
 /**
  * @file main.c
- * @brief Application entry point — initialises all subsystems in order
- *        and hands control to the FreeRTOS scheduler.
+ * @brief 애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고
+ *        FreeRTOS 스케줄러에 제어를 넘긴다.
  *
- * Initialisation sequence:
- *  1. NVS flash (Ethernet MAC storage)
- *  2. Default event loop
+ * 초기화 순서:
+ *  1. NVS 플래시 (Ethernet MAC 주소 저장)
+ *  2. 기본 이벤트 루프
  *  3. esp_netif
- *  4. EXIO / TCA9554 IO expander
- *  5. Relay controller (all OFF)
- *  6. RC PWM outputs (neutral 1500 µs)
- *  7. W5500 Ethernet (TCP server auto-started on IP acquisition)
+ *  4. EXIO / TCA9554 IO 익스팬더
+ *  5. 릴레이 컨트롤러 (전체 OFF)
+ *  6. RC PWM 출력 (중립 1500 µs)
+ *  7. W5500 이더넷 (IP 획득 시 TCP 서버 자동 시작)
  */
 
 #include "esp_log.h"
@@ -26,21 +26,34 @@
 static const char *TAG = "MAIN";
 
 /**
- * @brief Application entry point for the ESP32-S3 Ethernet Relay Controller.
+ * @brief ESP32-S3 이더넷 릴레이 컨트롤러 애플리케이션 진입점.
  *
- * Initializes all hardware subsystems in sequence:
- * - NVS flash for MAC address storage
- * - Default event loop and networking interface
- * - I2C EXIO expander (TCA9554PWR)
- * - Relay controller (all OFF)
- * - RC PWM outputs (neutral at 1500 µs)
- * - W5500 Ethernet controller with TCP server auto-start
+ * @details
+ * 모든 하드웨어 서브시스템을 순서대로 초기화한 뒤 FreeRTOS 스케줄러에
+ * 제어를 넘긴다. TCP 서버는 Ethernet IP 획득 이벤트 수신 후 자동 시작된다.
  *
- * @note This function is the ESP-IDF application entry point and is called
- *       by the bootloader. It initializes all subsystems and then yields
- *       control to the FreeRTOS scheduler.
+ * \dot
+ * digraph BootFlow {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *     Bootloader      [style=filled, fillcolor=lightgray];
+ *     Scheduler       [label="FreeRTOS Scheduler", style=filled, fillcolor=lightgray];
+ *     tcp_server_task [label="tcp_server_task\n(FreeRTOS task)", style=filled, fillcolor=lightyellow];
  *
- * @return void (does not return; FreeRTOS scheduler takes over)
+ *     Bootloader -> nvs_flash_init;
+ *     nvs_flash_init -> esp_event_loop_create_default;
+ *     esp_event_loop_create_default -> esp_netif_init;
+ *     esp_netif_init -> exio_init;
+ *     exio_init -> relay_init;
+ *     relay_init -> pwm_init;
+ *     pwm_init -> eth_init;
+ *     eth_init -> Scheduler [label="반환"];
+ *     eth_init -> tcp_server_task [label="IP_EVENT_ETH_GOT_IP\n(비동기, 최초 1회)", style=dashed];
+ * }
+ * \enddot
+ *
+ * @note 이 함수는 ESP-IDF 애플리케이션 진입점으로 부트로더에 의해 호출된다.
+ *       반환되지 않으며 FreeRTOS 스케줄러가 제어를 이어받는다.
  */
 void app_main(void)
 {
