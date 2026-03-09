@@ -1,5 +1,5 @@
 <map id="main/tcp_server.h" name="main/tcp_server.h">
-<area shape="rect" id="Node000001" title="TCP server task that accepts text commands from a network client and dispatches them to the relay and..." alt="" coords="71,5,210,31"/>
+<area shape="rect" id="Node000001" title="네트워크 클라이언트로부터 텍스트 명령을 수신하고 릴레이 및 PWM 제어 모듈로 디스패치하는 TCP 서버 태스크." alt="" coords="71,5,210,31"/>
 <area shape="rect" id="Node000002" href="$eth__init_8c.html" title=" " alt="" coords="5,79,124,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,42,79,80,75,76,117,38"/>
 <area shape="rect" id="Node000003" href="$tcp__server_8c.html" title=" " alt="" coords="148,79,285,104"/>

@@ -84,23 +84,25 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <a href="exio_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>esp_err_t <a class="code hl_function" href="exio_8h.html#added84f4b7edf374640bcad7d2d31aa3">exio_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>esp_err_t <a class="code hl_function" href="exio_8h.html#a4884e1a8771961fab9a4d47a0511e2a2">exio_deinit</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>esp_err_t <a class="code hl_function" href="exio_8h.html#a9cce0a114e273715293936d3a93d4223">exio_set_pin</a>(uint8_t pin, uint8_t value);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>esp_err_t <a class="code hl_function" href="group__EXIO.html#gadded84f4b7edf374640bcad7d2d31aa3">exio_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>esp_err_t <a class="code hl_function" href="group__EXIO.html#ga4884e1a8771961fab9a4d47a0511e2a2">exio_deinit</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>esp_err_t <a class="code hl_function" href="exio_8h.html#ae98e84b204558738c57005149e192cca">exio_write_port</a>(uint8_t bitmask);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>uint8_t <a class="code hl_function" href="exio_8h.html#a94127fa8672f294de65046d50d074e44">exio_get_port</a>(<span class="keywordtype">void</span>);</div>
-<div class="ttc" id="aexio_8h_html_a4884e1a8771961fab9a4d47a0511e2a2"><div class="ttname"><a href="exio_8h.html#a4884e1a8771961fab9a4d47a0511e2a2">exio_deinit</a></div><div class="ttdeci">esp_err_t exio_deinit(void)</div><div class="ttdoc">리소스 해제 (필요 시 호출)</div><div class="ttdef"><b>Definition</b> exio.c:76</div></div>
-<div class="ttc" id="aexio_8h_html_a94127fa8672f294de65046d50d074e44"><div class="ttname"><a href="exio_8h.html#a94127fa8672f294de65046d50d074e44">exio_get_port</a></div><div class="ttdeci">uint8_t exio_get_port(void)</div><div class="ttdoc">현재 Output 레지스터 값 읽기 (캐시된 값)</div><div class="ttdef"><b>Definition</b> exio.c:109</div></div>
-<div class="ttc" id="aexio_8h_html_a9cce0a114e273715293936d3a93d4223"><div class="ttname"><a href="exio_8h.html#a9cce0a114e273715293936d3a93d4223">exio_set_pin</a></div><div class="ttdeci">esp_err_t exio_set_pin(uint8_t pin, uint8_t value)</div><div class="ttdoc">특정 핀의 출력값 설정</div><div class="ttdef"><b>Definition</b> exio.c:89</div></div>
-<div class="ttc" id="aexio_8h_html_added84f4b7edf374640bcad7d2d31aa3"><div class="ttname"><a href="exio_8h.html#added84f4b7edf374640bcad7d2d31aa3">exio_init</a></div><div class="ttdeci">esp_err_t exio_init(void)</div><div class="ttdoc">TCA9554PWR I2C IO 익스팬더 초기화 (New I2C Master API)</div><div class="ttdef"><b>Definition</b> exio.c:41</div></div>
-<div class="ttc" id="aexio_8h_html_ae98e84b204558738c57005149e192cca"><div class="ttname"><a href="exio_8h.html#ae98e84b204558738c57005149e192cca">exio_write_port</a></div><div class="ttdeci">esp_err_t exio_write_port(uint8_t bitmask)</div><div class="ttdoc">8비트 마스크로 전체 포트 한번에 쓰기</div><div class="ttdef"><b>Definition</b> exio.c:103</div></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>esp_err_t <a class="code hl_function" href="group__EXIO.html#ga9cce0a114e273715293936d3a93d4223">exio_set_pin</a>(uint8_t pin, uint8_t value);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>esp_err_t <a class="code hl_function" href="group__EXIO.html#gae98e84b204558738c57005149e192cca">exio_write_port</a>(uint8_t bitmask);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>uint8_t <a class="code hl_function" href="group__EXIO.html#ga94127fa8672f294de65046d50d074e44">exio_get_port</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+  <span class="comment">// EXIO 그룹 끝</span><div class="ttc" id="agroup__EXIO_html_ga4884e1a8771961fab9a4d47a0511e2a2"><div class="ttname"><a href="group__EXIO.html#ga4884e1a8771961fab9a4d47a0511e2a2">exio_deinit</a></div><div class="ttdeci">esp_err_t exio_deinit(void)</div><div class="ttdoc">리소스 해제 (필요 시 호출)</div><div class="ttdef"><b>Definition</b> exio.c:105</div></div>
+<div class="ttc" id="agroup__EXIO_html_ga94127fa8672f294de65046d50d074e44"><div class="ttname"><a href="group__EXIO.html#ga94127fa8672f294de65046d50d074e44">exio_get_port</a></div><div class="ttdeci">uint8_t exio_get_port(void)</div><div class="ttdoc">현재 Output 레지스터 값 읽기 (캐시된 값)</div><div class="ttdef"><b>Definition</b> exio.c:166</div></div>
+<div class="ttc" id="agroup__EXIO_html_ga9cce0a114e273715293936d3a93d4223"><div class="ttname"><a href="group__EXIO.html#ga9cce0a114e273715293936d3a93d4223">exio_set_pin</a></div><div class="ttdeci">esp_err_t exio_set_pin(uint8_t pin, uint8_t value)</div><div class="ttdoc">특정 핀의 출력값 설정</div><div class="ttdef"><b>Definition</b> exio.c:146</div></div>
+<div class="ttc" id="agroup__EXIO_html_gadded84f4b7edf374640bcad7d2d31aa3"><div class="ttname"><a href="group__EXIO.html#gadded84f4b7edf374640bcad7d2d31aa3">exio_init</a></div><div class="ttdeci">esp_err_t exio_init(void)</div><div class="ttdoc">TCA9554PWR I2C IO 익스팬더 초기화 (New I2C Master API)</div><div class="ttdef"><b>Definition</b> exio.c:70</div></div>
+<div class="ttc" id="agroup__EXIO_html_gae98e84b204558738c57005149e192cca"><div class="ttname"><a href="group__EXIO.html#gae98e84b204558738c57005149e192cca">exio_write_port</a></div><div class="ttdeci">esp_err_t exio_write_port(uint8_t bitmask)</div><div class="ttdoc">8비트 비트마스크로 전체 포트 한번에 쓰기</div><div class="ttdef"><b>Definition</b> exio.c:160</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

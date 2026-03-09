@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="TCA9554 레지스터에 1바이트 쓰기">
+<g id="a_Node000001"><a xlink:title="TCA9554 레지스터에 1바이트 쓴다">
 <polygon fill="#999999" stroke="#666666" points="473,-57 366,-57 366,-38 473,-38 473,-57"/>
 <text text-anchor="middle" x="419.5" y="-45" font-family="Helvetica,sans-Serif" font-size="10.00">tca9554_write_reg</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="exio_8c.html#added84f4b7edf374640bcad7d2d31aa3" target="_top" xlink:title="TCA9554PWR I2C IO 익스팬더 초기화 (New I2C Master API)">
+<g id="a_Node000002"><a xlink:href="group__EXIO.html#gadded84f4b7edf374640bcad7d2d31aa3" target="_top" xlink:title="TCA9554PWR I2C IO 익스팬더 초기화 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="200.5,-57 141.5,-57 141.5,-38 200.5,-38 200.5,-57"/>
 <text text-anchor="middle" x="171" y="-45" font-family="Helvetica,sans-Serif" font-size="10.00">exio_init</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="exio_8c.html#a9cce0a114e273715293936d3a93d4223" target="_top" xlink:title="특정 핀의 출력값 설정">
+<g id="a_Node000004"><a xlink:href="group__EXIO.html#ga9cce0a114e273715293936d3a93d4223" target="_top" xlink:title="특정 핀의 출력값 설정 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="323,-19 245,-19 245,0 323,0 323,-19"/>
 <text text-anchor="middle" x="284" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">exio_set_pin</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="exio_8c.html#ae98e84b204558738c57005149e192cca" target="_top" xlink:title="8비트 마스크로 전체 포트 한번에 쓰기">
+<g id="a_Node000012"><a xlink:href="group__EXIO.html#gae98e84b204558738c57005149e192cca" target="_top" xlink:title="8비트 비트마스크로 전체 포트 한번에 쓰기">
 <polygon fill="white" stroke="#666666" points="330,-95 238,-95 238,-76 330,-76 330,-95"/>
 <text text-anchor="middle" x="284" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00">exio_write_port</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" target="_top" xlink:title="Application entry point for the ESP32&#45;S3 Ethernet Relay Controller.">
+<g id="a_Node000003"><a xlink:href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" target="_top" xlink:title="ESP32&#45;S3 이더넷 릴레이 컨트롤러 애플리케이션 진입점.">
 <polygon fill="white" stroke="#666666" points="84.5,-75 19.5,-75 19.5,-56 84.5,-56 84.5,-75"/>
 <text text-anchor="middle" x="52" y="-63" font-family="Helvetica,sans-Serif" font-size="10.00">app_main</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="relay__ctrl_8c.html#a9257d0b1dc9e9a32ef530fcb3a16e355" target="_top" xlink:title="개별 릴레이 on/off">
+<g id="a_Node000005"><a xlink:href="group__RelayControl.html#ga9257d0b1dc9e9a32ef530fcb3a16e355" target="_top" xlink:title="개별 릴레이 on/off (구현 상세)">
 <polygon fill="white" stroke="#666666" points="202,-19 140,-19 140,0 202,0 202,-19"/>
 <text text-anchor="middle" x="171" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">relay_set</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" target="_top" xlink:title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성">
+<g id="a_Node000006"><a xlink:href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" target="_top" xlink:title="수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다.">
 <polygon fill="#fff0f0" stroke="red" points="104,-19 0,-19 0,0 104,0 104,-19"/>
 <text text-anchor="middle" x="52" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">handle_command</text>
 </a>
@@ -128,7 +128,7 @@
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="relay__ctrl_8c.html#a1e314a25cce1763fddcfdac8083a9777" target="_top" xlink:title="릴레이 제어 초기화 (exio_init() 이후 호출) 전체 릴레이 OFF 상태로 시작">
+<g id="a_Node000013"><a xlink:href="group__RelayControl.html#ga1e314a25cce1763fddcfdac8083a9777" target="_top" xlink:title="릴레이 초기 상태 설정 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="202,-94 140,-94 140,-75 202,-75 202,-94"/>
 <text text-anchor="middle" x="171" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">relay_init</text>
 </a>

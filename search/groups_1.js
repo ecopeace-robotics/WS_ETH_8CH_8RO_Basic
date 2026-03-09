@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['clock_20settings_0',['Ethernet (W5500 SPI) pin and clock settings',['../group__CFG__ETH.html',1,'']]],
-  ['control_1',['TCA9554PWR I2C IO Expander (relay control)',['../group__CFG__EXIO.html',1,'']]]
+  ['i2c_20io_20익스팬더_20릴레이_20제어_0',['TCA9554PWR I2C IO 익스팬더 (릴레이 제어)',['../group__CFG__EXIO.html',1,'']]],
+  ['io_20익스팬더_20드라이버_1',['TCA9554 IO 익스팬더 드라이버',['../group__EXIO.html',1,'']]],
+  ['io_20익스팬더_20릴레이_20제어_2',['TCA9554PWR I2C IO 익스팬더 (릴레이 제어)',['../group__CFG__EXIO.html',1,'']]]
 ];

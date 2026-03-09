@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="IP 획득 이벤트 핸들러 (IP_EVENT_ETH_GOT_IP) 최초 IP 획득 시 tcp_server_start()를 한 번만 호출한다.">
 <polygon fill="#999999" stroke="#666666" points="291,-19 190,-19 190,0 291,0 291,-19"/>
 <text text-anchor="middle" x="240.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">ip_event_handler</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="eth__init_8c.html#a8704f04057e1ef0c316f73f27cf1fed2" target="_top" xlink:title="W5500 SPI Ethernet 초기화">
+<g id="a_Node000002"><a xlink:href="group__EthInit.html#ga8704f04057e1ef0c316f73f27cf1fed2" target="_top" xlink:title="W5500 SPI 이더넷 초기화 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="154,-19 101,-19 101,0 154,0 154,-19"/>
 <text text-anchor="middle" x="127.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">eth_init</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" target="_top" xlink:title="Application entry point for the ESP32&#45;S3 Ethernet Relay Controller.">
+<g id="a_Node000003"><a xlink:href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" target="_top" xlink:title="ESP32&#45;S3 이더넷 릴레이 컨트롤러 애플리케이션 진입점.">
 <polygon fill="white" stroke="#666666" points="65,-19 0,-19 0,0 65,0 65,-19"/>
 <text text-anchor="middle" x="32.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">app_main</text>
 </a>

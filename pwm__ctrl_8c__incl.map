@@ -1,8 +1,8 @@
 <map id="main/pwm_ctrl.c" name="main/pwm_ctrl.c">
 <area shape="rect" id="Node000001" title=" " alt="" coords="223,5,354,31"/>
-<area shape="rect" id="Node000002" href="$pwm__ctrl_8h.html" title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi..." alt="" coords="48,79,143,104"/>
+<area shape="rect" id="Node000002" href="$pwm__ctrl_8h.html" title="두 모터 채널을 위한 LEDC 기반 RC PWM 드라이버. RC ESC / 서보 인터페이스(예: Cytron MDDS30) 호환 1000–2000 µs 펄스 폭 범위에서 50 Hz ..." alt="" coords="48,79,143,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,33,140,76,139,71,257,28"/>
-<area shape="rect" id="Node000005" href="$board__config_8h.html" title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;..." alt="" coords="167,79,285,104"/>
+<area shape="rect" id="Node000005" href="$board__config_8h.html" title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수." alt="" coords="167,79,285,104"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="280,33,247,70,243,66,276,29"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="309,79,393,104"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="301,29,334,66,330,70,297,33"/>

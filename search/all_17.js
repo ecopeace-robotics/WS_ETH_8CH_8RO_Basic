@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['결선도_0',['하드웨어 설정 및 결선도',['../hardware_setup.html',1,'index']]]
+  ['기능_0',['계획 중인 기능',['../changelog.html#planned',1,'']]]
 ];

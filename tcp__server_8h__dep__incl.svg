@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="TCP server task that accepts text commands from a network client and dispatches them to the relay and...">
+<g id="a_Node000001"><a xlink:title="네트워크 클라이언트로부터 텍스트 명령을 수신하고 릴레이 및 PWM 제어 모듈로 디스패치하는 TCP 서버 태스크.">
 <polygon fill="#999999" stroke="#666666" points="153.5,-74 49.5,-74 49.5,-55 153.5,-55 153.5,-74"/>
 <text text-anchor="middle" x="101.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/tcp_server.h</text>
 </a>

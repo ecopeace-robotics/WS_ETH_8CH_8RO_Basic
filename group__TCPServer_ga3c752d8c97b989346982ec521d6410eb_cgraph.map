@@ -1,0 +1,9 @@
+<map id="tcp_server_start" name="tcp_server_start">
+<area shape="rect" id="Node000001" title="TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨" alt="" coords="5,5,132,31"/>
+<area shape="rect" id="Node000002" href="$tcp__server_8c.html#a61c868bc85ed2ebbea39dba6aab3ae55" title="TCP 서버 리슨 태스크. accept() 루프로 클라이언트 연결을 수락하고 연결마다 client_task를 생성한다." alt="" coords="180,5,305,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,15,166,15,166,21,132,21"/>
+<area shape="rect" id="Node000003" href="$tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" title="개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다." alt="" coords="353,5,447,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,15,339,15,339,21,306,21"/>
+<area shape="rect" id="Node000004" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다." alt="" coords="495,5,633,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="447,15,481,15,481,21,447,21"/>
+</map>

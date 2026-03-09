@@ -1,8 +1,8 @@
 <map id="main/exio.c" name="main/exio.c">
 <area shape="rect" id="Node000001" title=" " alt="" coords="238,5,337,31"/>
-<area shape="rect" id="Node000002" href="$exio_8h.html" title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle..." alt="" coords="64,79,127,104"/>
+<area shape="rect" id="Node000002" href="$exio_8h.html" title="ESP&#45;IDF v5 New I2C Master API (버스 핸들 + 디바이스 핸들 모델)를 사용하는 TCA9554PWR I2C IO 익스팬더 드라이버...." alt="" coords="64,79,127,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="257,33,141,76,139,71,256,28"/>
-<area shape="rect" id="Node000005" href="$board__config_8h.html" title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;..." alt="" coords="151,79,269,104"/>
+<area shape="rect" id="Node000005" href="$board__config_8h.html" title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수." alt="" coords="151,79,269,104"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="277,33,235,71,231,67,273,29"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="293,79,439,104"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="302,29,345,68,341,71,298,33"/>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다.">
 <polygon fill="#999999" stroke="#666666" points="70,-74 0,-74 0,-55 70,-55 70,-74"/>
 <text text-anchor="middle" x="35" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">client_task</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" target="_top" xlink:title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성">
+<g id="a_Node000002"><a xlink:href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" target="_top" xlink:title="수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다.">
 <polygon fill="white" stroke="#666666" points="210,-74 106,-74 106,-55 210,-55 210,-74"/>
 <text text-anchor="middle" x="158" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">handle_command</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="pwm__ctrl_8c.html#a7de72ade243729f4420104c859ca07b0" target="_top" xlink:title="지정 채널의 현재 펄스 폭 반환 (µs)">
+<g id="a_Node000003"><a xlink:href="group__PWMControl.html#ga7de72ade243729f4420104c859ca07b0" target="_top" xlink:title="지정 채널의 현재 펄스 폭 반환 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="324,-130 246,-130 246,-111 324,-111 324,-130"/>
 <text text-anchor="middle" x="285" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_get_us</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="pwm__ctrl_8c.html#aece9673987e61c351be4fca38353889a" target="_top" xlink:title="지정 채널의 펄스 폭 설정">
+<g id="a_Node000004"><a xlink:href="group__PWMControl.html#gaece9673987e61c351be4fca38353889a" target="_top" xlink:title="지정 채널의 펄스 폭 설정 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="323.5,-93 246.5,-93 246.5,-74 323.5,-74 323.5,-93"/>
 <text text-anchor="middle" x="285" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_set_us</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="relay__ctrl_8c.html#a3468f1f7f9ecd83b964774e744d94fc3" target="_top" xlink:title="특정 릴레이의 현재 상태 조회">
+<g id="a_Node000006"><a xlink:href="group__RelayControl.html#ga3468f1f7f9ecd83b964774e744d94fc3" target="_top" xlink:title="특정 릴레이의 현재 상태 조회 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="316,-56 254,-56 254,-37 316,-37 316,-56"/>
 <text text-anchor="middle" x="285" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">relay_get</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="relay__ctrl_8c.html#a9257d0b1dc9e9a32ef530fcb3a16e355" target="_top" xlink:title="개별 릴레이 on/off">
+<g id="a_Node000008"><a xlink:href="group__RelayControl.html#ga9257d0b1dc9e9a32ef530fcb3a16e355" target="_top" xlink:title="개별 릴레이 on/off (구현 상세)">
 <polygon fill="white" stroke="#666666" points="316,-19 254,-19 254,0 316,0 316,-19"/>
 <text text-anchor="middle" x="285" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">relay_set</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" target="_top" xlink:title="µs 값을 16&#45;bit LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US">
+<g id="a_Node000005"><a xlink:href="pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" target="_top" xlink:title="µs 값을 16비트 LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US">
 <polygon fill="white" stroke="#666666" points="436.5,-93 366.5,-93 366.5,-74 436.5,-74 436.5,-93"/>
 <text text-anchor="middle" x="401.5" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">us_to_duty</text>
 </a>
@@ -128,7 +128,7 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="exio_8c.html#a94127fa8672f294de65046d50d074e44" target="_top" xlink:title="현재 Output 레지스터 값 읽기 (캐시된 값)">
+<g id="a_Node000007"><a xlink:href="group__EXIO.html#ga94127fa8672f294de65046d50d074e44" target="_top" xlink:title="현재 Output 레지스터 값 읽기 (캐시된 값)">
 <polygon fill="white" stroke="#666666" points="443,-56 360,-56 360,-37 443,-37 443,-56"/>
 <text text-anchor="middle" x="401.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">exio_get_port</text>
 </a>
@@ -146,7 +146,7 @@
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="exio_8c.html#a9cce0a114e273715293936d3a93d4223" target="_top" xlink:title="특정 핀의 출력값 설정">
+<g id="a_Node000009"><a xlink:href="group__EXIO.html#ga9cce0a114e273715293936d3a93d4223" target="_top" xlink:title="특정 핀의 출력값 설정 (구현 상세)">
 <polygon fill="#fff0f0" stroke="red" points="440.5,-19 362.5,-19 362.5,0 440.5,0 440.5,-19"/>
 <text text-anchor="middle" x="401.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">exio_set_pin</text>
 </a>

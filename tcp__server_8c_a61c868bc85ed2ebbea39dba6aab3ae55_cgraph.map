@@ -1,15 +1,15 @@
 <map id="tcp_server_task" name="tcp_server_task">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,131,105"/>
-<area shape="rect" id="Node000002" href="$tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" title=" " alt="" coords="179,80,272,105"/>
+<area shape="rect" id="Node000001" title="TCP 서버 리슨 태스크. accept() 루프로 클라이언트 연결을 수락하고 연결마다 client_task를 생성한다." alt="" coords="5,80,131,105"/>
+<area shape="rect" id="Node000002" href="$tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" title="개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다." alt="" coords="179,80,272,105"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,90,165,90,165,95,131,95"/>
-<area shape="rect" id="Node000003" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성" alt="" coords="320,80,459,105"/>
+<area shape="rect" id="Node000003" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다." alt="" coords="320,80,459,105"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="272,90,306,90,306,95,272,95"/>
-<area shape="rect" id="Node000004" href="$pwm__ctrl_8c.html#a7de72ade243729f4420104c859ca07b0" title="지정 채널의 현재 펄스 폭 반환 (µs)" alt="" coords="507,5,611,31"/>
+<area shape="rect" id="Node000004" href="$group__PWMControl.html#ga7de72ade243729f4420104c859ca07b0" title="지정 채널의 현재 펄스 폭 반환 (구현 상세)" alt="" coords="507,5,611,31"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="418,77,516,34,518,39,420,82"/>
-<area shape="rect" id="Node000005" href="$pwm__ctrl_8c.html#aece9673987e61c351be4fca38353889a" title="지정 채널의 펄스 폭 설정" alt="" coords="507,55,610,80"/>
+<area shape="rect" id="Node000005" href="$group__PWMControl.html#gaece9673987e61c351be4fca38353889a" title="지정 채널의 펄스 폭 설정 (구현 상세)" alt="" coords="507,55,610,80"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="459,80,494,74,494,80,459,85"/>
-<area shape="rect" id="Node000007" href="$relay__ctrl_8c.html#a3468f1f7f9ecd83b964774e744d94fc3" title="특정 릴레이의 현재 상태 조회" alt="" coords="517,104,600,129"/>
+<area shape="rect" id="Node000007" href="$group__RelayControl.html#ga3468f1f7f9ecd83b964774e744d94fc3" title="특정 릴레이의 현재 상태 조회 (구현 상세)" alt="" coords="517,104,600,129"/>
 <area shape="poly" id="edge5_Node000003_Node000007" title=" " alt="" coords="459,100,504,106,504,112,459,105"/>
-<area shape="rect" id="Node000009" href="$relay__ctrl_8c.html#a9257d0b1dc9e9a32ef530fcb3a16e355" title="개별 릴레이 on/off" alt="" coords="517,153,600,179"/>
+<area shape="rect" id="Node000009" href="$group__RelayControl.html#ga9257d0b1dc9e9a32ef530fcb3a16e355" title="개별 릴레이 on/off (구현 상세)" alt="" coords="517,153,600,179"/>
 <area shape="poly" id="edge6_Node000003_Node000009" title=" " alt="" coords="421,103,517,145,514,150,419,108"/>
 </map>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out...">
+<g id="a_Node000001"><a xlink:title="exio.h 위에 구축된 고수준 릴레이 제어 API. 릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다.">
 <polygon fill="#999999" stroke="#666666" points="160,-74 61,-74 61,-55 160,-55 160,-74"/>
 <text text-anchor="middle" x="110.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/relay_ctrl.h</text>
 </a>

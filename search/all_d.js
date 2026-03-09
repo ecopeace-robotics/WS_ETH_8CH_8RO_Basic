@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_20ledc_0',['RC PWM output (LEDC)',['../group__CFG__PWM.html',1,'']]]
+  ['quick_20start_0',['개발환경 설정 및 Quick Start',['../getting_started.html',1,'index']]]
 ];

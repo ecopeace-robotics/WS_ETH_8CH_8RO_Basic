@@ -1,9 +1,9 @@
 <map id="tcp_server_task" name="tcp_server_task">
-<area shape="rect" id="Node000001" title=" " alt="" coords="481,5,607,31"/>
-<area shape="rect" id="Node000002" href="$tcp__server_8c.html#a3c752d8c97b989346982ec521d6410eb" title="TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨" alt="" coords="307,5,433,31"/>
+<area shape="rect" id="Node000001" title="TCP 서버 리슨 태스크. accept() 루프로 클라이언트 연결을 수락하고 연결마다 client_task를 생성한다." alt="" coords="481,5,607,31"/>
+<area shape="rect" id="Node000002" href="$group__TCPServer.html#ga3c752d8c97b989346982ec521d6410eb" title="TCP 서버 태스크를 생성한다." alt="" coords="307,5,433,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,21,433,21,433,15,468,15"/>
-<area shape="rect" id="Node000003" href="$eth__init_8c.html#abfb9112243ef468009b3cf807c91f49f" title=" " alt="" coords="124,5,259,31"/>
+<area shape="rect" id="Node000003" href="$eth__init_8c.html#abfb9112243ef468009b3cf807c91f49f" title="IP 획득 이벤트 핸들러 (IP_EVENT_ETH_GOT_IP) 최초 IP 획득 시 tcp_server_start()를 한 번만 호출한다." alt="" coords="124,5,259,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,21,259,21,259,15,293,15"/>
-<area shape="rect" id="Node000004" href="$eth__init_8c.html#a8704f04057e1ef0c316f73f27cf1fed2" title="W5500 SPI Ethernet 초기화" alt="" coords="5,5,76,31"/>
+<area shape="rect" id="Node000004" href="$group__EthInit.html#ga8704f04057e1ef0c316f73f27cf1fed2" title="W5500 SPI 이더넷 초기화 (구현 상세)" alt="" coords="5,5,76,31"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="110,21,76,21,76,15,110,15"/>
 </map>

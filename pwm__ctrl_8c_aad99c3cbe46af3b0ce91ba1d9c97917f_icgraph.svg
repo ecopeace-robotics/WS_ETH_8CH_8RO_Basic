@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="µs 값을 16&#45;bit LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US">
+<g id="a_Node000001"><a xlink:title="µs 값을 16비트 LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US">
 <polygon fill="#999999" stroke="#666666" points="429,-37 359,-37 359,-18 429,-18 429,-37"/>
 <text text-anchor="middle" x="394" y="-25" font-family="Helvetica,sans-Serif" font-size="10.00">us_to_duty</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="pwm__ctrl_8c.html#a69622f0cd30c0ea4d8a6930109c1cee6" target="_top" xlink:title="LEDC 타이머 및 2채널 RC PWM 출력 초기화 50 Hz, 14&#45;bit, 양 채널 1500 µs (neutral) 로 시작">
+<g id="a_Node000002"><a xlink:href="group__PWMControl.html#ga69622f0cd30c0ea4d8a6930109c1cee6" target="_top" xlink:title="LEDC 타이머 및 2채널 RC PWM 초기화 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="315.5,-56 253.5,-56 253.5,-37 315.5,-37 315.5,-56"/>
 <text text-anchor="middle" x="284.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_init</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="pwm__ctrl_8c.html#aece9673987e61c351be4fca38353889a" target="_top" xlink:title="지정 채널의 펄스 폭 설정">
+<g id="a_Node000004"><a xlink:href="group__PWMControl.html#gaece9673987e61c351be4fca38353889a" target="_top" xlink:title="지정 채널의 펄스 폭 설정 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="323,-19 246,-19 246,0 323,0 323,-19"/>
 <text text-anchor="middle" x="284.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_set_us</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" target="_top" xlink:title="Application entry point for the ESP32&#45;S3 Ethernet Relay Controller.">
+<g id="a_Node000003"><a xlink:href="main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" target="_top" xlink:title="ESP32&#45;S3 이더넷 릴레이 컨트롤러 애플리케이션 진입점.">
 <polygon fill="white" stroke="#666666" points="190.5,-56 125.5,-56 125.5,-37 190.5,-37 190.5,-56"/>
 <text text-anchor="middle" x="158" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">app_main</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" target="_top" xlink:title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성">
+<g id="a_Node000005"><a xlink:href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" target="_top" xlink:title="수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다.">
 <polygon fill="white" stroke="#666666" points="210,-19 106,-19 106,0 210,0 210,-19"/>
 <text text-anchor="middle" x="158" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">handle_command</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" target="_top" xlink:title=" ">
+<g id="a_Node000006"><a xlink:href="tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe" target="_top" xlink:title="개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다.">
 <polygon fill="#fff0f0" stroke="red" points="70,-19 0,-19 0,0 70,0 70,-19"/>
 <text text-anchor="middle" x="35" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">client_task</text>
 </a>

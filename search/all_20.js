@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['변경_20이력_0',['버전별 변경 이력',['../changelog.html',1,'index']]]
+  ['목차_0',['문서 목차',['../index.html#pages',1,'']]]
 ];

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi...">
+<g id="a_Node000001"><a xlink:title="두 모터 채널을 위한 LEDC 기반 RC PWM 드라이버. RC ESC / 서보 인터페이스(예: Cytron MDDS30) 호환 1000–2000 µs 펄스 폭 범위에서 50 Hz ...">
 <polygon fill="#999999" stroke="#666666" points="193.5,-74 95.5,-74 95.5,-55 193.5,-55 193.5,-74"/>
 <text text-anchor="middle" x="144.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/pwm_ctrl.h</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="main_8c.html" target="_top" xlink:title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched...">
+<g id="a_Node000002"><a xlink:href="main_8c.html" target="_top" xlink:title="애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고 FreeRTOS 스케줄러에 제어를 넘긴다.">
 <polygon fill="white" stroke="#666666" points="77,-19 0,-19 0,0 77,0 77,-19"/>
 <text text-anchor="middle" x="38.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">main/main.c</text>
 </a>

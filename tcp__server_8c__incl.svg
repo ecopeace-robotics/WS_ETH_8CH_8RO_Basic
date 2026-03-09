@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="tcp__server_8h.html" target="_top" xlink:title="TCP server task that accepts text commands from a network client and dispatches them to the relay and...">
+<g id="a_Node000002"><a xlink:href="tcp__server_8h.html" target="_top" xlink:title="네트워크 클라이언트로부터 텍스트 명령을 수신하고 릴레이 및 PWM 제어 모듈로 디스패치하는 TCP 서버 태스크.">
 <polygon fill="white" stroke="#666666" points="76,-74 0,-74 0,-55 76,-55 76,-74"/>
 <text text-anchor="middle" x="38" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">tcp_server.h</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="board__config_8h.html" target="_top" xlink:title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;...">
+<g id="a_Node000003"><a xlink:href="board__config_8h.html" target="_top" xlink:title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수.">
 <polygon fill="white" stroke="#666666" points="182,-74 94,-74 94,-55 182,-55 182,-74"/>
 <text text-anchor="middle" x="138" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">board_config.h</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="relay__ctrl_8h.html" target="_top" xlink:title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out...">
+<g id="a_Node000004"><a xlink:href="relay__ctrl_8h.html" target="_top" xlink:title="exio.h 위에 구축된 고수준 릴레이 제어 API. 릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다.">
 <polygon fill="white" stroke="#666666" points="360.5,-74 289.5,-74 289.5,-55 360.5,-55 360.5,-74"/>
 <text text-anchor="middle" x="325" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">relay_ctrl.h</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="pwm__ctrl_8h.html" target="_top" xlink:title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi...">
+<g id="a_Node000008"><a xlink:href="pwm__ctrl_8h.html" target="_top" xlink:title="두 모터 채널을 위한 LEDC 기반 RC PWM 드라이버. RC ESC / 서보 인터페이스(예: Cytron MDDS30) 호환 1000–2000 µs 펄스 폭 범위에서 50 Hz ...">
 <polygon fill="white" stroke="#666666" points="271.5,-74 200.5,-74 200.5,-55 271.5,-55 271.5,-74"/>
 <text text-anchor="middle" x="236" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_ctrl.h</text>
 </a>

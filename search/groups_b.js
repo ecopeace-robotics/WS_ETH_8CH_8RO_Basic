@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['w5500_20spi_20pin_20and_20clock_20settings_0',['Ethernet (W5500 SPI) pin and clock settings',['../group__CFG__ETH.html',1,'']]]
+  ['레지스터_20주소_0',['TCA9554 내부 레지스터 주소',['../group__CFG__TCA9554__REGS.html',1,'']]]
 ];

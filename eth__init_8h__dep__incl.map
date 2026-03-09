@@ -1,7 +1,7 @@
 <map id="main/eth_init.h" name="main/eth_init.h">
-<area shape="rect" id="Node000001" title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,..." alt="" coords="71,5,191,31"/>
+<area shape="rect" id="Node000001" title="W5500 SPI 이더넷 초기화 — SPI 버스 설정, W5500 드라이버 설치, esp_netif 구성, IP 주소 획득 시 TCP 서버 자동 시작." alt="" coords="71,5,191,31"/>
 <area shape="rect" id="Node000002" href="$eth__init_8c.html" title=" " alt="" coords="5,79,124,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,43,77,80,74,77,109,39"/>
-<area shape="rect" id="Node000003" href="$main_8c.html" title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched..." alt="" coords="148,79,251,104"/>
+<area shape="rect" id="Node000003" href="$main_8c.html" title="애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고 FreeRTOS 스케줄러에 제어를 넘긴다." alt="" coords="148,79,251,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="154,39,190,77,186,80,150,42"/>
 </map>

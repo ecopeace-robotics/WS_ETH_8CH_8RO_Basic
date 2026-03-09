@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['계획_20중인_20기능_0',['계획 중인 기능',['../changelog.html#planned',1,'']]]
+  ['내부_20레지스터_20주소_0',['TCA9554 내부 레지스터 주소',['../group__CFG__TCA9554__REGS.html',1,'']]]
 ];

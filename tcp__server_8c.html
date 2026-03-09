@@ -101,15 +101,17 @@ Include dependency graph for tcp_server.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac01c8b112ca10bc43c7727c26be82be0" id="r_ac01c8b112ca10bc43c7727c26be82be0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0">handle_command</a> (const char *cmd, char *resp_buf, int buf_size)</td></tr>
-<tr class="memdesc:ac01c8b112ca10bc43c7727c26be82be0"><td class="mdescLeft">&#160;</td><td class="mdescRight">수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성  <br /></td></tr>
+<tr class="memdesc:ac01c8b112ca10bc43c7727c26be82be0"><td class="mdescLeft">&#160;</td><td class="mdescRight">수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다.  <br /></td></tr>
 <tr class="separator:ac01c8b112ca10bc43c7727c26be82be0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a295b1a88057e038158f20bcfe1ed3dfe" id="r_a295b1a88057e038158f20bcfe1ed3dfe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp__server_8c.html#a295b1a88057e038158f20bcfe1ed3dfe">client_task</a> (void *arg)</td></tr>
+<tr class="memdesc:a295b1a88057e038158f20bcfe1ed3dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다.  <br /></td></tr>
 <tr class="separator:a295b1a88057e038158f20bcfe1ed3dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c868bc85ed2ebbea39dba6aab3ae55" id="r_a61c868bc85ed2ebbea39dba6aab3ae55"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp__server_8c.html#a61c868bc85ed2ebbea39dba6aab3ae55">tcp_server_task</a> (void *arg)</td></tr>
+<tr class="memdesc:a61c868bc85ed2ebbea39dba6aab3ae55"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP 서버 리슨 태스크. accept() 루프로 클라이언트 연결을 수락하고 연결마다 client_task를 생성한다.  <br /></td></tr>
 <tr class="separator:a61c868bc85ed2ebbea39dba6aab3ae55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c752d8c97b989346982ec521d6410eb" id="r_a3c752d8c97b989346982ec521d6410eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp__server_8c.html#a3c752d8c97b989346982ec521d6410eb">tcp_server_start</a> (void)</td></tr>
-<tr class="memdesc:a3c752d8c97b989346982ec521d6410eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨  <br /></td></tr>
-<tr class="separator:a3c752d8c97b989346982ec521d6410eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c752d8c97b989346982ec521d6410eb" id="r_ga3c752d8c97b989346982ec521d6410eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TCPServer.html#ga3c752d8c97b989346982ec521d6410eb">tcp_server_start</a> (void)</td></tr>
+<tr class="memdesc:ga3c752d8c97b989346982ec521d6410eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">TCP 서버 태스크를 생성한다.  <br /></td></tr>
+<tr class="separator:ga3c752d8c97b989346982ec521d6410eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -140,7 +142,18 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
+
+<p>개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>클라이언트 소켓 FD (int, intptr_t 캐스팅)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>수신 → 줄 파싱 → 명령 처리 루프:</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_2.svg" width="484" height="602"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+ <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8c_a295b1a88057e038158f20bcfe1ed3dfe_cgraph.svg" width="602" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
@@ -193,9 +206,20 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성 </p>
-<dl class="section return"><dt>Returns</dt><dd>응답 길이 </dd></dl>
-<div class="dynheader">
+<p>수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cmd</td><td>null-terminated 명령 문자열 (공백/CR 제거된 상태) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">resp_buf</td><td>응답 문자열을 기록할 버퍼 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buf_size</td><td>resp_buf 크기 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>응답 바이트 수</dd></dl>
+<p>명령 파싱 및 디스패치 흐름:</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_3.svg" width="586" height="923"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+ <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8c_ac01c8b112ca10bc43c7727c26be82be0_cgraph.svg" width="651" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
@@ -204,38 +228,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8c_ac01c8b112ca10bc43c7727c26be82be0_icgraph.svg" width="639" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-
-</div>
-</div>
-<a id="a3c752d8c97b989346982ec521d6410eb" name="a3c752d8c97b989346982ec521d6410eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c752d8c97b989346982ec521d6410eb">&#9670;&#160;</a></span>tcp_server_start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void tcp_server_start </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨 </p>
-<p>프로토콜 (텍스트, newline 종료): 클라이언트 → 서버: "RELAY &lt;번호&gt; ON\n" 예) "RELAY 1 ON\n" "RELAY &lt;번호&gt; OFF\n" 예) "RELAY 2 OFF\n" "STATUS\n"</p>
-<p>서버 → 클라이언트: "OK\n" 명령 성공 "ERROR\n" 잘못된 명령 "R1=ON R2=OFF ...\n" STATUS 응답 </p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8c_a3c752d8c97b989346982ec521d6410eb_cgraph.svg" width="639" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8c_a3c752d8c97b989346982ec521d6410eb_icgraph.svg" width="574" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -263,7 +255,18 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
+
+<p>TCP 서버 리슨 태스크. accept() 루프로 클라이언트 연결을 수락하고 연결마다 client_task를 생성한다. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>미사용 (NULL)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>서버 소켓 설정 및 accept 루프:</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_4.svg" width="319" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+ <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="tcp__server_8c_a61c868bc85ed2ebbea39dba6aab3ae55_cgraph.svg" width="616" height="184"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>

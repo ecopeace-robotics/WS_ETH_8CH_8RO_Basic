@@ -1,0 +1,5 @@
+<map id="eth_init" name="eth_init">
+<area shape="rect" id="Node000001" title="W5500 SPI 이더넷 초기화" alt="" coords="140,5,211,31"/>
+<area shape="rect" id="Node000002" href="$main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70" title="ESP32&#45;S3 이더넷 릴레이 컨트롤러 애플리케이션 진입점." alt="" coords="5,5,92,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,21,92,21,92,15,126,15"/>
+</map>

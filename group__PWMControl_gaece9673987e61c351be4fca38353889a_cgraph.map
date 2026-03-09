@@ -1,0 +1,5 @@
+<map id="pwm_set_us" name="pwm_set_us">
+<area shape="rect" id="Node000001" title="지정 채널의 펄스 폭 설정" alt="" coords="5,5,108,31"/>
+<area shape="rect" id="Node000002" href="$pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" title="µs 값을 16비트 LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US" alt="" coords="156,5,249,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,15,142,15,142,21,108,21"/>
+</map>

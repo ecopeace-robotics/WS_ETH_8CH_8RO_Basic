@@ -1,4 +1,4 @@
-<map id="TCA9554PWR I2C IO Expander (relay control)" name="TCA9554PWR I2C IO Expander (relay control)">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,223,45"/>
-<area shape="rect" id="Node000002" href="$group__CFG__TCA9554__REGS.html" title=" " alt="" coords="271,5,457,45"/>
+<map id="TCA9554PWR I2C IO 익스팬더 (릴레이 제어)" name="TCA9554PWR I2C IO 익스팬더 (릴레이 제어)">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,229,45"/>
+<area shape="rect" id="Node000002" href="$group__CFG__TCA9554__REGS.html" title=" " alt="" coords="277,5,467,45"/>
 </map>

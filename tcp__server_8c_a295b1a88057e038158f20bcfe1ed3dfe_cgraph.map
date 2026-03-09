@@ -1,19 +1,19 @@
 <map id="client_task" name="client_task">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,99,105"/>
-<area shape="rect" id="Node000002" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 처리하고 응답 문자열을 buf에 작성" alt="" coords="147,80,285,105"/>
+<area shape="rect" id="Node000001" title="개별 TCP 클라이언트 처리 태스크. 한 클라이언트당 하나의 태스크가 생성된다." alt="" coords="5,80,99,105"/>
+<area shape="rect" id="Node000002" href="$tcp__server_8c.html#ac01c8b112ca10bc43c7727c26be82be0" title="수신된 한 줄 명령을 파싱하고 해당 드라이버를 호출한 뒤 응답 문자열을 작성한다." alt="" coords="147,80,285,105"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,90,133,90,133,95,99,95"/>
-<area shape="rect" id="Node000003" href="$pwm__ctrl_8c.html#a7de72ade243729f4420104c859ca07b0" title="지정 채널의 현재 펄스 폭 반환 (µs)" alt="" coords="333,5,437,31"/>
+<area shape="rect" id="Node000003" href="$group__PWMControl.html#ga7de72ade243729f4420104c859ca07b0" title="지정 채널의 현재 펄스 폭 반환 (구현 상세)" alt="" coords="333,5,437,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,77,342,34,345,39,247,82"/>
-<area shape="rect" id="Node000004" href="$pwm__ctrl_8c.html#aece9673987e61c351be4fca38353889a" title="지정 채널의 펄스 폭 설정" alt="" coords="334,55,437,80"/>
+<area shape="rect" id="Node000004" href="$group__PWMControl.html#gaece9673987e61c351be4fca38353889a" title="지정 채널의 펄스 폭 설정 (구현 상세)" alt="" coords="334,55,437,80"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="285,80,320,74,321,80,286,85"/>
-<area shape="rect" id="Node000006" href="$relay__ctrl_8c.html#a3468f1f7f9ecd83b964774e744d94fc3" title="특정 릴레이의 현재 상태 조회" alt="" coords="344,104,427,129"/>
+<area shape="rect" id="Node000006" href="$group__RelayControl.html#ga3468f1f7f9ecd83b964774e744d94fc3" title="특정 릴레이의 현재 상태 조회 (구현 상세)" alt="" coords="344,104,427,129"/>
 <area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="286,100,331,106,330,112,285,105"/>
-<area shape="rect" id="Node000008" href="$relay__ctrl_8c.html#a9257d0b1dc9e9a32ef530fcb3a16e355" title="개별 릴레이 on/off" alt="" coords="344,153,427,179"/>
+<area shape="rect" id="Node000008" href="$group__RelayControl.html#ga9257d0b1dc9e9a32ef530fcb3a16e355" title="개별 릴레이 on/off (구현 상세)" alt="" coords="344,153,427,179"/>
 <area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="247,103,343,145,341,150,245,108"/>
-<area shape="rect" id="Node000005" href="$pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" title="µs 값을 16&#45;bit LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US" alt="" coords="494,55,587,80"/>
+<area shape="rect" id="Node000005" href="$pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" title="µs 값을 16비트 LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US" alt="" coords="494,55,587,80"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="437,65,480,65,480,70,437,70"/>
-<area shape="rect" id="Node000007" href="$exio_8c.html#a94127fa8672f294de65046d50d074e44" title="현재 Output 레지스터 값 읽기 (캐시된 값)" alt="" coords="485,104,596,129"/>
+<area shape="rect" id="Node000007" href="$group__EXIO.html#ga94127fa8672f294de65046d50d074e44" title="현재 Output 레지스터 값 읽기 (캐시된 값)" alt="" coords="485,104,596,129"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="427,114,471,114,471,119,427,119"/>
-<area shape="rect" id="Node000009" href="$exio_8c.html#a9cce0a114e273715293936d3a93d4223" title="특정 핀의 출력값 설정" alt="" coords="489,153,593,179"/>
+<area shape="rect" id="Node000009" href="$group__EXIO.html#ga9cce0a114e273715293936d3a93d4223" title="특정 핀의 출력값 설정 (구현 상세)" alt="" coords="489,153,593,179"/>
 <area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="427,163,475,163,475,169,427,169"/>
 </map>

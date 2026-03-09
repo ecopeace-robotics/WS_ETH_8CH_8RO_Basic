@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="exio_8h.html" target="_top" xlink:title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle...">
+<g id="a_Node000002"><a xlink:href="exio_8h.html" target="_top" xlink:title="ESP&#45;IDF v5 New I2C Master API (버스 핸들 + 디바이스 핸들 모델)를 사용하는 TCA9554PWR I2C IO 익스팬더 드라이버....">
 <polygon fill="white" stroke="#666666" points="91,-74 44,-74 44,-55 91,-55 91,-74"/>
 <text text-anchor="middle" x="67.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">exio.h</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="board__config_8h.html" target="_top" xlink:title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;...">
+<g id="a_Node000005"><a xlink:href="board__config_8h.html" target="_top" xlink:title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수.">
 <polygon fill="white" stroke="#666666" points="197.5,-74 109.5,-74 109.5,-55 197.5,-55 197.5,-74"/>
 <text text-anchor="middle" x="153.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">board_config.h</text>
 </a>

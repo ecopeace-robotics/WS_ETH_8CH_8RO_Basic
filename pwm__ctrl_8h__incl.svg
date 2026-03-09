@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi...">
+<g id="a_Node000001"><a xlink:title="두 모터 채널을 위한 LEDC 기반 RC PWM 드라이버. RC ESC / 서보 인터페이스(예: Cytron MDDS30) 호환 1000–2000 µs 펄스 폭 범위에서 50 Hz ...">
 <polygon fill="#999999" stroke="#666666" points="116.5,-74 18.5,-74 18.5,-55 116.5,-55 116.5,-74"/>
 <text text-anchor="middle" x="67.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/pwm_ctrl.h</text>
 </a>

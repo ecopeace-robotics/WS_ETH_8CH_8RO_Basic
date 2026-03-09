@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['시작_0',['빠른 시작',['../getting_started.html#quick_start',1,'']]]
+  ['변경_20이력_0',['버전별 변경 이력',['../changelog.html',1,'index']]]
 ];

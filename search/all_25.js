@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['소개_0',['소개',['../index.html#intro',1,'']]]
+  ['버전별_20변경_20이력_0',['버전별 변경 이력',['../changelog.html',1,'index']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hardware_5fsetup_2edox_0',['hardware_setup.dox',['../hardware__setup_8dox.html',1,'']]]
+  ['getting_5fstarted_2edox_0',['getting_started.dox',['../getting__started_8dox.html',1,'']]]
 ];

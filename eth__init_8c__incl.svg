@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="eth__init_8h.html" target="_top" xlink:title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,...">
+<g id="a_Node000002"><a xlink:href="eth__init_8h.html" target="_top" xlink:title="W5500 SPI 이더넷 초기화 — SPI 버스 설정, W5500 드라이버 설치, esp_netif 구성, IP 주소 획득 시 TCP 서버 자동 시작.">
 <polygon fill="white" stroke="#666666" points="62,-74 0,-74 0,-55 62,-55 62,-74"/>
 <text text-anchor="middle" x="31" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">eth_init.h</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="board__config_8h.html" target="_top" xlink:title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;...">
+<g id="a_Node000004"><a xlink:href="board__config_8h.html" target="_top" xlink:title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수.">
 <polygon fill="white" stroke="#666666" points="168,-74 80,-74 80,-55 168,-55 168,-74"/>
 <text text-anchor="middle" x="124" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">board_config.h</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="tcp__server_8h.html" target="_top" xlink:title="TCP server task that accepts text commands from a network client and dispatches them to the relay and...">
+<g id="a_Node000005"><a xlink:href="tcp__server_8h.html" target="_top" xlink:title="네트워크 클라이언트로부터 텍스트 명령을 수신하고 릴레이 및 PWM 제어 모듈로 디스패치하는 TCP 서버 태스크.">
 <polygon fill="white" stroke="#666666" points="262,-74 186,-74 186,-55 262,-55 262,-74"/>
 <text text-anchor="middle" x="224" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">tcp_server.h</text>
 </a>

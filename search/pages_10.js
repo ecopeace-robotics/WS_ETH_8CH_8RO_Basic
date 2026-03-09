@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['활용_20코드_0',['Waveshare ESP32-S3 Eth 8CH 보드 활용 코드',['../index.html',1,'']]]
+  ['이력_0',['버전별 변경 이력',['../changelog.html',1,'index']]]
 ];

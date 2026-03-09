@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ESP32-S3 Ethernet Motor Controller: Network settings</title>
+<title>ESP32-S3 Ethernet Motor Controller: 네트워크 설정</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,13 +72,13 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a>  </div>
-  <div class="headertitle"><div class="title">Network settings</div></div>
+  <div class="headertitle"><div class="title">네트워크 설정</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga0bdc8af16e4b89f47a3da381802d4147" id="r_ga0bdc8af16e4b89f47a3da381802d4147"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CFG__NET.html#ga0bdc8af16e4b89f47a3da381802d4147">ETH_USE_STATIC_IP</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:ga0bdc8af16e4b89f47a3da381802d4147" id="r_ga0bdc8af16e4b89f47a3da381802d4147"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CFG__NET.html#ga0bdc8af16e4b89f47a3da381802d4147">ETH_USE_STATIC_IP</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ga0bdc8af16e4b89f47a3da381802d4147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae73d455129460f9ef898b773eadd94fb" id="r_gae73d455129460f9ef898b773eadd94fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CFG__NET.html#gae73d455129460f9ef898b773eadd94fb">ETH_STATIC_IP</a>&#160;&#160;&#160;&quot;192.168.1.100&quot;</td></tr>
 <tr class="separator:gae73d455129460f9ef898b773eadd94fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,7 +88,7 @@ Macros</h2></td></tr>
 <tr class="separator:ga13fb8b15ceef9021a5c5d07e479ed928"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>Set <a class="el" href="group__CFG__NET.html#ga0bdc8af16e4b89f47a3da381802d4147">ETH_USE_STATIC_IP</a> to 0 to use DHCP instead of a fixed IP. </p>
+<p>현재 eth_init.c는 DHCP를 사용합니다 (ESP_NETIF_DEFAULT_ETH 기본값). 아래 고정 IP 상수는 향후 정적 IP 기능 구현 시 참조용으로 정의되어 있으며, 현재 코드에서는 사용되지 않습니다. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga13fb8b15ceef9021a5c5d07e479ed928" name="ga13fb8b15ceef9021a5c5d07e479ed928"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga13fb8b15ceef9021a5c5d07e479ed928">&#9670;&#160;</a></span>ETH_STATIC_GW</h2>
@@ -101,7 +101,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Default gateway </p>
+<p>기본 게이트웨이 (ETH_USE_STATIC_IP=1 시 사용 예정) </p>
 
 </div>
 </div>
@@ -116,7 +116,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Static IPv4 address </p>
+<p>고정 IPv4 주소 (ETH_USE_STATIC_IP=1 시 사용 예정) </p>
 
 </div>
 </div>
@@ -131,7 +131,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Subnet mask </p>
+<p>서브넷 마스크 (ETH_USE_STATIC_IP=1 시 사용 예정) </p>
 
 </div>
 </div>
@@ -142,11 +142,11 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ETH_USE_STATIC_IP&#160;&#160;&#160;1</td>
+          <td class="memname">#define ETH_USE_STATIC_IP&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>1 = static IP, 0 = DHCP </p>
+<p>1 = 고정 IP, 0 = DHCP (현재 미구현, DHCP 사용 중) </p>
 
 </div>
 </div>

@@ -85,17 +85,18 @@ $(document).ready(function() { init_codefold(0); });
 <a href="pwm__ctrl_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>esp_err_t <a class="code hl_function" href="pwm__ctrl_8h.html#a69622f0cd30c0ea4d8a6930109c1cee6">pwm_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>esp_err_t <a class="code hl_function" href="pwm__ctrl_8h.html#aece9673987e61c351be4fca38353889a">pwm_set_us</a>(uint8_t channel, uint16_t pulse_us);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>uint16_t <a class="code hl_function" href="pwm__ctrl_8h.html#a7de72ade243729f4420104c859ca07b0">pwm_get_us</a>(uint8_t channel);</div>
-<div class="ttc" id="apwm__ctrl_8h_html_a69622f0cd30c0ea4d8a6930109c1cee6"><div class="ttname"><a href="pwm__ctrl_8h.html#a69622f0cd30c0ea4d8a6930109c1cee6">pwm_init</a></div><div class="ttdeci">esp_err_t pwm_init(void)</div><div class="ttdoc">LEDC 타이머 및 2채널 RC PWM 출력 초기화 50 Hz, 14-bit, 양 채널 1500 µs (neutral) 로 시작</div><div class="ttdef"><b>Definition</b> pwm_ctrl.c:38</div></div>
-<div class="ttc" id="apwm__ctrl_8h_html_a7de72ade243729f4420104c859ca07b0"><div class="ttname"><a href="pwm__ctrl_8h.html#a7de72ade243729f4420104c859ca07b0">pwm_get_us</a></div><div class="ttdeci">uint16_t pwm_get_us(uint8_t channel)</div><div class="ttdoc">지정 채널의 현재 펄스 폭 반환 (µs)</div><div class="ttdef"><b>Definition</b> pwm_ctrl.c:109</div></div>
-<div class="ttc" id="apwm__ctrl_8h_html_aece9673987e61c351be4fca38353889a"><div class="ttname"><a href="pwm__ctrl_8h.html#aece9673987e61c351be4fca38353889a">pwm_set_us</a></div><div class="ttdeci">esp_err_t pwm_set_us(uint8_t channel, uint16_t pulse_us)</div><div class="ttdoc">지정 채널의 펄스 폭 설정</div><div class="ttdef"><b>Definition</b> pwm_ctrl.c:79</div></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>esp_err_t <a class="code hl_function" href="group__PWMControl.html#ga69622f0cd30c0ea4d8a6930109c1cee6">pwm_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>esp_err_t <a class="code hl_function" href="group__PWMControl.html#gaece9673987e61c351be4fca38353889a">pwm_set_us</a>(uint8_t channel, uint16_t pulse_us);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>uint16_t <a class="code hl_function" href="group__PWMControl.html#ga7de72ade243729f4420104c859ca07b0">pwm_get_us</a>(uint8_t channel);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+  <span class="comment">// PWMControl 그룹 끝</span><div class="ttc" id="agroup__PWMControl_html_ga69622f0cd30c0ea4d8a6930109c1cee6"><div class="ttname"><a href="group__PWMControl.html#ga69622f0cd30c0ea4d8a6930109c1cee6">pwm_init</a></div><div class="ttdeci">esp_err_t pwm_init(void)</div><div class="ttdoc">LEDC 타이머 및 2채널 RC PWM 출력 초기화 50 Hz, 14비트, 양 채널 1500 µs (중립) 로 시작</div><div class="ttdef"><b>Definition</b> pwm_ctrl.c:59</div></div>
+<div class="ttc" id="agroup__PWMControl_html_ga7de72ade243729f4420104c859ca07b0"><div class="ttname"><a href="group__PWMControl.html#ga7de72ade243729f4420104c859ca07b0">pwm_get_us</a></div><div class="ttdeci">uint16_t pwm_get_us(uint8_t channel)</div><div class="ttdoc">지정 채널의 현재 펄스 폭 반환 (µs)</div><div class="ttdef"><b>Definition</b> pwm_ctrl.c:167</div></div>
+<div class="ttc" id="agroup__PWMControl_html_gaece9673987e61c351be4fca38353889a"><div class="ttname"><a href="group__PWMControl.html#gaece9673987e61c351be4fca38353889a">pwm_set_us</a></div><div class="ttdeci">esp_err_t pwm_set_us(uint8_t channel, uint16_t pulse_us)</div><div class="ttdoc">지정 채널의 펄스 폭 설정</div><div class="ttdef"><b>Definition</b> pwm_ctrl.c:130</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

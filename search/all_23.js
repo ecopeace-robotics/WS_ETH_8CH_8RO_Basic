@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['빠른_20시작_0',['빠른 시작',['../getting_started.html#quick_start',1,'']]]
+  ['방법_0',['빌드 방법',['../index.html#build',1,'']]]
 ];

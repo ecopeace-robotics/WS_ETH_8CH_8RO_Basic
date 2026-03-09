@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle...">
+<g id="a_Node000001"><a xlink:title="ESP&#45;IDF v5 New I2C Master API (버스 핸들 + 디바이스 핸들 모델)를 사용하는 TCA9554PWR I2C IO 익스팬더 드라이버....">
 <polygon fill="#999999" stroke="#666666" points="104.5,-74 30.5,-74 30.5,-55 104.5,-55 104.5,-74"/>
 <text text-anchor="middle" x="67.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/exio.h</text>
 </a>

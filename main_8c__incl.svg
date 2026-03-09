@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched...">
+<g id="a_Node000001"><a xlink:title="애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고 FreeRTOS 스케줄러에 제어를 넘긴다.">
 <polygon fill="#999999" stroke="#666666" points="376,-129 299,-129 299,-110 376,-110 376,-129"/>
 <text text-anchor="middle" x="337.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">main/main.c</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="exio_8h.html" target="_top" xlink:title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle...">
+<g id="a_Node000006"><a xlink:href="exio_8h.html" target="_top" xlink:title="ESP&#45;IDF v5 New I2C Master API (버스 핸들 + 디바이스 핸들 모델)를 사용하는 TCA9554PWR I2C IO 익스팬더 드라이버....">
 <polygon fill="white" stroke="#666666" points="400,-74 353,-74 353,-55 400,-55 400,-74"/>
 <text text-anchor="middle" x="376.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">exio.h</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Node9 -->
 <g id="Node000009" class="node">
 <title>Node9</title>
-<g id="a_Node000009"><a xlink:href="relay__ctrl_8h.html" target="_top" xlink:title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out...">
+<g id="a_Node000009"><a xlink:href="relay__ctrl_8h.html" target="_top" xlink:title="exio.h 위에 구축된 고수준 릴레이 제어 API. 릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다.">
 <polygon fill="white" stroke="#666666" points="659,-74 588,-74 588,-55 659,-55 659,-74"/>
 <text text-anchor="middle" x="623.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">relay_ctrl.h</text>
 </a>
@@ -128,7 +128,7 @@
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="pwm__ctrl_8h.html" target="_top" xlink:title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi...">
+<g id="a_Node000011"><a xlink:href="pwm__ctrl_8h.html" target="_top" xlink:title="두 모터 채널을 위한 LEDC 기반 RC PWM 드라이버. RC ESC / 서보 인터페이스(예: Cytron MDDS30) 호환 1000–2000 µs 펄스 폭 범위에서 50 Hz ...">
 <polygon fill="white" stroke="#666666" points="489,-74 418,-74 418,-55 489,-55 489,-74"/>
 <text text-anchor="middle" x="453.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_ctrl.h</text>
 </a>
@@ -146,7 +146,7 @@
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="eth__init_8h.html" target="_top" xlink:title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,...">
+<g id="a_Node000012"><a xlink:href="eth__init_8h.html" target="_top" xlink:title="W5500 SPI 이더넷 초기화 — SPI 버스 설정, W5500 드라이버 설치, esp_netif 구성, IP 주소 획득 시 TCP 서버 자동 시작.">
 <polygon fill="white" stroke="#666666" points="569.5,-74 507.5,-74 507.5,-55 569.5,-55 569.5,-74"/>
 <text text-anchor="middle" x="538.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">eth_init.h</text>
 </a>

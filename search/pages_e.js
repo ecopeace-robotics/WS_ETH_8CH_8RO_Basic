@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['코드_0',['Waveshare ESP32-S3 Eth 8CH 보드 활용 코드',['../index.html',1,'']]]
+  ['시스템_20아키텍처_20및_20데이터_20흐름_0',['시스템 아키텍처 및 데이터 흐름',['../architecture.html',1,'index']]]
 ];

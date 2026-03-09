@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['중인_20기능_0',['계획 중인 기능',['../changelog.html#planned',1,'']]]
+  ['빠른_20시작_0',['빠른 시작',['../getting_started.html#quick_start',1,'']]]
 ];

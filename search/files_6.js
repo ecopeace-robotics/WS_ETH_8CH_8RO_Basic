@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pwm_5fctrl_2ec_0',['pwm_ctrl.c',['../pwm__ctrl_8c.html',1,'']]],
-  ['pwm_5fctrl_2eh_1',['pwm_ctrl.h',['../pwm__ctrl_8h.html',1,'']]]
+  ['main_2ec_0',['main.c',['../main_8c.html',1,'']]],
+  ['mainpage_2edox_1',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
+  ['mdds30_5fhowto_2emd_2',['MDDS30_Howto.md',['../MDDS30__Howto_8md.html',1,'']]]
 ];

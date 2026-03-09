@@ -1,5 +1,5 @@
 <map id="main/relay_ctrl.h" name="main/relay_ctrl.h">
-<area shape="rect" id="Node000001" title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out..." alt="" coords="87,5,219,31"/>
+<area shape="rect" id="Node000001" title="exio.h 위에 구축된 고수준 릴레이 제어 API. 릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다." alt="" coords="87,5,219,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,87,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,33,76,73,73,69,134,28"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="111,79,194,104"/>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['핀_0',['핀',['../hardware_setup.html#eth_pins',1,'Ethernet 핀'],['../hardware_setup.html#pwm_pins',1,'PWM 출력 핀']]],
-  ['핀_20배치_1',['핀 배치',['../hardware_setup.html#pinout',1,'']]],
-  ['핀_20exio_2',['I2C 핀 (EXIO)',['../hardware_setup.html#i2c_pins',1,'']]]
+  ['시스템_20아키텍처_20및_20데이터_20흐름_0',['시스템 아키텍처 및 데이터 흐름',['../architecture.html',1,'index']]],
+  ['시작_1',['빠른 시작',['../getting_started.html#quick_start',1,'']]]
 ];

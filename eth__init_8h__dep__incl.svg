@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="W5500 SPI Ethernet initialisation — sets up the SPI bus, installs the W5500 driver,...">
+<g id="a_Node000001"><a xlink:title="W5500 SPI 이더넷 초기화 — SPI 버스 설정, W5500 드라이버 설치, esp_netif 구성, IP 주소 획득 시 TCP 서버 자동 시작.">
 <polygon fill="#999999" stroke="#666666" points="139.5,-74 49.5,-74 49.5,-55 139.5,-55 139.5,-74"/>
 <text text-anchor="middle" x="94.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/eth_init.h</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="main_8c.html" target="_top" xlink:title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched...">
+<g id="a_Node000003"><a xlink:href="main_8c.html" target="_top" xlink:title="애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고 FreeRTOS 스케줄러에 제어를 넘긴다.">
 <polygon fill="white" stroke="#666666" points="184,-19 107,-19 107,0 184,0 184,-19"/>
 <text text-anchor="middle" x="145.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">main/main.c</text>
 </a>

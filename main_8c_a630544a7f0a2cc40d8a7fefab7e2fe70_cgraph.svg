@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Application entry point for the ESP32&#45;S3 Ethernet Relay Controller.">
+<g id="a_Node000001"><a xlink:title="ESP32&#45;S3 이더넷 릴레이 컨트롤러 애플리케이션 진입점.">
 <polygon fill="#999999" stroke="#666666" points="65,-75 0,-75 0,-56 65,-56 65,-75"/>
 <text text-anchor="middle" x="32.5" y="-63" font-family="Helvetica,sans-Serif" font-size="10.00">app_main</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="eth__init_8c.html#a8704f04057e1ef0c316f73f27cf1fed2" target="_top" xlink:title="W5500 SPI Ethernet 초기화">
+<g id="a_Node000002"><a xlink:href="group__EthInit.html#ga8704f04057e1ef0c316f73f27cf1fed2" target="_top" xlink:title="W5500 SPI 이더넷 초기화 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="158.5,-132 105.5,-132 105.5,-113 158.5,-113 158.5,-132"/>
 <text text-anchor="middle" x="132" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">eth_init</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="exio_8c.html#added84f4b7edf374640bcad7d2d31aa3" target="_top" xlink:title="TCA9554PWR I2C IO 익스팬더 초기화 (New I2C Master API)">
+<g id="a_Node000017"><a xlink:href="group__EXIO.html#gadded84f4b7edf374640bcad7d2d31aa3" target="_top" xlink:title="TCA9554PWR I2C IO 익스팬더 초기화 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="161.5,-94 102.5,-94 102.5,-75 161.5,-75 161.5,-94"/>
 <text text-anchor="middle" x="132" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">exio_init</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="pwm__ctrl_8c.html#a69622f0cd30c0ea4d8a6930109c1cee6" target="_top" xlink:title="LEDC 타이머 및 2채널 RC PWM 출력 초기화 50 Hz, 14&#45;bit, 양 채널 1500 µs (neutral) 로 시작">
+<g id="a_Node000018"><a xlink:href="group__PWMControl.html#ga69622f0cd30c0ea4d8a6930109c1cee6" target="_top" xlink:title="LEDC 타이머 및 2채널 RC PWM 초기화 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="163,-56 101,-56 101,-37 163,-37 163,-56"/>
 <text text-anchor="middle" x="132" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">pwm_init</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node19 -->
 <g id="Node000019" class="node">
 <title>Node19</title>
-<g id="a_Node000019"><a xlink:href="relay__ctrl_8c.html#a1e314a25cce1763fddcfdac8083a9777" target="_top" xlink:title="릴레이 제어 초기화 (exio_init() 이후 호출) 전체 릴레이 OFF 상태로 시작">
+<g id="a_Node000019"><a xlink:href="group__RelayControl.html#ga1e314a25cce1763fddcfdac8083a9777" target="_top" xlink:title="릴레이 초기 상태 설정 (구현 상세)">
 <polygon fill="white" stroke="#666666" points="163,-19 101,-19 101,0 163,0 163,-19"/>
 <text text-anchor="middle" x="132" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">relay_init</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="eth__init_8c.html#a887205b7c1e4959308a96c51d46e9ddd" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="eth__init_8c.html#a887205b7c1e4959308a96c51d46e9ddd" target="_top" xlink:title="Ethernet 링크/상태 이벤트 핸들러 (ETHERNET_EVENT_*) 링크 UP/DOWN, Start/Stop 상태를 로그로 기록한다.">
 <polygon fill="white" stroke="#666666" points="306,-169 199,-169 199,-150 306,-150 306,-169"/>
 <text text-anchor="middle" x="252.5" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00">eth_event_handler</text>
 </a>
@@ -110,7 +110,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="eth__init_8c.html#abfb9112243ef468009b3cf807c91f49f" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="eth__init_8c.html#abfb9112243ef468009b3cf807c91f49f" target="_top" xlink:title="IP 획득 이벤트 핸들러 (IP_EVENT_ETH_GOT_IP) 최초 IP 획득 시 tcp_server_start()를 한 번만 호출한다.">
 <polygon fill="white" stroke="#666666" points="303,-132 202,-132 202,-113 303,-113 303,-132"/>
 <text text-anchor="middle" x="252.5" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">ip_event_handler</text>
 </a>
@@ -128,7 +128,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="tcp__server_8c.html#a3c752d8c97b989346982ec521d6410eb" target="_top" xlink:title="TCP 서버 시작 (FreeRTOS 태스크 생성) IP 획득 이벤트 후 eth_init.c에서 자동 호출됨">
+<g id="a_Node000005"><a xlink:href="group__TCPServer.html#ga3c752d8c97b989346982ec521d6410eb" target="_top" xlink:title="TCP 서버 태스크를 생성한다.">
 <polygon fill="#fff0f0" stroke="red" points="443,-132 348,-132 348,-113 443,-113 443,-132"/>
 <text text-anchor="middle" x="395.5" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">tcp_server_start</text>
 </a>
@@ -146,7 +146,7 @@
 <!-- Node16 -->
 <g id="Node000016" class="node">
 <title>Node16</title>
-<g id="a_Node000016"><a xlink:href="exio_8c.html#a3be2aab1c8cf73ebd39ed0b75747bdd0" target="_top" xlink:title="TCA9554 레지스터에 1바이트 쓰기">
+<g id="a_Node000016"><a xlink:href="exio_8c.html#a3be2aab1c8cf73ebd39ed0b75747bdd0" target="_top" xlink:title="TCA9554 레지스터에 1바이트 쓴다">
 <polygon fill="white" stroke="#666666" points="449,-57 342,-57 342,-38 449,-38 449,-57"/>
 <text text-anchor="middle" x="395.5" y="-45" font-family="Helvetica,sans-Serif" font-size="10.00">tca9554_write_reg</text>
 </a>
@@ -164,7 +164,7 @@
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" target="_top" xlink:title="µs 값을 16&#45;bit LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US">
+<g id="a_Node000011"><a xlink:href="pwm__ctrl_8c.html#aad99c3cbe46af3b0ce91ba1d9c97917f" target="_top" xlink:title="µs 값을 16비트 LEDC duty 값으로 변환 duty = pulse_us * 65536 / PWM_PERIOD_US">
 <polygon fill="white" stroke="#666666" points="287.5,-56 217.5,-56 217.5,-37 287.5,-37 287.5,-56"/>
 <text text-anchor="middle" x="252.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">us_to_duty</text>
 </a>
@@ -182,7 +182,7 @@
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="exio_8c.html#ae98e84b204558738c57005149e192cca" target="_top" xlink:title="8비트 마스크로 전체 포트 한번에 쓰기">
+<g id="a_Node000020"><a xlink:href="group__EXIO.html#gae98e84b204558738c57005149e192cca" target="_top" xlink:title="8비트 비트마스크로 전체 포트 한번에 쓰기">
 <polygon fill="white" stroke="#666666" points="298.5,-19 206.5,-19 206.5,0 298.5,0 298.5,-19"/>
 <text text-anchor="middle" x="252.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">exio_write_port</text>
 </a>

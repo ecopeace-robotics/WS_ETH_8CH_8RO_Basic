@@ -1,12 +1,12 @@
 <map id="main/tcp_server.c" name="main/tcp_server.c">
 <area shape="rect" id="Node000001" title=" " alt="" coords="703,5,841,31"/>
-<area shape="rect" id="Node000002" href="$tcp__server_8h.html" title="TCP server task that accepts text commands from a network client and dispatches them to the relay and..." alt="" coords="5,79,107,104"/>
+<area shape="rect" id="Node000002" href="$tcp__server_8h.html" title="네트워크 클라이언트로부터 텍스트 명령을 수신하고 릴레이 및 PWM 제어 모듈로 디스패치하는 TCP 서버 태스크." alt="" coords="5,79,107,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="703,26,451,46,289,61,121,81,120,76,288,56,451,40,703,21"/>
-<area shape="rect" id="Node000003" href="$board__config_8h.html" title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;..." alt="" coords="131,79,248,104"/>
+<area shape="rect" id="Node000003" href="$board__config_8h.html" title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수." alt="" coords="131,79,248,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="703,29,509,50,262,81,261,76,509,45,703,24"/>
-<area shape="rect" id="Node000004" href="$relay__ctrl_8h.html" title="High&#45;level relay control API built on top of exio.h. Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 out..." alt="" coords="391,79,486,104"/>
+<area shape="rect" id="Node000004" href="$relay__ctrl_8h.html" title="exio.h 위에 구축된 고수준 릴레이 제어 API. 릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다." alt="" coords="391,79,486,104"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="719,33,500,80,499,75,718,28"/>
-<area shape="rect" id="Node000008" href="$pwm__ctrl_8h.html" title="LEDC&#45;based RC PWM driver for two motor channels. Generates 50 Hz signals in the 1000–2000 µs pulse&#45;wi..." alt="" coords="273,79,367,104"/>
+<area shape="rect" id="Node000008" href="$pwm__ctrl_8h.html" title="두 모터 채널을 위한 LEDC 기반 RC PWM 드라이버. RC ESC / 서보 인터페이스(예: Cytron MDDS30) 호환 1000–2000 µs 펄스 폭 범위에서 50 Hz ..." alt="" coords="273,79,367,104"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="704,31,381,81,380,76,703,26"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="510,79,594,104"/>
 <area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="737,33,601,77,600,72,736,28"/>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['addresses_0',['TCA9554 internal register addresses',['../group__CFG__TCA9554__REGS.html',1,'']]],
-  ['and_20clock_20settings_1',['Ethernet (W5500 SPI) pin and clock settings',['../group__CFG__ETH.html',1,'']]]
+  ['ethernet_20w5500_20spi_20핀_20및_20클록_20설정_0',['Ethernet (W5500 SPI) 핀 및 클록 설정',['../group__CFG__ETH.html',1,'']]]
 ];

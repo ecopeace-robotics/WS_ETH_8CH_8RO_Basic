@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['활용_20코드_0',['Waveshare ESP32-S3 Eth 8CH 보드 활용 코드',['../index.html',1,'']]]
+  ['이더넷_20초기화_0',['W5500 이더넷 초기화',['../group__EthInit.html',1,'']]],
+  ['이력_1',['버전별 변경 이력',['../changelog.html',1,'index']]]
 ];

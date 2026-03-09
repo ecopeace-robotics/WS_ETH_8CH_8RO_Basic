@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;...">
+<g id="a_Node000001"><a xlink:title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수.">
 <polygon fill="#999999" stroke="#666666" points="254.5,-74 138.5,-74 138.5,-55 254.5,-55 254.5,-74"/>
 <text text-anchor="middle" x="196.5" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/board_config.h</text>
 </a>

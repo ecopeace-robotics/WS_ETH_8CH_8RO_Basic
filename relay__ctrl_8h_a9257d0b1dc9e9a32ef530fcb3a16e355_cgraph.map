@@ -1,7 +1,0 @@
-<map id="relay_set" name="relay_set">
-<area shape="rect" id="Node000001" title="개별 릴레이 on/off" alt="" coords="5,5,88,31"/>
-<area shape="rect" id="Node000002" href="$exio_8c.html#a9cce0a114e273715293936d3a93d4223" title="특정 핀의 출력값 설정" alt="" coords="136,5,240,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,15,122,15,122,21,88,21"/>
-<area shape="rect" id="Node000003" href="$exio_8c.html#a3be2aab1c8cf73ebd39ed0b75747bdd0" title="TCA9554 레지스터에 1바이트 쓰기" alt="" coords="288,5,431,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,15,274,15,274,21,240,21"/>
-</map>

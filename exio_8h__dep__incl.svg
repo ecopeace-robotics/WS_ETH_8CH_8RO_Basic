@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="TCA9554PWR I2C IO expander driver using the ESP&#45;IDF v5 New I2C Master API (bus handle + device handle...">
+<g id="a_Node000001"><a xlink:title="ESP&#45;IDF v5 New I2C Master API (버스 핸들 + 디바이스 핸들 모델)를 사용하는 TCA9554PWR I2C IO 익스팬더 드라이버....">
 <polygon fill="#999999" stroke="#666666" points="168,-74 94,-74 94,-55 168,-55 168,-74"/>
 <text text-anchor="middle" x="131" y="-62" font-family="Helvetica,sans-Serif" font-size="10.00">main/exio.h</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="main_8c.html" target="_top" xlink:title="Application entry point — initialises all subsystems in order and hands control to the FreeRTOS sched...">
+<g id="a_Node000003"><a xlink:href="main_8c.html" target="_top" xlink:title="애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고 FreeRTOS 스케줄러에 제어를 넘긴다.">
 <polygon fill="white" stroke="#666666" points="169.5,-19 92.5,-19 92.5,0 169.5,0 169.5,-19"/>
 <text text-anchor="middle" x="131" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">main/main.c</text>
 </a>

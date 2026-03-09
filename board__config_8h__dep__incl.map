@@ -1,5 +1,5 @@
 <map id="main/board_config.h" name="main/board_config.h">
-<area shape="rect" id="Node000001" title="Hardware pin assignments and compile&#45;time configuration constants for the Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;..." alt="" coords="190,5,345,31"/>
+<area shape="rect" id="Node000001" title="Waveshare ESP32&#45;S3&#45;ETH&#45;8DI&#45;8RO 보드용 하드웨어 핀 배정 및 컴파일 타임 설정 상수." alt="" coords="190,5,345,31"/>
 <area shape="rect" id="Node000002" href="$eth__init_8c.html" title=" " alt="" coords="5,79,124,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,38,98,81,97,76,221,33"/>
 <area shape="rect" id="Node000003" href="$exio_8c.html" title=" " alt="" coords="149,79,247,104"/>
