@@ -75,19 +75,20 @@ typedef struct {
 
 ```c
 /**
- * @file    sensor_adc.h
- * @brief   ADC 기반 센서 읽기 모듈 공개 API
+ * @file    relay_ctrl.h
+ * @brief   exio.h 위에 구축된 고수준 릴레이 제어 API.
+ *          릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다.
  *
  * @details
- * ADC1 채널을 초기화하고 멀티샘플링 평균값을 반환한다.
- * ESP32-S3 기준 12bit 해상도 사용.
- * Wi-Fi와 충돌하는 ADC2는 사용하지 않는다.
+ * TCA9554PWR I2C IO 익스팬더를 통해 8채널 릴레이를 제어한다.
+ * Active Level (HIGH/LOW) 추상화로 회로도 극성 변화에 대응할 수 있다.
  *
  * 사용 예시:
  * @code
- * sensor_adc_init(ADC1_CHANNEL_0, ADC_ATTEN_DB_11);
- * int mv = 0;
- * sensor_adc_read(&mv);
+ * relay_init();
+ * relay_set(RELAY_1, true);   // 릴레이 1 ON
+ * relay_set(RELAY_2, false);  // 릴레이 2 OFF
+ * bool on = relay_get(RELAY_1);
  * @endcode
  *
  * @author  홍길동
@@ -210,20 +211,21 @@ void app_main(void);
 
 ```c
 /**
- * @brief   ADC 채널을 초기화한다.
+ * @brief   개별 릴레이 on/off
  *
- * @param[in]   channel   초기화할 ADC1 채널 번호
- * @param[in]   atten     감쇠 설정 (adc_atten_t)
+ * @param[in] id  RELAY_1 ~ RELAY_8
+ * @param[in] on  true=ON, false=OFF
  *
  * @return
- *   - ESP_OK   : 초기화 성공
- *   - ESP_FAIL : 채널 설정 실패
+ *   - ESP_OK              : 성공
+ *   - ESP_ERR_INVALID_ARG : id가 RELAY_MAX 이상
  *
- * @note ADC2는 Wi-Fi 사용 중 충돌 가능. ADC1만 사용할 것.
+ * @note 내부적으로 exio_set_pin()을 호출한다.
+ *       RELAY_ACTIVE_LEVEL에 따라 HIGH/LOW가 결정된다.
  *
- * @see sensor_adc_read()
+ * @see relay_get(), relay_get_all(), EXIO
  */
-esp_err_t sensor_adc_init(adc1_channel_t channel, adc_atten_t atten);
+esp_err_t relay_set(relay_id_t id, bool on);
 ```
 
 ### .c 파일 — 내부 구현 흐름 (복잡한 함수만)
@@ -319,13 +321,20 @@ typedef struct {
 
 ```c
 /**
- * @brief   센서 동작 상태
+ * @brief   TCA9554 출력 비트에 매핑된 릴레이 채널 식별자.
+ *          RELAY_1은 비트 0 (EXIO1)에, RELAY_8은 비트 7 (EXIO8)에 대응한다.
  */
 typedef enum {
-    SENSOR_STATE_IDLE    = 0,  /**< 초기화 전 또는 대기 상태 */
-    SENSOR_STATE_RUNNING = 1,  /**< 정상 측정 중 */
-    SENSOR_STATE_ERROR   = 2,  /**< 오류 발생 */
-} sensor_state_t;
+    RELAY_1 = 0,   /**< EXIO1 — 비트 0 */
+    RELAY_2,       /**< EXIO2 — 비트 1 */
+    RELAY_3,       /**< EXIO3 — 비트 2 */
+    RELAY_4,       /**< EXIO4 — 비트 3 */
+    RELAY_5,       /**< EXIO5 — 비트 4 */
+    RELAY_6,       /**< EXIO6 — 비트 5 */
+    RELAY_7,       /**< EXIO7 — 비트 6 */
+    RELAY_8,       /**< EXIO8 — 비트 7 */
+    RELAY_MAX      /**< 경계값 (사용 금지) */
+} relay_id_t;
 ```
 
 ### 매크로
@@ -755,12 +764,13 @@ digraph Example {
 
 | 항목      | 내용       |
 |-----------|-----------|
-| 버전      | 1.5       |
+| 버전      | 1.6       |
 | 작성자    | 홍길동    |
 | 최초 작성 | 2025-03-05 |
 | 최종 수정 | 2026-03-09 |
 
 **변경 이력:**
+- **v1.6** (2026-03-09): §3·§4·§5 코드 예시를 실제 프로젝트 코드로 전환 (Top 3 섹션) — §3 .h 파일 헤더 sensor_adc.h → relay_ctrl.h, §4 .h API 명세 sensor_adc_init → relay_set, §5 열거형 sensor_state_t → relay_id_t (전체 RELAY_1~RELAY_8 매핑)
 - **v1.5** (2026-03-09): §1·§4 static 함수/변수 문서화 기준 추가 (내부 학습 목적 반영) — static 함수를 필수 수준으로 격상, 상세 주석 작성 템플릿 제공, static 변수 주석 기준 정의
 - **v1.4** (2026-03-09): §8 `@defgroup`/`@ingroup` 설명 강화 (왜 모듈 그룹화가 필요한지, 예시 구조), `@see` 사용 기준 추가, @code 사용 가이드 추가
 - **v1.3** (2026-03-09): §3 main.c 예시를 실제 코드 구조(파일 헤더 텍스트 목록 + 함수 주석 Graphviz)로 수정, 파일 헤더 vs 함수 주석 역할 구분 설명 추가
