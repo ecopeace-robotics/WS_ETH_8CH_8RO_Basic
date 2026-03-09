@@ -72,15 +72,14 @@ INPUT = main/ docs/
 
 ```c
 /**
- * @mainpage ESP32 Sensor Firmware
+ * @mainpage Waveshare ESP32-S3 Eth 8CH 보드 활용 코드
  *
  * @section intro 소개
- * I2C/ADC 기반 멀티센서 제어 펌웨어입니다.
- * ESP32-S3 기준으로 작성되었습니다.
+ * Waveshare ESP32-S3 Eth 8ch 보드 활용 api, 기본 탑재 페리페럴 제어로 활용은 이후 알아서
  *
  * @section hardware 하드웨어
- * - 보드: ESP32-S3-DevKitC
- * - 센서/모듈: DHT22, BMP280
+ * - 보드: Waveshare ESP32-S3-ETH-8ch-8DI-8RO
+ * - 기타 유사보드(8DO)는 테스트 후 업데이트 예정
  *
  * @section build 빌드 방법
  * @code
@@ -89,7 +88,7 @@ INPUT = main/ docs/
  */
 ```
 
-나중에 모듈이 생기면 `@ref`를, 별도 페이지가 생기면 `@subpage`를 그때그때 추가합니다.
+프로젝트가 진행되면서 `@subpage` 링크가 필요하면 추가합니다 (아래 섹션 5 참고).
 
 ---
 
@@ -99,7 +98,7 @@ INPUT = main/ docs/
 
 ```c
 /**
- * @mainpage ESP32 Sensor Firmware
+ * @mainpage Waveshare ESP32-S3 Eth 8CH 보드 활용 코드
 ```
 
 `@mainpage` 바로 뒤의 텍스트가 **HTML 표지의 제목**이 됩니다. Doxyfile의 `PROJECT_NAME`과 별개이므로 보통 동일하게 맞춥니다.
@@ -146,6 +145,7 @@ INPUT = main/ docs/
 
 ```c
  * @section pages 문서 목차
+ * - @subpage architecture    — 시스템 아키텍처 및 데이터 흐름
  * - @subpage hardware_setup  — 하드웨어 설정 및 결선도
  * - @subpage getting_started — 개발환경 설정 및 Quick Start
  * - @subpage changelog       — 버전별 변경 이력
@@ -171,17 +171,21 @@ INPUT = main/ docs/
 
 ```c
  * @section modules 주요 모듈
- * - @ref SensorADC  — ADC 센서 드라이버
- * - @ref MqttClient — MQTT 통신 모듈
+ * - @ref EXIO         — TCA9554 IO 익스팬더 드라이버
+ * - @ref RelayControl — 8채널 릴레이 제어
+ * - @ref PWMControl   — RC PWM 출력 제어 (Cytron MDDS30)
+ * - @ref TCPServer    — TCP 명령 서버 (포트 8080)
+ * - @ref EthInit      — W5500 SPI Ethernet 드라이버
 ```
 
-`SensorADC`는 소스코드 어딘가에 아래처럼 정의되어 있어야 합니다.
+`EXIO`는 소스코드 어딘가에 아래처럼 정의되어 있어야 합니다.
 
 ```c
-/* sensor_adc.h */
+/* main/exio.h */
 /**
- * @defgroup SensorADC ADC 센서 드라이버
- * @brief    ADC 기반 센서 읽기 모듈 전체 API
+ * @defgroup EXIO TCA9554 IO 익스팬더 드라이버
+ * @brief    I2C 기반 8채널 디지털 출력 확장 모듈
+ * @ingroup  HardwareDrivers
  */
 ```
 
@@ -208,9 +212,14 @@ INPUT = main/ docs/
  * @endcode
 
  * \dot
- * digraph BootFlow {
- *     node [shape=box];
- *     app_main -> sensor_init;
+ * digraph SystemDataFlow {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *     Network   [label="네트워크 (TCP)", shape=ellipse, style=filled, fillcolor=lightblue];
+ *     TCPServer [label="TCP 서버\n(tcp_server.c)"];
+ *     Relay     [label="릴레이 제어\n(relay_ctrl.c)"];
+ *     Network -> TCPServer [label=" 명령 수신", dir=both];
+ *     TCPServer -> Relay   [label=" 릴레이 ON/OFF"];
  * }
  * \enddot
 ```
@@ -225,14 +234,14 @@ INPUT = main/ docs/
 
 ```c
 /**
- * @mainpage [프로젝트 이름]
+ * @mainpage Waveshare ESP32-S3 Eth 8CH 보드 활용 코드
  *
  * @section intro 소개
- * [두세 줄 설명]
+ * Waveshare ESP32-S3 Eth 8ch 보드 활용 api, 기본 탑재 페리페럴 제어로 활용은 이후 알아서
  *
  * @section hardware 하드웨어
- * - 보드: [보드명]
- * - 센서/모듈: [부품명]
+ * - 보드: Waveshare ESP32-S3-ETH-8ch-8DI-8RO
+ * - 기타 유사보드(8DO)는 테스트 후 업데이트 예정
  *
  * @section build 빌드 방법
  * @code
@@ -245,15 +254,19 @@ INPUT = main/ docs/
 
 ```c
  * @section modules 주요 모듈
- * - @ref SensorADC  — ADC 센서 드라이버
- * - @ref MqttClient — MQTT 통신 모듈
+ * - @ref EXIO         — TCA9554 IO 익스팬더 드라이버
+ * - @ref RelayControl — 8채널 릴레이 제어
+ * - @ref PWMControl   — RC PWM 출력 제어
+ * - @ref TCPServer    — TCP 명령 서버
 ```
 
 ### 문서가 많아질 때 — @subpage 추가
 
 ```c
  * @section pages 문서 목차
+ * - @subpage architecture    — 시스템 아키텍처 및 데이터 흐름
  * - @subpage hardware_setup  — 하드웨어 설정 및 결선도
+ * - @subpage getting_started — 개발환경 설정 및 Quick Start
  * - @subpage changelog       — 버전별 변경 이력
 ```
 
@@ -267,20 +280,30 @@ INPUT = main/ docs/
 
 ```c
 /**
- * @page hardware_setup 하드웨어 설정
+ * @page hardware_setup 하드웨어 설정 및 결선도
  *
- * @section wiring 결선도
- * | ESP32 핀 | 센서 핀 | 설명       |
- * |----------|---------|------------|
- * | GPIO 21  | SDA     | I2C 데이터 |
- * | GPIO 22  | SCL     | I2C 클럭   |
+ * @section board_overview 보드 개요
+ * Waveshare ESP32-S3-ETH-8CH-8DI-8RO 보드 기반.
  *
- * @section power 전원 요구사항
- * 센서는 3.3V 단일 전원으로 구동됩니다.
+ * @section pinout 핀 배치
+ * @subsection eth_pins Ethernet 핀 (W5500 SPI)
+ * | 신호   | GPIO |
+ * |--------|------|
+ * | MOSI   | 11   |
+ * | MISO   | 13   |
+ * | CLK    | 12   |
+ * | CS     | 10   |
+ * | INT    | 9    |
  *
- * @section constraints 하드웨어 제약
- * - 전원 공급 범위: 3.0V ~ 3.6V (초과 시 소자 손상)
- * - GPIO 0번 핀 사용 금지 — 부팅 모드 핀과 충돌
+ * @subsection i2c_pins I2C 핀 (EXIO)
+ * | 신호 | GPIO | 주소   |
+ * |------|------|--------|
+ * | SDA  | 6    | 0x20   |
+ * | SCL  | 7    |        |
+ *
+ * @subsection pwm_pins PWM 출력 핀
+ * - CH1: GPIO47, CH2: GPIO48
+ * - 범위: 1000 ~ 2000 µs (neutral: 1500 µs)
  */
 ```
 
@@ -290,12 +313,16 @@ INPUT = main/ docs/
 /**
  * @page changelog 변경 이력
  *
- * @section v1_1_0 v1.1.0 (2025-03-15)
- * - 습도 읽기 오류 수정
- * - ADC 샘플링 횟수 조정
+ * @section v0_2_0 v0.2.0 (2025-03-09)
+ * - RC PWM 출력 채널 추가 (Cytron MDDS30 지원)
+ * - TCP 명령어 프로토콜 확장 (PWM N UUUU)
+ * - 릴레이 상태 피드백 추가
  *
- * @section v1_0_0 v1.0.0 (2025-03-01)
- * - 최초 릴리즈
+ * @section v0_1_0 v0.1.0 (2025-03-01)
+ * - W5500 Ethernet 초기화
+ * - TCP 서버 구현 (기본 RELAY 명령)
+ * - EXIO TCA9554 드라이버 구현
+ * - 8채널 릴레이 제어 API
  */
 ```
 
