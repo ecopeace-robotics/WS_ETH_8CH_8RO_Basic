@@ -1,7 +1,7 @@
 /**
  * @file relay_ctrl.h
- * @brief High-level relay control API built on top of exio.h.
- *        Maps relay IDs (RELAY_1..RELAY_8) to TCA9554 output bits.
+ * @brief exio.h 위에 구축된 고수준 릴레이 제어 API.
+ *        릴레이 ID (RELAY_1..RELAY_8)를 TCA9554 출력 비트에 매핑한다.
  */
 
 #pragma once
@@ -10,46 +10,46 @@
 #include <stdint.h>
 
 /**
- * @brief Relay channel identifiers mapped to TCA9554 output bits.
- *        RELAY_1 corresponds to bit 0 (EXIO1), RELAY_8 to bit 7 (EXIO8).
+ * @brief TCA9554 출력 비트에 매핑된 릴레이 채널 식별자.
+ *        RELAY_1은 비트 0 (EXIO1)에, RELAY_8은 비트 7 (EXIO8)에 대응한다.
  */
 typedef enum {
-    RELAY_1 = 0,   /**< EXIO1 — bit 0 */
-    RELAY_2,       /**< EXIO2 — bit 1 */
-    RELAY_3,       /**< EXIO3 — bit 2 */
-    RELAY_4,       /**< EXIO4 — bit 3 */
-    RELAY_5,       /**< EXIO5 — bit 4 */
-    RELAY_6,       /**< EXIO6 — bit 5 */
-    RELAY_7,       /**< EXIO7 — bit 6 */
-    RELAY_8,       /**< EXIO8 — bit 7 */
-    RELAY_MAX      /**< Sentinel — do not use as a channel ID */
+    RELAY_1 = 0,   /**< EXIO1 — 비트 0 */
+    RELAY_2,       /**< EXIO2 — 비트 1 */
+    RELAY_3,       /**< EXIO3 — 비트 2 */
+    RELAY_4,       /**< EXIO4 — 비트 3 */
+    RELAY_5,       /**< EXIO5 — 비트 4 */
+    RELAY_6,       /**< EXIO6 — 비트 5 */
+    RELAY_7,       /**< EXIO7 — 비트 6 */
+    RELAY_8,       /**< EXIO8 — 비트 7 */
+    RELAY_MAX      /**< 경계값 (사용 금지) */
 } relay_id_t;
 
 /**
  * @brief 릴레이 제어 초기화 (exio_init() 이후 호출)
  *        전체 릴레이 OFF 상태로 시작
- * @return ESP_OK on success, ESP_ERR_* on failure
+ * @return 성공 시 ESP_OK, 실패 시 ESP_ERR_*
  */
 esp_err_t relay_init(void);
 
 /**
  * @brief 개별 릴레이 on/off
- * @param id  RELAY_1 ~ RELAY_8
- * @param on  true=ON, false=OFF
- * @return ESP_OK on success, ESP_ERR_* on failure
+ * @param[in] id  RELAY_1 ~ RELAY_8
+ * @param[in] on  true=ON, false=OFF
+ * @return 성공 시 ESP_OK, 실패 시 ESP_ERR_*
  */
 esp_err_t relay_set(relay_id_t id, bool on);
 
 /**
  * @brief 특정 릴레이의 현재 상태 조회
- * @param id  RELAY_1 ~ RELAY_8
- * @return true if relay is ON, false if OFF
+ * @param[in] id  RELAY_1 ~ RELAY_8
+ * @return 릴레이가 ON이면 true, OFF이면 false
  */
 bool relay_get(relay_id_t id);
 
 /**
- * @brief 현재 전체 릴레이 상태를 8비트 마스크로 반환
+ * @brief 현재 전체 릴레이 상태를 8비트 비트마스크로 반환
  *        bit0 = RELAY_1 ... bit7 = RELAY_8
- * @return 8-bit bitmask; bit0=RELAY_1 ... bit7=RELAY_8
+ * @return 8비트 비트마스크; bit0=RELAY_1 ... bit7=RELAY_8
  */
 uint8_t relay_get_all(void);
