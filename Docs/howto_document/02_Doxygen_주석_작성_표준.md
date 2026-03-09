@@ -101,33 +101,91 @@ typedef struct {
 ### main.c / app_main() — 진입점 특수 처리
 
 > **주의:** `app_main`은 `@param`, `@return` 태그가 없다.
-> 대신 전체 부팅 흐름과 태스크 구조를 `@details`에 기술한다.
+> 파일 헤더는 초기화 순서를 텍스트로 간결하게, 함수 주석에 상세 흐름도를 담는다.
 
 ```c
 /**
  * @file    main.c
- * @brief   애플리케이션 진입점
+ * @brief   애플리케이션 진입점 — 모든 서브시스템을 순서대로 초기화하고
+ *          FreeRTOS 스케줄러에 제어를 넘긴다.
  *
  * @details
- * 부팅 및 태스크 초기화 순서:
- * \dot
- * digraph BootFlow {
- *     node [shape=box, fontname="Helvetica", fontsize=10];
- *     app_main        -> nvs_flash_init;
- *     nvs_flash_init  -> sensor_adc_init;
- *     sensor_adc_init -> sensor_task [label="xTaskCreate"];
- *     sensor_adc_init -> mqtt_task   [label="xTaskCreate"];
- * }
- * \enddot
+ * 초기화 순서:
+ *  1. NVS 플래시 (설정값 저장)
+ *  2. 기본 이벤트 루프
+ *  3. esp_netif 초기화
+ *  4. (서브시스템 초기화 — I2C, SPI, GPIO, 드라이버 등)
+ *  5. Ethernet 초기화 (IP 획득 후 응용 태스크 시작)
  */
 
 /**
  * @brief   FreeRTOS 태스크 및 드라이버를 초기화하고 스케줄러에 제어를 넘긴다.
  *
- * @note    이 함수는 반환되지 않는다.
- *          모든 비즈니스 로직은 별도 태스크로 분리되어 있다.
+ * @details
+ * 부팅 흐름:
+ * \dot
+ * digraph BootFlow {
+ *     node [shape=box, fontname="Helvetica", fontsize=10];
+ *     edge [fontname="Helvetica", fontsize=9];
+ *     Bootloader      [style=filled, fillcolor=lightgray];
+ *     Scheduler       [label="FreeRTOS Scheduler", style=filled, fillcolor=lightgray];
+ *     AppTask         [label="응용 태스크", style=filled, fillcolor=lightyellow];
+ *
+ *     Bootloader -> nvs_flash_init -> esp_event_loop -> esp_netif_init;
+ *     esp_netif_init -> exio_init -> relay_init -> pwm_init -> eth_init;
+ *     eth_init -> Scheduler [label="반환"];
+ *     eth_init -> AppTask [label="IP 획득 (비동기, 최초 1회)", style=dashed];
+ * }
+ * \enddot
+ *
+ * @note 이 함수는 반환되지 않는다.
+ *       모든 비즈니스 로직은 별도 FreeRTOS 태스크로 분리되어 있다.
+ *       응용 태스크는 Ethernet IP 획득 이후 자동으로 시작된다.
  */
 void app_main(void);
+```
+
+#### 파일 헤더 vs 함수 주석: 역할 구분
+
+**왜 파일 헤더와 함수 주석을 나누는가?**
+
+- **파일 헤더(`@file`)**: "이 파일의 목적은 무엇인가?" — IDE에서 파일을 열기 **전에** 검색 결과나 파일 목록에서 읽는 정보다. 간결한 텍스트 수준의 개요로 충분하다.
+
+- **함수 주석**: "이 함수가 어떻게 동작하는가?" — 함수를 호출하거나 수정할 때 읽는 정보다. 복잡한 초기화 흐름이나 상태 전이는 Graphviz 다이어그램으로 명확하게 표현한다.
+
+**잘못된 예 vs 올바른 예:**
+
+```c
+// ❌ 파일 헤더에 복잡한 Graphviz 다이어그램
+/**
+ * @file main.c
+ * @details
+ * \dot
+ * digraph VeryComplex { ... (50줄) ... }
+ * \enddot
+ */
+// 파일 목록에서 이 파일을 선택하기 전부터 복잡한 다이어그램을 읽어야 함
+
+// ✅ 파일 헤더는 간결한 텍스트, 함수 주석에 흐름도
+/**
+ * @file main.c
+ * @brief 애플리케이션 진입점
+ * @details
+ * 초기화 순서:
+ *  1. NVS 플래시
+ *  2. 이벤트 루프
+ *  3. ...
+ */
+
+/**
+ * @brief FreeRTOS를 초기화하고 스케줄러에 제어를 넘긴다.
+ * @details
+ * \dot
+ * digraph BootFlow { ... }
+ * \enddot
+ */
+void app_main(void);
+// 함수 코드를 볼 때만 상세한 흐름도가 필요하므로 여기에 배치
 ```
 
 ---
@@ -568,11 +626,13 @@ digraph Example {
 
 | 항목      | 내용       |
 |-----------|-----------|
-| 버전      | 1.1       |
+| 버전      | 1.3       |
 | 작성자    | 홍길동    |
 | 최초 작성 | 2025-03-05 |
 | 최종 수정 | 2026-03-09 |
 
 **변경 이력:**
-- **v1.1** (2026-03-09): `@param[in/out/in,out]` 방향 표시의 목적과 이유를 입문자 관점에서 설명 추가, IDE/Doxygen 렌더링 예시 코드 추가
+- **v1.3** (2026-03-09): §3 main.c 예시를 실제 코드 구조(파일 헤더 텍스트 목록 + 함수 주석 Graphviz)로 수정, 파일 헤더 vs 함수 주석 역할 구분 설명 추가
+- **v1.2** (2026-03-09): `@param[in/out/in,out]` 방향 표시의 목적과 이유를 입문자 관점에서 상세 설명 추가, IDE/Doxygen 렌더링 예시 코드 추가
+- **v1.1** (2026-03-09): 동일 버전 내 추가 개선 (방향 태그 설명 추가)
 - **v1.0** (2025-03-05): 초본 작성
