@@ -98,6 +98,10 @@ typedef enum {
  */
 ```
 
+> **결과 화면:** 위 `.h` 파일 헤더 주석을 적용하면 Doxygen HTML에서 아래처럼 렌더링됩니다.
+>
+> ![파일 헤더 주석 출력 결과](images/file_header_doc.png)
+
 ### .c 파일 — 구현 세부사항 중심
 
 ```c
@@ -230,6 +234,10 @@ void app_main(void);
 esp_err_t relay_set(relay_id_t id, bool on);
 ```
 
+> **결과 화면:** 위 함수 주석을 적용하면 Doxygen HTML에서 파라미터·반환값·참조가 아래처럼 표시됩니다.
+>
+> ![함수 주석 출력 결과](images/function_doc.png)
+
 ### .c 파일 — 내부 구현 흐름 (복잡한 함수만)
 
 `.h`와 `.c` 모두에 동일한 `@param` / `@return`을 쓰지 않는다.
@@ -346,6 +354,10 @@ typedef enum {
 /** TCP 서버 수신 포트. 변경 시 클라이언트 연결 설정도 같이 바꿀 것. */
 #define TCP_SERVER_PORT     8080
 ```
+
+> **결과 화면:** 구조체·열거형·매크로 주석은 Doxygen HTML에서 아래처럼 렌더링됩니다.
+>
+> ![구조체/열거형/매크로 출력 결과](images/macro_enum_doc.png)
 
 ---
 
@@ -641,6 +653,14 @@ Modules:
           ├─ pwm_set_us()
           └─ ...
 ```
+
+> **결과 화면 — Modules 탭 목록:** `@defgroup` 적용 후 Doxygen HTML의 Modules 탭이 아래처럼 생성됩니다.
+>
+> ![Modules 탭 목록](images/modules_list.png)
+
+> **결과 화면 — 모듈 상세 페이지:** 모듈 항목을 클릭하면 소속 함수·상수가 아래처럼 정리된 페이지로 연결됩니다.
+>
+> ![모듈 상세 페이지](images/module_group_detail.png)
 
 #### @see — 모듈 간 의존 관계 표기
 

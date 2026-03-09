@@ -281,6 +281,10 @@ GENERATE_LATEX = NO
 
 `OUTPUT_DIRECTORY` 하위에 생성될 폴더 이름입니다. 기본값 `html`을 그대로 두면 `docs/doxygen/html/index.html`이 생성됩니다.
 
+> **결과 화면:** HTML 출력이 완료되면 브라우저에서 Files 탭이 아래처럼 표시됩니다.
+>
+> ![HTML Files 탭 출력 결과](images/files_list.png)
+
 ---
 
 ### 4.5 그래프 생성 — Call graph / 의존성

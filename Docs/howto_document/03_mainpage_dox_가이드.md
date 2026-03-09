@@ -90,6 +90,10 @@ INPUT = main/ docs/
 
 프로젝트가 진행되면서 `@subpage` 링크가 필요하면 추가합니다 (아래 섹션 5 참고).
 
+> **결과 화면:** 위 최소 버전을 적용하면 Doxygen HTML 표지가 아래처럼 생성됩니다.
+>
+> ![mainpage HTML 출력 결과](images/mainpage_result.png)
+
 ---
 
 ## 4. 태그별 상세 설명
@@ -162,6 +166,10 @@ INPUT = main/ docs/
 ```
 
 > **주의:** 대응하는 `@page`가 없는 `@subpage`를 쓰면 Doxygen이 경고를 출력합니다. 아직 해당 `.dox` 파일이 없다면 `@subpage` 줄을 통째로 삭제하세요.
+
+> **결과 화면:** `@subpage`로 등록된 페이지들은 HTML 상단 탭의 **Related Pages**에 아래처럼 나열됩니다.
+>
+> ![Related Pages 출력 결과](images/pages_list.png)
 
 ---
 
