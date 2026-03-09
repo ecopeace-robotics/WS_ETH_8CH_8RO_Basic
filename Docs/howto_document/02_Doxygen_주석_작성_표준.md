@@ -61,10 +61,12 @@ Doxygen이 함수 관계도, 파라미터 표, 흐름도를 자동 생성한다.
  * 여러 줄 작성 가능
  */
 
-typedef struct {
-    int channel;  /**< ADC 채널 번호 (멤버 인라인 주석) */
-    int samples;  /**< 평균낼 샘플 수 */
-} sensor_config_t;
+typedef enum {
+    RELAY_1 = 0,  /**< EXIO1 — 비트 0 (멤버 인라인 주석) */
+    RELAY_2,      /**< EXIO2 — 비트 1 */
+    /* ... */
+    RELAY_MAX     /**< 경계값 (사용 금지) */
+} relay_id_t;
 ```
 
 ---
@@ -100,13 +102,13 @@ typedef struct {
 
 ```c
 /**
- * @file    sensor_adc.c
- * @brief   sensor_adc.h 구현부
+ * @file    exio.c
+ * @brief   exio.h 구현부
  *
  * @details
- * Espressif ADC Oneshot Driver API 사용.
- * 내부적으로 10회 샘플링 후 평균값 산출.
- * 이상값(±20% 초과) 자동 필터링 포함.
+ * ESP-IDF v5 New I2C Master API 기반.
+ * 출력 포트 상태를 s_output_cache에 캐싱하여 read-modify-write 수행.
+ * I2C 전송 실패 시 ESP_LOGE로 레지스터 주소·데이터를 기록한다.
  *
  * @author  홍길동
  * @date    2025-03-05
@@ -235,28 +237,30 @@ API 명세는 `.h`에만 작성하고, `.c`에는 구현 설명만 추가한다.
 
 ```c
 /**
- * @brief   센서값을 읽어 필터링 후 반환한다.
+ * @brief   특정 핀의 출력값 설정 (구현 상세)
  *
  * @details
- * 처리 흐름:
+ * 캐시된 포트 값에 비트 연산(read-modify-write) 후 TCA9554에 씀:
+ *
  * \dot
- * digraph ReadFlow {
+ * digraph ExioSetPin {
  *     node [shape=box, fontname="Helvetica", fontsize=10];
- *     A [label="ADC Raw Read x10"];
- *     B [label="평균값 계산"];
- *     C [label="범위 초과?", shape=diamond];
- *     D [label="ESP_ERR_INVALID_RESPONSE"];
- *     E [label="calibrated 값 반환"];
- *     A -> B;
- *     B -> C;
- *     C -> D [label="Yes"];
- *     C -> E [label="No"];
+ *     HW  [label="TCA9554 output pin", style=filled, fillcolor=lightgray];
+ *     err [label="ESP_ERR_INVALID_ARG"];
+ *     input  [label="pin (0~7)\nvalue (0|1)"];
+ *     valid  [label="pin <= 7?", shape=diamond];
+ *     rmw    [label="s_output_cache:\n1→cache|=(1<<pin)\n0→cache&=~(1<<pin)"];
+ *     write  [label="tca9554_write_reg\n(REG_OUTPUT, cache)"];
+ *     input -> valid;
+ *     valid -> err   [label="no"];
+ *     valid -> rmw   [label="yes"];
+ *     rmw   -> write -> HW;
  * }
  * \enddot
  *
- * @note 파라미터/반환값 명세는 .h 주석 참조.
+ * @note 파라미터/반환값 명세는 exio.h 참조.
  */
-esp_err_t sensor_adc_read(int *out_value) { ... }
+esp_err_t exio_set_pin(uint8_t pin, uint8_t value) { ... }
 ```
 
 ### static 함수 — 내부 구현 학습 지원
@@ -307,14 +311,13 @@ static esp_err_t tca9554_write_reg(uint8_t reg, uint8_t data);
 
 ```c
 /**
- * @brief   ADC 센서 설정 구조체
- * @ingroup SensorADC
+ * @brief   TCP 서버 설정 구조체
  */
 typedef struct {
-    adc1_channel_t  channel;  /**< ADC1 채널 번호 */
-    adc_atten_t     atten;    /**< 입력 감쇠 설정 */
-    uint8_t         samples;  /**< 평균낼 샘플 수 (1~64) */
-} sensor_adc_config_t;
+    uint16_t  port;         /**< 수신 포트 번호 (기본값: TCP_SERVER_PORT) */
+    uint32_t  rx_buf_size;  /**< 수신 버퍼 크기 (바이트) */
+    int       backlog;      /**< 연결 대기 큐 크기 */
+} tcp_server_config_t;
 ```
 
 ### 열거형
@@ -340,8 +343,8 @@ typedef enum {
 ### 매크로
 
 ```c
-/** ADC 최대 샘플 수. 이 값을 초과하면 assert 발생. */
-#define SENSOR_ADC_MAX_SAMPLES  64
+/** TCP 서버 수신 포트. 변경 시 클라이언트 연결 설정도 같이 바꿀 것. */
+#define TCP_SERVER_PORT     8080
 ```
 
 ---
@@ -432,21 +435,21 @@ typedef enum {
 ```c
 // ❌ 잘못된 예 — 방향 불명확
 /**
- * @brief ADC 센서값을 읽는다.
- * @param out_value 센서값을 저장할 포인터
+ * @brief 현재 MAC 주소를 읽는다.
+ * @param mac MAC 주소를 저장할 버퍼
  * @return ESP_OK on success
  */
-esp_err_t sensor_adc_read(int *out_value);
-// 호출자: "out_value가 출력 포인터라는 걸 어떻게 알지?" → 코드를 열어본다
+esp_err_t eth_get_mac_addr(uint8_t mac[6]);
+// 호출자: "mac이 출력 포인터라는 걸 어떻게 알지?" → 코드를 열어본다
 
 // ✅ 올바른 예 — 방향 명확
 /**
- * @brief ADC 센서값을 읽는다.
- * @param[out] out_value 센서값을 저장할 포인터 (호출자가 할당 필요)
+ * @brief 현재 MAC 주소를 읽는다.
+ * @param[out] mac 함수가 MAC 주소(6바이트)를 기록하는 버퍼 (호출자가 할당 필요)
  * @return ESP_OK on success
  */
-esp_err_t sensor_adc_read(int *out_value);
-// 호출자: "[out]을 봤으니, int 메모리를 준비하고 &를 붙여서 호출해야겠다" → 바로 알 수 있음
+esp_err_t eth_get_mac_addr(uint8_t mac[6]);
+// 호출자: "[out]을 봤으니, uint8_t buf[6] 준비 후 &buf[0] 전달" → 바로 알 수 있음
 ```
 
 ### 관계 및 참조 태그
@@ -504,11 +507,11 @@ Doxygen HTML의 **표지(Main Page)** 와 **주제별 독립 페이지(Related P
 /* docs/mainpage.dox */
 
 /**
- * @mainpage ESP32 센서 펌웨어
+ * @mainpage ESP32-S3 이더넷 릴레이 컨트롤러 펌웨어
  *
  * @section intro 프로젝트 소개
- * I2C/SPI 기반 멀티센서 제어 펌웨어입니다.
- * ESP32-S3 기준으로 작성되었습니다.
+ * W5500 SPI 이더넷 · TCA9554 IO 익스팬더 · LEDC RC PWM 기반
+ * 8채널 릴레이 + 2채널 PWM 원격 제어 시스템.
  *
  * @section pages 문서 목차
  * - @subpage hardware_setup  — 하드웨어 설정 및 결선도
@@ -516,8 +519,11 @@ Doxygen HTML의 **표지(Main Page)** 와 **주제별 독립 페이지(Related P
  * - @subpage changelog       — 버전별 변경 이력
  *
  * @section modules 주요 모듈
- * - @ref SensorADC  — ADC 센서 드라이버
- * - @ref MqttClient — MQTT 통신 모듈
+ * - @ref EthInit      — W5500 이더넷 초기화 (DHCP)
+ * - @ref EXIO         — TCA9554 IO 익스팬더 드라이버
+ * - @ref RelayControl — 8채널 릴레이 제어
+ * - @ref PWMControl   — RC PWM 신호 생성 (50 Hz, 2채널)
+ * - @ref TCPServer    — TCP 텍스트 명령 인터프리터
  */
 ```
 
@@ -548,8 +554,8 @@ Main Page에서 다루기엔 긴 내용을 별도 페이지로 분리한다.
  * @section wiring 결선도
  * | ESP32 핀 | 센서 핀 | 설명       |
  * |----------|---------|------------|
- * | GPIO 21  | SDA     | I2C 데이터 |
- * | GPIO 22  | SCL     | I2C 클럭   |
+ * | GPIO 42  | SDA     | I2C 데이터 (EXIO_SDA_GPIO) |
+ * | GPIO 41  | SCL     | I2C 클럭   (EXIO_SCL_GPIO) |
  *
  * @section power 전원 요구사항
  * 센서는 3.3V 단일 전원으로 구동됩니다.
@@ -585,27 +591,28 @@ FILE_PATTERNS = *.c *.h *.dox
 파일이 여러 개로 나뉘어도 같은 모듈로 묶어서 Doxygen 출력에 정리된다.
 
 ```c
-/* sensor_adc.h 상단 — 그룹 정의 */
+/* exio.h 상단 — 그룹 정의 */
 
 /**
- * @defgroup SensorADC ADC 센서 드라이버
- * @brief    ADC 기반 센서 읽기 모듈 전체 API
+ * @defgroup EXIO TCA9554 IO 익스팬더 드라이버
+ * @brief    I2C 기반 8채널 디지털 출력 확장 모듈 (TCA9554PWR)
+ * @ingroup  HardwareDrivers
  * @{
  */
 
 /**
- * @brief   ADC 채널을 초기화한다.
- * @ingroup SensorADC
+ * @brief   TCA9554PWR을 초기화한다.
+ * @ingroup EXIO
  */
-esp_err_t sensor_adc_init(...);
+esp_err_t exio_init(void);
 
 /**
- * @brief   센서값을 읽는다.
- * @ingroup SensorADC
+ * @brief   특정 핀의 출력값을 설정한다.
+ * @ingroup EXIO
  */
-esp_err_t sensor_adc_read(...);
+esp_err_t exio_set_pin(uint8_t pin, uint8_t value);
 
-/** @} */  // SensorADC 그룹 끝
+/** @} */  // EXIO 그룹 끝
 ```
 
 #### 왜 모듈 그룹화가 필요한가?
@@ -614,17 +621,17 @@ Doxygen HTML을 생성할 때, 파일이 5개 이상이면 "Files" 목록이 길
 찾기 어려워진다. `@defgroup`으로 묶으면:
 
 1. **"Modules" 탭 생성** — Doxygen HTML에 별도의 "Modules" 섹션이 자동 생성
-2. **계층적 탐색** — `sensor_adc.h`와 `sensor_adc.c`가 "SensorADC" 그룹 아래 함께 표시
+2. **계층적 탐색** — `exio.h`와 `exio.c`가 "EXIO" 그룹 아래 함께 표시
 3. **API 전체 보기** — 모듈별로 관련 함수·타입·상수를 한곳에서 조회 가능
 
 **예시 구조:**
 ```
 Modules:
   └─ HardwareDrivers
-      ├─ SensorADC (ADC 센서 드라이버)
-      │   ├─ sensor_adc_init()
-      │   ├─ sensor_adc_read()
-      │   └─ sensor_adc_config_t
+      ├─ EXIO (TCA9554 IO 익스팬더 드라이버)
+      │   ├─ exio_init()
+      │   ├─ exio_set_pin()
+      │   └─ exio_write_port()
       ├─ RelayControl (릴레이 제어)
       │   ├─ relay_init()
       │   ├─ relay_set()
@@ -764,12 +771,13 @@ digraph Example {
 
 | 항목      | 내용       |
 |-----------|-----------|
-| 버전      | 1.6       |
+| 버전      | 1.7       |
 | 작성자    | 홍길동    |
 | 최초 작성 | 2025-03-05 |
 | 최종 수정 | 2026-03-09 |
 
 **변경 이력:**
+- **v1.7** (2026-03-09): §2·§3 .c·§4 .c·§5 구조체·§5 매크로·§7·§8 코드 예시를 실제 프로젝트 코드로 전환 — §2 sensor_config_t → relay_id_t, §3 .c sensor_adc.c → exio.c, §4 .c sensor_adc_read Graphviz → exio_set_pin, §4 파라미터 예시 → eth_get_mac_addr, §5 구조체 → tcp_server_config_t, §5 매크로 → TCP_SERVER_PORT, §7 @mainpage → ESP32-S3 이더넷 릴레이 컨트롤러, §7 @page GPIO 21/22 → 42/41, §8 @defgroup → EXIO
 - **v1.6** (2026-03-09): §3·§4·§5 코드 예시를 실제 프로젝트 코드로 전환 (Top 3 섹션) — §3 .h 파일 헤더 sensor_adc.h → relay_ctrl.h, §4 .h API 명세 sensor_adc_init → relay_set, §5 열거형 sensor_state_t → relay_id_t (전체 RELAY_1~RELAY_8 매핑)
 - **v1.5** (2026-03-09): §1·§4 static 함수/변수 문서화 기준 추가 (내부 학습 목적 반영) — static 함수를 필수 수준으로 격상, 상세 주석 작성 템플릿 제공, static 변수 주석 기준 정의
 - **v1.4** (2026-03-09): §8 `@defgroup`/`@ingroup` 설명 강화 (왜 모듈 그룹화가 필요한지, 예시 구조), `@see` 사용 기준 추가, @code 사용 가이드 추가
