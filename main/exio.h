@@ -6,6 +6,14 @@
  */
 
 #pragma once
+
+/**
+ * @defgroup EXIO TCA9554 IO 익스팬더 드라이버
+ * @brief I2C 기반 8채널 디지털 출력 확장 모듈 (TCA9554PWR)
+ * @ingroup HardwareDrivers
+ * @{
+ */
+
 #include "esp_err.h"
 #include <stdint.h>
 
@@ -44,3 +52,5 @@ esp_err_t exio_write_port(uint8_t bitmask);
  * @return 현재 8비트 출력 레지스터 값 (캐시된 값, 하드웨어에서 직접 읽지 않음)
  */
 uint8_t exio_get_port(void);
+
+/** @} */  // EXIO 그룹 끝

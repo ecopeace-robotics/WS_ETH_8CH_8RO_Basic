@@ -545,6 +545,81 @@ esp_err_t sensor_adc_read(...);
 /** @} */  // SensorADC 그룹 끝
 ```
 
+#### 왜 모듈 그룹화가 필요한가?
+
+Doxygen HTML을 생성할 때, 파일이 5개 이상이면 "Files" 목록이 길어져 관련 파일을
+찾기 어려워진다. `@defgroup`으로 묶으면:
+
+1. **"Modules" 탭 생성** — Doxygen HTML에 별도의 "Modules" 섹션이 자동 생성
+2. **계층적 탐색** — `sensor_adc.h`와 `sensor_adc.c`가 "SensorADC" 그룹 아래 함께 표시
+3. **API 전체 보기** — 모듈별로 관련 함수·타입·상수를 한곳에서 조회 가능
+
+**예시 구조:**
+```
+Modules:
+  └─ HardwareDrivers
+      ├─ SensorADC (ADC 센서 드라이버)
+      │   ├─ sensor_adc_init()
+      │   ├─ sensor_adc_read()
+      │   └─ sensor_adc_config_t
+      ├─ RelayControl (릴레이 제어)
+      │   ├─ relay_init()
+      │   ├─ relay_set()
+      │   └─ ...
+      └─ PWMControl (RC PWM 드라이버)
+          ├─ pwm_init()
+          ├─ pwm_set_us()
+          └─ ...
+```
+
+#### @see — 모듈 간 의존 관계 표기
+
+`@see`를 사용하여 관련 모듈이나 함수를 링크한다.
+
+**사용 기준:**
+- 함수를 사용하기 위해 먼저 알아야 할 다른 함수/모듈이 있을 때
+- 유사한 기능의 대안 함수가 있을 때
+- API 사용 흐름이 정해져 있을 때
+
+```c
+/**
+ * @brief 특정 릴레이 켜기
+ * @see relay_get() 현재 상태 조회
+ * @see relay_get_all() 전체 상태 조회
+ * @see EXIO 하위 드라이버
+ */
+esp_err_t relay_set(relay_id_t id, bool on);
+```
+
+---
+
+## 보충: @code / @endcode — 형식이 중요한 텍스트
+
+프로토콜, 커맨드 형식, 테이블 구조처럼 "형식이 중요한" 정보는 `@code` 블록으로
+감싼다. Doxygen HTML에서 들여쓰기와 간격을 보존하여 가독성이 높아진다.
+
+```c
+// ❌ 일반 텍스트 — HTML에서 들여쓰기 손실
+/**
+ * 프로토콜:
+ *   명령: "RELAY 1 ON\n"
+ *   응답: "OK\n"
+ */
+
+// ✅ @code 블록 — 구조와 들여쓰기 보존
+/**
+ * @code
+ * // 명령
+ * "RELAY 1 ON\n"
+ * "RELAY 2 OFF\n"
+ *
+ * // 응답
+ * "OK\n"
+ * "ERROR: ...\n"
+ * @endcode
+ */
+```
+
 ---
 
 ## 9. 파일별 작성 우선순위 요약
@@ -626,12 +701,13 @@ digraph Example {
 
 | 항목      | 내용       |
 |-----------|-----------|
-| 버전      | 1.3       |
+| 버전      | 1.4       |
 | 작성자    | 홍길동    |
 | 최초 작성 | 2025-03-05 |
 | 최종 수정 | 2026-03-09 |
 
 **변경 이력:**
+- **v1.4** (2026-03-09): §8 `@defgroup`/`@ingroup` 설명 강화 (왜 모듈 그룹화가 필요한지, 예시 구조), `@see` 사용 기준 추가, @code 사용 가이드 추가
 - **v1.3** (2026-03-09): §3 main.c 예시를 실제 코드 구조(파일 헤더 텍스트 목록 + 함수 주석 Graphviz)로 수정, 파일 헤더 vs 함수 주석 역할 구분 설명 추가
 - **v1.2** (2026-03-09): `@param[in/out/in,out]` 방향 표시의 목적과 이유를 입문자 관점에서 상세 설명 추가, IDE/Doxygen 렌더링 예시 코드 추가
 - **v1.1** (2026-03-09): 동일 버전 내 추가 개선 (방향 태그 설명 추가)

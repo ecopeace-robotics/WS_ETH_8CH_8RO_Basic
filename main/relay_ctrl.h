@@ -5,6 +5,15 @@
  */
 
 #pragma once
+
+/**
+ * @defgroup RelayControl 릴레이 제어 모듈
+ * @brief TCA9554 IO 익스팬더 기반 8채널 릴레이 제어
+ * @ingroup HardwareDrivers
+ * @see EXIO
+ * @{
+ */
+
 #include "esp_err.h"
 #include <stdbool.h>
 #include <stdint.h>
@@ -53,3 +62,5 @@ bool relay_get(relay_id_t id);
  * @return 8비트 비트마스크; bit0=RELAY_1 ... bit7=RELAY_8
  */
 uint8_t relay_get_all(void);
+
+/** @} */  // RelayControl 그룹 끝

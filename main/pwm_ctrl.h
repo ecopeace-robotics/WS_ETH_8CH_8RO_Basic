@@ -7,6 +7,13 @@
 
 #pragma once
 
+/**
+ * @defgroup PWMControl RC PWM 드라이버
+ * @brief LEDC 기반 RC PWM 신호 생성 (50 Hz, 2채널)
+ * @ingroup HardwareDrivers
+ * @{
+ */
+
 #include "esp_err.h"
 #include <stdint.h>
 
@@ -31,3 +38,5 @@ esp_err_t pwm_set_us(uint8_t channel, uint16_t pulse_us);
  * @return 현재 펄스 폭 (마이크로초, 1000–2000)
  */
 uint16_t pwm_get_us(uint8_t channel);
+
+/** @} */  // PWMControl 그룹 끝
