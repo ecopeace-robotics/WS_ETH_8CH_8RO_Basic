@@ -34,12 +34,11 @@ Doxygen의 설정 파일입니다. "어느 폴더를 읽을지, 무엇을 출력
 프로젝트 루트에 `Doxyfile`이라는 이름으로 두는 것이 관례이며, Git으로 함께 관리합니다.
 
 ```
-project/
+eth_motor/
 ├── Doxyfile          ← 여기에 위치
-├── src/
-├── include/
-└── docs/
-    └── doxygen/      ← 출력 결과물 (Git 제외 권장)
+├── main/
+├── Docs/
+└── docs/doxygen/     ← 출력 결과물 (Git 제외 권장)
 ```
 
 기본 파일은 터미널에서 아래 명령 한 번으로 생성됩니다.
@@ -64,7 +63,7 @@ RECURSIVE    = YES                  # 불리언은 YES / NO
 GENERATE_LATEX = NO
 
 # 목록 값은 공백으로 구분
-INPUT = src/ include/ docs/
+INPUT = main/ Docs/
 
 # 줄이 길면 백슬래시로 이어쓰기 가능
 EXCLUDE_PATTERNS = */build/*     \
@@ -85,16 +84,18 @@ EXCLUDE_PATTERNS = */build/*     \
 
 ```ini
 # ── 프로젝트 ──────────────────────────────────────────────
-PROJECT_NAME    = "ESP32 Sensor Firmware"
+PROJECT_NAME    = "ESP32-S3 Ethernet Motor Controller"
 PROJECT_VERSION = "1.0.0"
-PROJECT_BRIEF   = "I2C/ADC 기반 멀티센서 제어 펌웨어"
+PROJECT_BRIEF   = "W5500 SPI Ethernet + 8-Relay + RC PWM controller for ESP32-S3"
 OUTPUT_DIRECTORY = docs/doxygen
 
 # ── 입력 ──────────────────────────────────────────────────
-INPUT            = src/ include/ docs/
+INPUT            = main/ Docs/
 FILE_PATTERNS    = *.c *.h *.dox
 RECURSIVE        = YES
-EXCLUDE_PATTERNS = */build/* */managed_components/*
+EXCLUDE_PATTERNS = */build/*              \
+                   */managed_components/* \
+                   */howto_document/*
 
 # ── 추출 ──────────────────────────────────────────────────
 EXTRACT_ALL    = YES
@@ -127,9 +128,9 @@ SHOW_DIRECTORIES     = YES
 ### 4.1 프로젝트 기본 정보
 
 ```ini
-PROJECT_NAME     = "ESP32 Sensor Firmware"
+PROJECT_NAME     = "ESP32-S3 Ethernet Motor Controller"
 PROJECT_VERSION  = "1.0.0"
-PROJECT_BRIEF    = "I2C/ADC 기반 멀티센서 제어 펌웨어"
+PROJECT_BRIEF    = "W5500 SPI Ethernet + 8-Relay + RC PWM controller for ESP32-S3"
 OUTPUT_DIRECTORY = docs/doxygen
 ```
 
@@ -179,12 +180,12 @@ HTML 헤더의 프로젝트 이름 옆에 작은 글씨로 표시되는 한 줄 
 
 ```ini
 # 좋은 예 — 목적이 명확
-PROJECT_BRIEF = "온도/습도 다중 센서 수집 및 MQTT 전송 펌웨어"
-PROJECT_BRIEF = "공장 라인 진동 모니터링용 ESP32 엣지 노드"
+PROJECT_BRIEF = "W5500 SPI Ethernet + 8-Relay + RC PWM controller for ESP32-S3"
+PROJECT_BRIEF = "TCP 명령 기반 8채널 릴레이·PWM 제어 펌웨어"
 
 # 나쁜 예 — 너무 추상적이거나 기술 나열
 PROJECT_BRIEF = "ESP32 펌웨어"
-PROJECT_BRIEF = "C, FreeRTOS, MQTT, I2C, SPI 사용 프로젝트"
+PROJECT_BRIEF = "C, FreeRTOS, Ethernet, I2C, PWM 사용 프로젝트"
 ```
 
 #### OUTPUT_DIRECTORY
@@ -201,10 +202,12 @@ docs/doxygen/
 ### 4.2 입력 경로 — 무엇을 읽을지
 
 ```ini
-INPUT            = src/ include/ docs/
+INPUT            = main/ Docs/
 FILE_PATTERNS    = *.c *.h *.dox
 RECURSIVE        = YES
-EXCLUDE_PATTERNS = */build/* */managed_components/*
+EXCLUDE_PATTERNS = */build/*              \
+                   */managed_components/* \
+                   */howto_document/*
 ```
 
 #### INPUT
@@ -212,7 +215,7 @@ EXCLUDE_PATTERNS = */build/* */managed_components/*
 Doxygen이 파싱할 폴더 또는 파일을 공백으로 구분해 나열합니다. `README.md`를 Main Page로 사용한다면 이 목록에도 추가해야 합니다.
 
 ```ini
-INPUT  = src/ include/ docs/ README.md
+INPUT  = main/ Docs/ README.md
 ```
 
 #### FILE_PATTERNS
@@ -232,6 +235,7 @@ INPUT  = src/ include/ docs/ README.md
 ```ini
 EXCLUDE_PATTERNS = */build/*              \
                    */managed_components/* \
+                   */howto_document/*     \
                    */test/*               \
                    *_test.c
 ```
@@ -353,7 +357,7 @@ QUIET                = NO
 `YES`로 설정하면 `@brief` 주석이 없는 함수/파일마다 터미널에 경고를 출력합니다.
 
 ```
-sensor_adc.c:42: warning: Member sensor_read (function) is not documented.
+exio.c:15: warning: Member exio_set_pin (function) of group EXIO is not documented.
 ```
 
 코드 리뷰 전 스스로 누락을 발견하게 만드는 효과가 있습니다. 자동화 스크립트와 함께 쓰면 경고가 있을 때 빌드를 멈추게 할 수도 있습니다.
@@ -407,10 +411,12 @@ EXAMPLE_RECURSIVE = NO
 
 ```c
 /**
- * @example sensor_basic.c
- * ADC 센서 초기화 및 기본 측정 예제
+ * @example relay_basic.c
+ * TCP 클라이언트에서 릴레이 ON/OFF를 제어하는 기본 예제
  */
 ```
+
+> **주의:** 이 프로젝트는 현재 `examples/` 폴더를 사용하지 않으나, 별도 예제 코드를 추가할 경우 위 설정을 활용할 수 있습니다.
 
 ---
 
@@ -473,7 +479,7 @@ docs/doxygen/
 | `PROJECT_VERSION` | `"1.0.0"` | 릴리즈 시 수동 또는 스크립트로 갱신 |
 | `PROJECT_BRIEF` | 20~40자 목적 중심 문장 | HTML 헤더 부제 |
 | `OUTPUT_DIRECTORY` | `docs/doxygen` | 출력 경로 |
-| `INPUT` | `src/ include/ docs/` | 파싱 대상 경로 |
+| `INPUT` | `main/ Docs/` | 파싱 대상 경로 |
 | `FILE_PATTERNS` | `*.c *.h *.dox` | 대상 확장자 |
 | `RECURSIVE` | `YES` | 하위 폴더 재귀 탐색 |
 | `EXCLUDE_PATTERNS` | `*/build/* */managed_components/*` | ESP-IDF 필수 제외 |
