@@ -90,7 +90,6 @@ doxygen_warning.log
 .vscode/
 *.swp
 *~
-EOF
 
 # OMC related
-./omc
+.omc/
